@@ -1,0 +1,694 @@
+/* 全局样式重置 + 基础美化 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+        @font-face {
+            font-family: 'AlimamaAgile';
+            src: url('/../font/AlimamaAgileVF-Thin.woff2') format('woff2'),
+                 url('/../font/AlimamaAgileVF-Thin.woff') format('woff'),
+                 url('/../font/AlimamaAgileVF-Thin.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+/* 适用于 Webkit 浏览器 (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* 适用于 Firefox */
+body {
+  scrollbar-width: none;
+}
+
+/* 适用于 IE 和 Edge (旧版) */
+body {
+  -ms-overflow-style: none;
+}
+/* 隐藏滚动条但保留滚动功能 */
+.hide-scrollbar {
+  overflow-y: scroll; /* 或 auto */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+/* 变透明 */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* 或者极窄 */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+}
+html, body {
+    height: 100%;
+    overflow: hidden;
+    /* 更细腻的渐变背景 */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    background-attachment: fixed;
+}
+
+/* ========== 侧边栏深度美化 ========== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    /* 毛玻璃效果 + 轻微渐变 */
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* 精致双层阴影 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.06), 2px 0 15px rgba(0, 0, 0, 0.03);
+    z-index: 100;
+    padding: 24px 0;
+    overflow-y: auto;
+    /* 侧边栏滚动条美化 */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f8fafc;
+}
+
+/* 侧边栏滚动条（Chrome/Safari） */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 侧边栏标题区域 */
+.sidebar-photo-name {
+    padding: 0 20px 20px;
+    font-size: 15px;
+    color: #1e293b;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+    margin-bottom: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+/* 侧边栏标题装饰线 */
+.sidebar-photo-name::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 1px;
+}
+
+.sidebar-title {
+    font-size: 12px;
+    color: #64748b;
+    padding: 0 20px 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 侧边栏按钮深度美化 */
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    color: #334155;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 12px;
+    text-align: left;
+    border-radius: 0 8px 8px 0;
+    margin: 2px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 按钮hover流光效果 */
+.sidebar-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+.sidebar-btn:hover::before {
+    left: 100%;
+}
+
+.sidebar-btn:hover {
+    /* 渐变hover背景 + 轻微位移 */
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), rgba(96, 165, 250, 0.02));
+    color: #2563eb;
+    transform: translateX(2px);
+    /* 按钮右侧高亮 */
+    box-shadow: -2px 0 0 0 #3b82f6;
+}
+
+/* 按钮激活态（可选，如需默认选中效果可启用） */
+.sidebar-btn.active {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.05));
+    color: #2563eb;
+    font-weight: 500;
+    box-shadow: -2px 0 0 0 #3b82f6;
+}
+
+.sidebar-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    /* 图标轻微缩放动效 */
+    transition: transform 0.2s ease;
+}
+.sidebar-btn:hover img {
+    transform: scale(1.05);
+}
+
+/* ========== 主内容区美化 ========== */
+.main-content {
+    margin-left: 220px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+    /* 轻微的背景纹理 */
+    background-image: radial-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.photo-container {
+    position: relative;
+    cursor: move;
+    max-width: 100%;
+    max-height: 100%;
+    /* 图片容器轻微阴影 */
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
+}
+
+#mainPhoto {
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: contain;
+    /* 更大更圆润的圆角 */
+    border-radius: 12px;
+    /* 精致的多层阴影 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+    /* 图片轻微发光效果 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+#mainPhoto:hover {
+    /* 图片hover轻微放大 */
+    transform: scale(1.005);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* ========== 弹窗（模态框）深度美化 ========== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 半透明背景 + 毛玻璃 */
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    /* 弹窗背景渐变动画（可选） */
+    animation: modalBgFade 0.4s ease;
+}
+
+@keyframes modalBgFade {
+    from {
+        background: rgba(15, 23, 42, 0);
+        backdrop-filter: blur(0);
+    }
+    to {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(8px);
+    }
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /* 超大圆角 + 精致双层阴影 */
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 640px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    position: relative;
+    /* 弹窗入场动画（更流畅的弹性动画） */
+    animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 弹窗内边框装饰 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+/* 弹窗顶部渐变装饰条 */
+.modal-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 16px 16px 0 0;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 关闭按钮美化 */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+}
+.close-btn:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.08);
+    transform: rotate(90deg);
+}
+
+/* 弹窗标题美化 */
+.modal h3 {
+    margin-bottom: 24px;
+    color: #1e293b;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* 标题前小图标（可选，如需可添加） */
+.modal h3::before {
+    content: "";
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, #3b82f6, #60a5fa);
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.modal h4 {
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px !important;
+}
+
+/* 输入框/文本域美化 */
+.modal-input, .modal-textarea, #targetLanguage {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(203, 213, 225, 0.5);
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    /* 输入框内边距调整 */
+    box-sizing: border-box;
+}
+
+.modal-input:focus, .modal-textarea:focus, #targetLanguage:focus {
+    outline: none;
+    /* 聚焦时渐变边框 + 发光效果 */
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(59, 130, 246, 0.08);
+    background: #ffffff;
+}
+
+.modal-textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* 弹窗按钮区域美化 */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+/* 按钮深度美化 */
+.modal-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 按钮hover流光效果 */
+.modal-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+.modal-btn:hover::before {
+    left: 100%;
+}
+
+/* 取消按钮美化 */
+.cancel-btn {
+    background: rgba(241, 245, 249, 0.8);
+    color: #475569;
+}
+.cancel-btn:hover {
+    background: #f1f5f9;
+    color: #334155;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 确认按钮美化（渐变背景） */
+.confirm-btn {
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    color: white;
+}
+.confirm-btn:hover {
+    background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* 信息表格美化 */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(248, 250, 252, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.info-table th {
+    text-align: left;
+    padding: 12px 16px;
+    color: #64748b;
+    font-weight: 500;
+    width: 100px;
+    background: rgba(241, 245, 249, 0.8);
+}
+
+.info-table td {
+    padding: 12px 16px;
+    color: #1e293b;
+    word-break: break-all;
+    border-top: 1px solid rgba(203, 213, 225, 0.2);
+}
+
+#info-photo-url {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(203, 213, 225, 0.5);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #475569;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* 进度条美化 */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(241, 245, 249, 0.8);
+    border-radius: 4px;
+    margin: 24px 0;
+    overflow: hidden;
+    /* 进度条容器阴影 */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+    height: 100%;
+    /* 进度条渐变 */
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+    /* 进度条发光效果 */
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.progress-text {
+    text-align: right;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 8px;
+}
+
+/* 加载动画区域美化 */
+.loading-animation {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    gap: 16px;
+}
+
+.lottie-container {
+    width: 80px;
+    height: 80px;
+    /* Lottie容器轻微旋转动效 */
+    animation: lottiePulse 2s infinite ease-in-out;
+}
+
+@keyframes lottiePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.loading-animation p {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* 结果内容区域美化 */
+.result-content, #translateResult {
+    margin: 24px 0;
+    padding: 20px;
+    /* 结果区域毛玻璃 */
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 10px;
+    min-height: 80px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1e293b;
+    white-space: pre-wrap;
+    word-break: break-all;
+    /* 结果区域边框 + 轻微阴影 */
+    border: 1px solid rgba(203, 213, 225, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* 翻译区域美化 */
+#translateArea {
+    display: none;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+#translateResult {
+    min-height: 80px;
+    margin: 0 !important;
+    padding: 20px;
+}
+
+/* 提示框（Toast）美化 */
+.toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    /* 提示框毛玻璃 */
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* 提示框阴影 */
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+    /* 提示框内边距调整 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 提示框前小图标（可选） */
+.toast::before {
+    content: "✓";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ========== 响应式适配（移动端美化） ========== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 0;
+    }
+
+    .sidebar-photo-name, .sidebar-title, .sidebar-btn span {
+        display: none;
+    }
+
+    .sidebar-btn {
+        justify-content: center;
+        padding: 16px 0;
+        border-radius: 8px;
+        margin: 4px 4px;
+    }
+    .sidebar-btn:hover {
+        box-shadow: 0 0 0 2px #3b82f6;
+        transform: none;
+    }
+
+    .sidebar-btn img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        padding: 16px;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        padding: 24px 20px;
+        border-radius: 12px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .modal h3 {
+        font-size: 18px;
+    }
+}
+
+/* 打印样式优化 */
+@media print {
+    .sidebar, .modal, .toast {
+        display: none !important;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 0;
+        background: white;
+    }
+
+    #mainPhoto {
+        max-width: 100%;
+        max-height: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "name": "root/admin",
+    "require": {
+        "firebase/php-jwt": "^7.0"
+    }
+}

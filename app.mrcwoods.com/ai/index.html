@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/智能体切换页面</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+        }
+
+        /* 让body和html铺满整个视口 */
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #f0f2f5;
+            overflow: hidden; /* 隐藏滚动条 */
+        }
+
+        /* 切换选项卡容器 - 铺满整个页面 */
+        .tab-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            /* 确保容器圆角裁剪生效，关键！ */
+            overflow: hidden;
+            /* 给容器也设置顶部圆角，和头部保持一致，确保视觉统一 */
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* 选项卡头部 - 完整的顶部左右圆角 */
+        .tab-header {
+            display: flex;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e8e8e8;
+            gap: 0; /* 取消按钮间距 */
+            position: relative; /* 为平移滑块提供定位参考 */
+            /* 完整的顶部左右圆角 */
+            border-radius: 12px 12px 0 0;
+            overflow: hidden; /* 裁剪滑块超出圆角的部分 */
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 选中状态平移滑块 - 匹配头部的完整圆角 */
+        .tab-slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%; /* 每个按钮占50%宽度 */
+            background-color: #e6f7ff;
+            /* 滑块也设置完整的顶部左右圆角，左侧滑块显示左上圆角，右侧滑块显示右上圆角 */
+            border-radius: 12px 12px 0 0;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 平滑平移动画 */
+            z-index: 1; /* 确保在按钮下方 */
+        }
+
+        /* 选项卡按钮 - 缩小尺寸+适配圆角 */
+        .tab-btn {
+            flex: 1; /* 等分头部宽度，铺满顶部 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px; /* 缩小图标和文字间距 */
+            padding: 8px 0; /* 小尺寸按钮内边距 */
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 2; /* 确保按钮在滑块上方 */
+            height: 100%;
+            /* 按钮也适配圆角，增强视觉一致性 */
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* 按钮选中状态 - 仅改变文字颜色 */
+        .tab-btn.active {
+            color: #1890ff;
+        }
+
+        /* 按钮图标 - 缩小尺寸 */
+        .tab-btn img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+        }
+
+        /* 鼠标悬浮效果 */
+        .tab-btn:hover img {
+            transform: scale(1.1);
+        }
+
+        /* 选项卡内容区域 - 铺满剩余高度 */
+        .tab-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        /* 内嵌页面容器 - 淡入淡出动画 */
+        .tab-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tab-content iframe.loaded {
+            opacity: 1;
+        }
+
+        /* 按钮点击反馈 */
+        .tab-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-container">
+        <!-- 切换选项卡头部（带平移滑块） -->
+        <div class="tab-header">
+            <!-- 平移滑块 - 核心动画元素 -->
+            <div class="tab-slider" id="tabSlider"></div>
+            
+            <button class="tab-btn active" id="aiTab">
+                <img src="../svg/AI对话.svg" alt="AI对话图标">
+                <span>AI</span>
+            </button>
+            <button class="tab-btn" id="agentTab">
+                <img src="../svg/AI智能体.svg" alt="AI智能体图标">
+                <span>智能体</span>
+            </button>
+        </div>
+
+        <!-- 内容展示区域 -->
+        <div class="tab-content">
+            <iframe id="contentIframe" src="../aichat/" class="loaded"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // 获取DOM元素
+        const aiTab = document.getElementById('aiTab');
+        const agentTab = document.getElementById('agentTab');
+        const tabSlider = document.getElementById('tabSlider');
+        const contentIframe = document.getElementById('contentIframe');
+
+        // 初始化：默认选中AI
+        aiTab.classList.add('active');
+        tabSlider.style.left = '0%'; // 滑块初始位置
+        
+        // 通用切换函数 - 实现平移动画+内容切换
+        function switchTab(targetBtn, targetSliderPos, targetUrl) {
+            // 重置所有按钮状态
+            aiTab.classList.remove('active');
+            agentTab.classList.remove('active');
+            
+            // 设置选中按钮和滑块位置
+            targetBtn.classList.add('active');
+            tabSlider.style.left = targetSliderPos;
+            
+            // iframe淡出
+            contentIframe.classList.remove('loaded');
+            
+            // 延迟加载新页面，配合动画节奏
+            setTimeout(() => {
+                contentIframe.src = targetUrl;
+                contentIframe.onload = () => {
+                    contentIframe.classList.add('loaded');
+                };
+            }, 150);
+        }
+
+        // AI标签点击事件 - 滑块移到左侧（0%）
+        aiTab.addEventListener('click', () => {
+            switchTab(aiTab, '0%', '../aichat/');
+        });
+
+        // 智能体标签点击事件 - 滑块移到右侧（50%）
+        agentTab.addEventListener('click', () => {
+            switchTab(agentTab, '50%', '../agent/');
+        });
+    </script>
+</body>
+</html>

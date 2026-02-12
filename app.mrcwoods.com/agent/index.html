@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发中</title>
+    <style>
+        /* 页面基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面主体 - 渐变背景 + 全屏居中 */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f8fb 0%, #e8f4f8 100%);
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+            padding: 20px;
+        }
+
+        /* 核心卡片容器 - 增加层次感 */
+        .card-container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        /* 卡片hover轻微上浮效果 */
+        .card-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 动画容器 - 优化尺寸 + 响应式 */
+        #lottie-container {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 25px;
+            /* 动画加载前的占位背景 */
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 加载过渡提示 */
+        .loading-tip {
+            color: #999;
+            font-size: 14px;
+            position: absolute;
+        }
+
+        /* 开发中主标题 - 渐变文字 + 精致样式 */
+        .open-tip {
+            font-size: 32px;
+            font-weight: 700;
+            /* 文字渐变 */
+            background: linear-gradient(90deg, #4299e1, #38b2ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        /* 副标题 - 补充信息 */
+        .sub-tip {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* 分割线 - 装饰元素 */
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #4299e1, #38b2ac);
+            border-radius: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* 底部说明文字 */
+        .desc-tip {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* 加载失败提示 - 美化样式 */
+        .error-tip {
+            color: #e53e3e;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+            padding: 8px 15px;
+            background: #fef2f2;
+            border-radius: 8px;
+            border: 1px solid #fee2e2;
+        }
+
+        /* 响应式适配 - 移动端调整尺寸 */
+        @media (max-width: 480px) {
+            #lottie-container {
+                width: 200px;
+                height: 200px;
+            }
+            .open-tip {
+                font-size: 28px;
+            }
+            .card-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 核心卡片容器 -->
+    <div class="card-container">
+        <!-- Lottie动画容器 -->
+        <div id="lottie-container">
+            <!-- 加载过渡提示 -->
+            <div class="loading-tip" id="loading-tip">开发中...</div>
+        </div>
+        
+        <!-- 开发中主标题（修正错别字） -->
+        <div class="open-tip">开发中</div>
+        <!-- 副标题 -->
+        <div class="sub-tip">敬请期待 精彩即将呈现</div>
+        <!-- 装饰分割线 -->
+        <div class="divider"></div>
+        <!-- 底部说明文字 -->
+        <div class="desc-tip">
+            我们正在全力完善功能<br>
+            暂时无法提供服务，敬请谅解
+        </div>
+        
+    </div>
+
+    <!-- 引入Lottie核心JS文件 -->
+    <script src="../main/js/lottie.min.js"></script>
+    <script>
+        // 获取元素
+        const animationContainer = document.getElementById('lottie-container');
+        const loadingTip = document.getElementById('loading-tip');
+        const errorTip = document.getElementById('error-tip');
+
+        // 初始化Lottie动画
+        const animation = lottie.loadAnimation({
+            container: animationContainer, // 动画容器元素
+            renderer: 'svg', // 渲染方式：svg（清晰度高）
+            loop: true, // 循环播放
+            autoplay: true, // 自动播放
+            path: '../lottie/办公.json' // 动画JSON文件路径
+        });
+
+        // 监听动画加载失败事件
+        animation.addEventListener('data_failed', () => {
+            loadingTip.style.display = 'none';
+            errorTip.style.display = 'block';
+        });
+
+        // 监听动画加载完成事件
+        animation.addEventListener('data_ready', () => {
+            loadingTip.style.display = 'none'; // 隐藏加载提示
+            animationContainer.style.background = 'transparent'; // 移除占位背景
+            console.log('Lottie动画加载完成');
+        });
+
+        // 监听动画播放开始事件
+        animation.addEventListener('DOMLoaded', () => {
+            console.log('Lottie动画DOM加载完成');
+        });
+    </script>
+</body>
+</html>

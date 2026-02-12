@@ -1,0 +1,347 @@
+{
+    "tools": [
+        {
+            "name": "Photopea",
+            "category": "绘图工具",
+            "description": "类似于Photoshop的高质量全功能在线绘图工具。",
+            "icon": "https:\/\/www.photopea.com\/promo\/icon512.png",
+            "type": "web",
+            "usage": 1,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/www.photopea.com\/"
+            }
+        },
+        {
+            "name": "图片加水印",
+            "category": "图片工具",
+            "description": "使用说明\r\n这款在线工具是一个高效、安全的图片加水印工具，专为需要保护隐私和安全的用户设计。它能够轻松地为您的图片添加水印，无需任何网络请求，确保您的数据不被外泄。无论是身份证、驾照还是公司证照，这个工具都能有效地对敏感信息进行处理，让您在分享或存储这些重要文件时更加安心。使用简单便捷，保护隐私的同时，不影响图片的整体质量，是您保护个人信息的理想选择。\r\n身份证加水印，驾驶证加水印，护照加水印，合同图片加水印",
+            "icon": "https:\/\/toolwa.com\/watermark\/favicon.png",
+            "type": "web",
+            "usage": 10,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/watermark\/"
+            }
+        },
+        {
+            "name": "高级条码生成工具",
+            "category": "图片工具",
+            "description": "使用说明\r\n这是一款在线的条码生成工具，它提供了一个简单而强大的界面，允许用户轻松生成不同类型的条码，支持生成导出为 PNG 或 SVG 格式的条码图片。无论是用于商品标识、库存管理还是其他应用场景，用户只需输入数据，选择条码类型，并调整一些参数，就能快速生成符合需求的条形码。\r\n如果需要生成更多类型的条码，可以使用我们的 万能条码生成工具，它支持数百种不同格式的条码生成。\r\n主要功能：\r\n\r\n    多种条码类型选择：支持多种常用条码标准，如 CODE128、EAN13、UPC、CODE39、ITF、MSI、Pharmacode 等，满足不同应用场景的需求。\r\n    自定义条码参数：用户可以调整条码的宽度、高度、边距、背景色和线条颜色等，定制化条码外观。\r\n    文本显示控制：可以选择是否显示条码文本，支持文本对齐方式、字体类型和大小设置，确保条码与周围环境的协调。\r\n    直观易用：用户友好的界面设计，使操作过程简便直观。即使是没有技术背景的用户，也能快速上手。\r\n    实时预览：修改设置后，用户可以实时预览条码效果，确保生成的条码符合要求。\r\n无论是需要打印条码标签、导入到库存管理系统，还是需要将其嵌入到电子文档中，这款条码生成工具都能提供便捷的解决方案。",
+            "icon": "https:\/\/toolwa.com\/barcode\/favicon.png",
+            "type": "web",
+            "usage": 10,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/barcode\/"
+            }
+        },
+        {
+            "name": "圆角图片生成",
+            "category": "图片工具",
+            "description": "使用说明\r\n一般的图片都是四四方方的，看的多了就会觉得非常呆板。于是就有了圆角图片。\r\n本工具可以轻松地将任意图片转换成透明圆角图片，并且可以指定各个圆角大小，图片的大小完全不限制，生成出来的图片无锯齿。\r\n生成的透明圆角图片可以用于 LOGO 图标，非常美观好看。",
+            "icon": "https:\/\/toolwa.com\/image-round\/favicon.png",
+            "type": "web",
+            "usage": 11,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/image-round\/"
+            }
+        },
+        {
+            "name": "Favicon 图标制作",
+            "category": "图片工具",
+            "description": "使用说明\r\n本工具可以在线将 jpg、png、gif 等格式的图片转换成 ico 图标。\r\nfavicon.ico 通常用作网址 url 的前置缩略图，作为网站标志，favicon.ico 显示在浏览器的地址栏或标签上。目前几乎所有浏览器都支持 ico 图标。\r\n当成功生成 favicon.ico 图标文件后，挑选合适大小的图标，点击图标后面的链接即可下载保存。\r\n将图标上传至网站根目录，然后使用以下引用代码即可在网页上使用。",
+            "icon": "https:\/\/toolwa.com\/favicon\/favicon.png",
+            "type": "web",
+            "usage": 111,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/favicon\/"
+            }
+        },
+        {
+            "name": "在线白板",
+            "category": "绘图工具",
+            "description": "一款高颜值的支持压感的在线白板应用",
+            "icon": "https:\/\/toolwa.com\/favicon.ico",
+            "type": "web",
+            "usage": 1,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/whiteboard\/"
+            }
+        },
+        {
+            "name": "摸头杀生成器",
+            "category": "图片工具",
+            "description": "摸头杀生成器，万物皆可摸头",
+            "icon": "https:\/\/toolwa.com\/petpet\/favicon.png",
+            "type": "web",
+            "usage": 999,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/petpet\/"
+            }
+        },
+        {
+            "name": "在线图片编辑",
+            "category": "绘图工具",
+            "description": "在线裁剪编辑图片、增加滤镜、图片标注裁剪编辑图片、增加滤镜、图片标注",
+            "icon": "https:\/\/toolwa.com\/image-editor\/favicon.png",
+            "type": "web",
+            "usage": 90,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/image-editor\/"
+            }
+        },
+        {
+            "name": "故障风格图片生成",
+            "category": "绘图工具",
+            "description": "生成独具特色的故障风格图片",
+            "icon": "https:\/\/toolwa.com\/glitch-image\/favicon.png",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/glitch-image\/"
+            }
+        },
+        {
+            "name": "丑萌头像生成器",
+            "category": "图片工具",
+            "description": "生成别具一格的丑萌头像",
+            "icon": "https:\/\/toolwa.com\/ugly-avatar\/favicon.png",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/ugly-avatar\/"
+            }
+        },
+        {
+            "name": "迷宫生成器",
+            "category": "图片工具",
+            "description": "一个在线的随机迷宫生成工具，它可以快速生成各种不同的迷宫图形",
+            "icon": "https:\/\/toolwa.com\/maze\/favicon.png",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/toolwa.com\/maze\/"
+            }
+        },
+        {
+            "name": "菜鸟工具",
+            "category": "绘图工具",
+            "description": "在线绘图工具，专注于手绘风格的图表绘制。它简单易用，适合绘制草图、流程图、线框图等。可以将作品导出为 PNG 或 SVG 格式。",
+            "icon": "https:\/\/static.jyshare.com\/images\/c-runoob-logo.ico",
+            "type": "web",
+            "usage": 2,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/www.jyshare.com\/more\/excalidraw\/"
+            }
+        },
+        {
+            "name": "V本地绘图板",
+            "category": "图片工具",
+            "description": "高级在线思维导图绘制",
+            "icon": "https:\/\/visionon.cn\/v-logo-2.png",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/visionon.cn\/clipboard"
+            }
+        },
+        {
+            "name": "速写板",
+            "category": "绘图工具",
+            "description": "让手写、画画、画图更快捷高效\r\n支持超清图片、SVG图片、编辑文件生成及导入（推荐谷歌chrome浏览器）。\r\n隐私保护: 全部操作均在您本地设备完成，不会上传 至 服务器及网络。",
+            "icon": "https:\/\/www.suxieban.com\/favicon.ico",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/www.suxieban.com\/"
+            }
+        },
+        {
+            "name": "启星慧图",
+            "category": "绘图工具",
+            "description": "专业的在线绘图平台\r\n让AI为您智能绘制图表\r\n专业的在线绘图平台，支持ER图绘制、功能结构图、流程图制作，以及AI专业风格图生成。无论是数据库设计、系统架构还是业务流程，启星慧图都能帮您快速实现。",
+            "icon": "https:\/\/draw.anqstar.com\/logo.svg",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/draw.anqstar.com\/draw?storage=local"
+            }
+        },
+        {
+            "name": "在线画图",
+            "category": "绘图工具",
+            "description": "在线画图工具，您的创意绘图助手！我们提供简单易用的在线画图软件，支持多种画图功能，让您轻松创建精美的图形、插图和设计。无论是专业设计师还是业余爱好者，都能在这里找到灵感和工具。立即体验我们的在线画图工具，释放您的创意，轻松分享您的作品！",
+            "icon": "https:\/\/huahua.gitapp.cn\/Images\/log.ico",
+            "type": "web",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/huahua.gitapp.cn\/"
+            }
+        },
+        {
+            "name": "Canva可画",
+            "category": "绘图工具",
+            "description": "网页版",
+            "icon": "https:\/\/static.canva.cn\/domain-assets\/canva\/static\/images\/favicon-1.ico",
+            "type": "web",
+            "usage": 1,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/www.canva.cn\/"
+            }
+        },
+        {
+            "name": "Canva可画",
+            "category": "绘图工具",
+            "description": "下载Canva可画客户端\r\n多端信息同步，不同的设备，同样的设计体验",
+            "icon": "https:\/\/static.canva.com\/static\/images\/favicon-1.ico",
+            "type": "app",
+            "usage": 0,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "ios": "https:\/\/a.app.qq.com\/o\/simple.jsp?pkgname=cn.canva.editor",
+                "android": "https:\/\/imtt.dd.qq.com\/sjy.00022\/sjy.00004\/16891\/apk\/48DF75C2B0FC00255A0C1649314C0152.apk?fsname=%E7%AC%AC%E4%B8%89%E6%96%B9%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8B%E8%BD%BD%E5%8C%85.apk",
+                "windows": "https:\/\/desktop-release.canva.cn\/Canva%20Setup%201.120.0-cn.exe",
+                "macos": "https:\/\/desktop-release.canva.cn\/Canva-1.119.0-cn-universal.dmg"
+            }
+        },
+        {
+            "name": "美图秀秀",
+            "category": "图片工具",
+            "description": "多功能图片编辑 简单的photoshop工具",
+            "icon": "https:\/\/pc.meitudata.com\/web-xiuxiu-offical\/_next\/static\/media\/favicon.87479806.ico",
+            "type": "web",
+            "usage": 1000,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/pc.meitu.com\/download"
+            }
+        },
+        {
+            "name": "Photoshop",
+            "category": "绘图工具",
+            "description": "Photoshop是Adobe开发的旗舰图像处理软件，具备图层编辑、智能抠图、AI生成填充、RAW处理、3D建模等专业功能，广泛应用于摄影后期、平面设计、数字绘画和视觉特效领域，是创意行业的行业标准工具。",
+            "icon": "https:\/\/images-eds-ssl.xboxlive.com\/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxhfRM_njI7Pu32CmBLMdmnnzF6MdNHw4MJwlr.tSWLA2EJBQdZh0p3nNDzGvX2F6NoIc9ZSQ9xJqsGEg5bouOnA-&format=source&h=115",
+            "type": "app",
+            "usage": 999999,
+            "adapted_systems": [
+                "windows",
+                "macos"
+            ],
+            "links": {
+                "windows": "https:\/\/pan.baidu.com\/s\/1fFXv1HOW36i5VJ2wDhWldQ",
+                "macos": "https:\/\/pan.baidu.com\/s\/1EiuPJpSVr8a72eJ3wDR1YA"
+            }
+        }
+    ]
+}

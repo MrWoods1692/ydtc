@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        #lottie-container {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        .error-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .error-desc {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 500px;
+        }
+        .back-home-btn {
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-home-btn:hover {
+            background-color: #0056b3;
+        }
+        .nginx-footer {
+            margin-top: 50px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 480px) {
+            #lottie-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie-container"></div>
+    <h1 class="error-title">404 Not Found</h1>
+    <p class="error-desc">抱歉，你访问的页面不存在或已被删除<br>请检查网址是否正确，或返回首页继续浏览</p>
+    <button class="back-home-btn" onclick="window.location.href='/'">返回首页</button>
+    <div class="nginx-footer">云端图片储存</div>
+    <script src="/main/js/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animation = lottie.loadAnimation({
+                container: document.getElementById('lottie-container'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: '/lottie/404.json'
+            });
+            animation.addEventListener('data_failed', function() {
+                document.getElementById('lottie-container').innerHTML = '<h2>😕</h2>';
+            });
+        });
+    </script>
+</body>
+</html>
