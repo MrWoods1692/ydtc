@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云端图床 - 下载中心</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+        }
+
+        /* 页面背景和整体布局 */
+        body {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景装饰元素 */
+        body::before,
+        body::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 0;
+        }
+
+        body::before {
+            top: -100px;
+            right: -100px;
+        }
+
+        body::after {
+            bottom: -100px;
+            left: -100px;
+        }
+
+        /* 主容器 - 卡片样式 */
+        .main-container {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .main-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Logo容器 */
+        .logo-container {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
+            padding: 10px;
+            background: #ffffff;
+            transition: all 0.4s ease;
+        }
+
+        .logo-wrapper:hover .logo {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
+        }
+
+        .app-name {
+            font-size: 32px;
+            color: #2d3748;
+            font-weight: 700;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .app-name::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #4299e1, #38b2ac);
+            margin: 12px auto 0;
+            border-radius: 3px;
+        }
+
+        /* 版本信息 */
+        .version-info {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 40px;
+            display: inline-block;
+            background: #f7fafc;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* 下载按钮样式 */
+        .download-btn {
+            display: inline-block;
+            padding: 18px 60px;
+            background: linear-gradient(90deg, #4299e1, #38b2ac);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .download-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(66, 153, 225, 0.4);
+            background: linear-gradient(90deg, #3182ce, #319795);
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+        }
+
+        /* 特性列表 */
+        .features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            font-size: 13px;
+            color: #4a5568;
+            background: #f7fafc;
+            padding: 6px 12px;
+            border-radius: 15px;
+        }
+
+        /* 提示文字 */
+        .tip-text {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 3px solid #4299e1;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 40px 20px;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .app-name {
+                font-size: 26px;
+            }
+            
+            .download-btn {
+                padding: 15px 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img src="../images/logo.png" alt="云端图床Logo" class="logo">
+            </div>
+            <div class="app-name">云端图床</div>
+        </div>
+
+        <div class="version-info">v0.5.0 Beta</div>
+
+        <!-- 下载按钮 -->
+        <a href="download_apk.php" class="download-btn">立即下载APK</a>
+
+        <!-- 特性标签 -->
+        <div class="features">
+            <span class="feature-item">极速上传</span>
+            <span class="feature-item">无限存储</span>
+            <span class="feature-item">隐私保护</span>
+            <span class="feature-item">全网优化</span>
+        </div>
+
+        <!-- 提示文字 -->
+        <div class="tip-text">
+            适用于Android 7.0及以上系统<br>
+            安装前请允许未知来源应用安装<br>
+            大小：14.35MB
+        </div>
+    </div>
+</body>
+</html>

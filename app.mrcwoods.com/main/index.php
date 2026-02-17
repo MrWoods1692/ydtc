@@ -1,4 +1,41 @@
 <?php
+// 处理退出请求 - 必须放在所有输出之前
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    // 开启 session 以便销毁
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // 删除所有 cookie（包括 HttpOnly）
+    if (!empty($_COOKIE)) {
+        foreach ($_COOKIE as $name => $value) {
+            // 尝试多种 domain
+            $domains = ['', '.mrcwoods.com', 'mrcwoods.com', $_SERVER['HTTP_HOST']];
+            $paths = ['/', '/main', ''];
+            
+            foreach ($domains as $domain) {
+                foreach ($paths as $path) {
+                    setcookie($name, '', [
+                        'expires' => 1,
+                        'path' => $path,
+                        'domain' => $domain,
+                        'secure' => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
+                        'httponly' => true,
+                        'samesite' => 'Lax'
+                    ]);
+                }
+            }
+        }
+    }
+    
+    // 清理 session
+    $_SESSION = [];
+    session_destroy();
+    
+    // 跳转登录页
+    header('Location: ../in/');
+    exit();
+}
 // 1. 处理OPTIONS预检请求（修复CORS+Cookie传递问题）
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header("Access-Control-Allow-Origin: *");
@@ -99,8 +136,8 @@ $navMap = [
     'notice' => ['page' => '../announcement/', 'name' => '公告'],
     'album' => ['page' => '../album/', 'name' => '相册'],
     'tc' => ['page' => '../tc/', 'name' => '图床'],
-    'ai' => ['page' => '../ai/', 'name' => 'AI智能体'], // 锚点从agent改为ai
-    'mall' => ['page' => '../mall/', 'name' => '商城'],
+    'aidraw' => ['page' => '../aidraw/', 'name' => 'AI绘画'],
+    'uplevel' => ['page' => '../uplevel/', 'name' => '升级'],
     'tools' => ['page' => '../tools/', 'name' => '工具'],
     'open-platform' => ['page' => '../open-platform/', 'name' => '开放平台'],
     'log' => ['page' => '../log/', 'name' => '日志'],
@@ -120,10 +157,22 @@ $siteInfo = [
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vhumct5cuc");
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta http-equiv="Access-Control-Allow-Credentials" content="true">
+    <meta name="description" content="安全稳定的云端图片储存服务，支持原图备份、分类、多端同步。免费起步，TB级空间任选，一键分享外链，摄影师与设计师的首选云相册。">
+    <meta name="description" content="全球CDN加速的云端图片储存，秒开预览不卡顿。自动压缩省流量，支持多种格式托管，外链直传论坛与电商，新用户送2GB空间。">
+    <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
+    <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
+    <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
     <!-- 标准权限策略 -->
     <meta http-equiv="Permissions-Policy" content="fullscreen=*, geolocation=*, microphone=*, camera=*, clipboard-read=*, clipboard-write=*">
     <title><?php echo $siteInfo['title']; ?></title>
@@ -159,6 +208,11 @@ $siteInfo = [
             overflow: hidden;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+        }
+        
+        /* 移除所有链接和元素的默认下划线 */
+        a {
+            text-decoration: none !important;
         }
 
         /* 粒子容器 */
@@ -559,6 +613,9 @@ $siteInfo = [
 
     <div class="mobile-warning">
         <p>抱歉，本页面仅支持大屏幕设备访问，请放大浏览器窗口或使用更大尺寸的设备！</p>
+            <a href="../app/" >
+                立即下载APP
+            </a>
         <div class="lottie-container" id="lottie-animation"></div>
     </div>
 
@@ -631,12 +688,12 @@ $siteInfo = [
             <div class="content-box" id="content-box">
                 <div class="placeholder">请点击左侧导航栏选择要访问的页面</div>
                 <!-- 修复sandbox权限：替换allow-all为具体权限列表 -->
-                <iframe class="content-iframe" id="content-iframe" 
-                        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-fullscreen allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-read-write-dom allow-storage-access-by-user-activation allow-cookies"
-                        referrerpolicy="origin-when-cross-origin"
-                        frameborder="0"
-                        allowfullscreen
-                        loading="lazy"></iframe>
+<iframe class="content-iframe" id="content-iframe" 
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-storage-access-by-user-activation"
+        referrerpolicy="origin-when-cross-origin"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy"></iframe>
             </div>
         </main>
     <?php endif; ?>
@@ -784,15 +841,59 @@ $siteInfo = [
             }
         });
 
-        // 退出登录
-        if (DOM.logoutbtn) {
-            DOM.logoutbtn.addEventListener('click', () => {
-                // 优化退出登录的Cookie清理逻辑
-                document.cookie = `user_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.mrcwoods.com; ${(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'secure;' : ''} SameSite=Lax`;
-                window.location.reload();
-            });
+// 退出登录
+if (DOM.logoutbtn) {
+    DOM.logoutbtn.addEventListener('click', () => {
+        // 第一步：JS 强制删除所有非 HttpOnly cookie
+        const hostname = window.location.hostname;
+        const isHttps = window.location.protocol === 'https:';
+        
+        // 所有可能的 domain 变体
+        const domains = ['', hostname, '.' + hostname];
+        const parts = hostname.split('.');
+        if (parts.length > 2) {
+            const rootDomain = parts.slice(-2).join('.');
+            domains.push(rootDomain, '.' + rootDomain);
         }
-
+        
+        // 所有可能的 path
+        const paths = ['/', '/main', '/in', '', window.location.pathname];
+        
+        // 获取并强制添加已知 cookie 名
+        const cookieNames = new Set(['user_token', 'user_email', 'token', 'email', 'user', 'auth', 'session', 'PHPSESSID', 'uid', 'id']);
+        document.cookie.split(';').forEach(c => {
+            const name = c.split('=')[0].trim();
+            if (name) cookieNames.add(name);
+        });
+        
+        // 疯狂删除模式
+        cookieNames.forEach(name => {
+            domains.forEach(domain => {
+                paths.forEach(path => {
+                    // 多种组合
+                    const configs = [
+                        {secure: false, sameSite: ''},
+                        {secure: isHttps, sameSite: 'Lax'},
+                        {secure: isHttps, sameSite: 'Strict'},
+                        {secure: isHttps, sameSite: 'None'}
+                    ];
+                    
+                    configs.forEach(cfg => {
+                        let str = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=-99999999;`;
+                        if (path) str += ` path=${path};`;
+                        if (domain) str += ` domain=${domain};`;
+                        if (cfg.secure) str += ` secure;`;
+                        if (cfg.sameSite) str += ` SameSite=${cfg.sameSite};`;
+                        document.cookie = str;
+                    });
+                });
+            });
+        });
+        
+        // 第二步：跳转 PHP 端删除 HttpOnly cookie 并清理服务端 session
+        window.location.href = '?action=logout';
+    });
+}
         // 粒子特效（节流）
         let lastParticleTime = 0;
         function createParticles(x, y) {

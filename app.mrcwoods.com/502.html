@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>502 - 服务器繁忙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+            color: #374151;
+            padding: 20px;
+        }
+        .error-container {
+            max-width: 580px;
+            width: 100%;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .error-code {
+            font-size: 96px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #4F46E5, #8B5CF6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .error-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 15px;
+        }
+        .error-desc {
+            font-size: 18px;
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .btn {
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #4F46E5;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: white;
+            color: #4F46E5;
+            border: 1px solid #4F46E5;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1);
+        }
+        .helper-info {
+            font-size: 14px;
+            color: #6B7280;
+            line-height: 1.8;
+        }
+        @media (min-width: 640px) {
+            .btn-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">502</h1>
+        <h2 class="error-title">服务器繁忙</h2>
+        <p class="error-desc">
+            抱歉，当前服务器访问量过大，暂时无法处理你的请求。<br>
+            请稍等片刻后重试，我们正在全力提升服务能力。
+        </p>
+        <div class="btn-group">
+            <button onclick="window.location.reload()" class="btn btn-primary">
+                刷新页面
+            </button>
+            <button onclick="window.location.href='/' " class="btn btn-secondary">
+                返回首页
+            </button>
+        </div>
+        <div class="helper-info">
+            <p>如果问题持续存在，请联系我们：mail@mrcwoods.com</p>
+            <p style="margin-top: 10px;">错误时间：<span id="errorTime"></span></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('errorTime').textContent = new Date().toLocaleString('zh-CN');
+    </script>
+</body>
+</html>

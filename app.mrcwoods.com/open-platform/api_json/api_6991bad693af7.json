@@ -1,0 +1,53 @@
+{
+    "name": "图片内容描述",
+    "brief": "快速掌握图片中的关键信息",
+    "request_desc": "",
+    "api_url": "https://api.mrcwoods.com/v1/tpnrms/",
+    "request_method": "GET",
+    "return_format": "JSON",
+    "request_example": "https://api.mrcwoods.com/v1/tpnrms/?url=图片链接",
+    "request_params": [
+        {
+            "name": "url",
+            "type": "string",
+            "required": "是",
+            "desc": "需要识别的图片链接。推荐jpg、png、webp等标准图片格式，其他图链请配合本站的图片转Base64编码接口使用，并通过post请求传入(确保你的链接支持跨域并且无需鉴权，最大支持20MB)"
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "required": "否",
+            "desc": "返回数据格式，支持json和text，不填写默认返回text"
+        }
+    ],
+    "return_params": [
+        {
+            "field": "image_url",
+            "type": "url",
+            "desc": "识别图片"
+        },
+        {
+            "field": "description",
+            "type": "string",
+            "desc": "图片描述"
+        }
+    ],
+    "status_code": [
+        {
+            "code": "201",
+            "desc": "请求失败"
+        },
+        {
+            "code": "400",
+            "desc": "参数错误"
+        },
+        {
+            "code": "429",
+            "desc": "请求超限"
+        }
+    ],
+    "return_example": "这是一张色彩明亮、充满教育气息的宣传海报，整体采用卡通风格设计，旨在推广德语专四考试真题资料。画面的视觉中心是大段白色、带有立体阴影效果的中文文字，内容为“自动发货 德语专四真题 092到23年 都有最新合集 备考必备”，字体粗大醒目，清晰传达了产品信息和核心卖点。背景以浅蓝色和淡黄色为主色调，营造出一种清新、积极的氛围，上方是浅蓝色的天空，点缀着几朵白云和闪烁的星星，下方则有更浓密的云层和一道金色的光弧，增强了画面的层次感和梦幻感。在文字区域的上方，一条弯曲的胶片卷轴状图案贯穿画面，上面印有日历样式的日期网格，暗示了资料的时间跨度。胶片卷轴上还分布着几个与学习相关的图标：左侧是一个卷轴状的纸张，上面印有德国国旗（黑红金三色）；旁边是一支蓝色的钢笔；右侧则是一个黑色的学士帽、一个放大镜以及一个日历。这些元素共同强化了学习、考试和德国语言的主题。整体构图均衡，色彩搭配和谐，通过卡通化的视觉语言和明确的文字信息，有效地传达了产品信息，并激发目标受众（准备德语专四考试的学生）的兴趣与需求。",
+    "sdk": {
+        "PHP": "&lt;?php\r\n\r\n/**\r\n * 图片内容描述API调用示例\r\n * 快速掌握图片中的关键信息\r\n */\r\n\r\n// 必填参数\r\n$url = &apos;https://example.com/image.jpg&apos;; // 需要识别的图片链接\r\n\r\n// 可选参数\r\n// $type = &apos;json&apos;; // 返回数据格式，支持json和text，不填写默认返回text\r\n\r\n// 请求URL\r\n$requestUrl = &apos;https://api.mrcwoods.com/v1/tpnrms/&apos;;\r\n\r\n// 初始化cURL会话\r\n$ch = curl_init();\r\n\r\n// 设置cURL选项\r\ncurl_setopt($ch, CURLOPT_URL, $requestUrl);\r\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\r\n\r\n// 构建请求参数\r\n$params = [\r\n    &apos;url&apos; =&gt; $url,\r\n    // &apos;type&apos; =&gt; $type, // 取消注释以使用可选参数\r\n];\r\n\r\n// 检查请求方法\r\n$method = &apos;POST&apos;; // 可以根据需要更改为GET\r\nif ($method === &apos;POST&apos;) {\r\n    curl_setopt($ch, CURLOPT_POST, true);\r\n    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));\r\n} elseif ($method === &apos;GET&apos;) {\r\n    $requestUrl .= &apos;?&apos; . http_build_query($params);\r\n    curl_setopt($ch, CURLOPT_URL, $requestUrl);\r\n} else {\r\n    die(&apos;错误：不支持的请求方法&apos;);\r\n}\r\n\r\n// 执行cURL请求\r\n$response = curl_exec($ch);\r\n\r\n// 检查cURL错误\r\nif (curl_errno($ch)) {\r\n    $errorMessage = &apos;cURL错误: &apos; . curl_error($ch);\r\n    curl_close($ch);\r\n    die($errorMessage);\r\n}\r\n\r\n// 获取HTTP状态码\r\n$httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);\r\n\r\n// 关闭cURL会话\r\ncurl_close($ch);\r\n\r\n// 检查HTTP状态码\r\nif ($httpStatusCode !== 200) {\r\n    die(&apos;错误：HTTP请求失败，状态码 &apos; . $httpStatusCode);\r\n}\r\n\r\n// 输出响应结果\r\necho &apos;API响应结果: &apos; . $response;\r\n\r\n?&gt;"
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "name": "Claude4.5-hiku",
+    "brief": "Claude4.5-hikuAPI\r\n【code专享】Anthropic官渠",
+    "request_desc": "",
+    "api_url": "https://api.mrcwoods.com/v1/hiku-4.5/",
+    "request_method": "GET",
+    "return_format": "TEXT",
+    "request_example": "https://api.mrcwoods.com/v1/hiku-4.5/?question=对话内容",
+    "request_params": [
+        {
+            "name": "question",
+            "type": "string",
+            "required": "是",
+            "desc": "对话内容"
+        },
+        {
+            "name": "uid",
+            "type": "string",
+            "required": "否",
+            "desc": "请填写六位数字，用来存储记忆对话(云端存储数据，每天零点准时清理，需要重新创建)，不填写则使用默共享记忆，创建速率限制为每60秒1个"
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "required": "否",
+            "desc": "返回格式，支持json和text，不填写默认返回text"
+        },
+        {
+            "name": "system",
+            "type": "string",
+            "required": "否",
+            "desc": "模型提示词"
+        }
+    ],
+    "return_params": [
+        {
+            "field": "success",
+            "type": "string",
+            "desc": "true代表请求成功，erro代表请求失败"
+        },
+        {
+            "field": "content",
+            "type": "string",
+            "desc": "AI回复内容"
+        },
+        {
+            "field": "uid",
+            "type": "number",
+            "desc": "唯一标识符"
+        },
+        {
+            "field": "conversation_count",
+            "type": "number",
+            "desc": "对话次数"
+        }
+    ],
+    "status_code": [
+        {
+            "code": "200",
+            "desc": "获取成功"
+        },
+        {
+            "code": "500",
+            "desc": "连接超时"
+        },
+        {
+            "code": "403",
+            "desc": "处理繁忙"
+        },
+        {
+            "code": "202",
+            "desc": "正在处理"
+        }
+    ],
+    "return_example": "我是 Claude 3.5 Sonnet\r\n\r\n开发公司：Anthropic\r\n\r\n我会的技能：\r\n\r\n编程语言\r\nJavaScript/TypeScript、Python、Java、C/C++、C#、Go、Rust、PHP、Ruby、Swift、Kotlin、SQL等\r\n\r\n开发能力\r\n前端开发（React/Vue/Angular）\r\n后端开发（API、数据库）\r\n全栈项目开发\r\n代码调试和优化\r\n\r\n其他能力\r\n技术咨询和架构设计\r\n数据分析和处理\r\n文本创作和翻译\r\n问题解答和学习辅导\r\n\r\n在我们的对话中，我已经帮你做过：\r\nPython函数、前端动画、个人主页、PHP API接口等\r\n\r\n需要什么帮助吗？",
+    "sdk": {
+        "PHP": "&lt;?php\r\n\r\n// API请求地址\r\n$requestUrl = &quot;https://api.mrcwoods.com/v1/hiku-4.5/&quot;;\r\n\r\n// 必填参数\r\n$token = &quot;YOUR_TOKEN_HERE&quot;; // 登录获取用户密钥\r\n$question = &quot;YOUR_QUESTION_HERE&quot;; // 对话内容\r\n\r\n// 可选参数，根据需要取消注释并赋值\r\n// $uid = 123456; // 请填写六位数字，用来存储记忆对话(云端存储数据，每天零点准时清理，需要重新创建)，不填写则使用默共享记忆，创建速率限制为每60秒1个\r\n// $type = &quot;json&quot;; // 返回格式，支持json和text，不填写默认返回text\r\n// $system = &quot;YOUR_SYSTEM_PROMPT_HERE&quot;; // 模型提示词\r\n\r\n// 初始化参数数组\r\n$params = [\r\n    &quot;token&quot; =&gt; $token,\r\n    &quot;question&quot; =&gt; $question\r\n];\r\n\r\n// 添加可选参数到请求数组\r\nif (isset($uid)) {\r\n    $params[&quot;uid&quot;] = $uid;\r\n}\r\nif (isset($type)) {\r\n    $params[&quot;type&quot;] = $type;\r\n}\r\nif (isset($system)) {\r\n    $params[&quot;system&quot;] = $system;\r\n}\r\n\r\n// 设置请求头\r\n$headers = [\r\n    &quot;Content-Type: application/x-www-form-urlencoded&quot;\r\n];\r\n\r\n// 初始化cURL会话\r\n$ch = curl_init();\r\n\r\n// 设置cURL选项\r\ncurl_setopt($ch, CURLOPT_URL, $requestUrl);\r\ncurl_setopt($ch, CURLOPT_POST, true);\r\ncurl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));\r\ncurl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\r\ncurl_setopt($ch, CURLOPT_HTTPHEADER, $headers);\r\n\r\n// 执行cURL请求\r\n$response = curl_exec($ch);\r\n\r\n// 检查cURL错误\r\nif (curl_errno($ch)) {\r\n    $error_msg = curl_error($ch);\r\n    curl_close($ch);\r\n    die(&quot;cURL请求错误: &quot; . $error_msg);\r\n}\r\n\r\n// 关闭cURL会话\r\ncurl_close($ch);\r\n\r\n// 解析响应\r\nif (isset($type) &amp;&amp; $type === &quot;json&quot;) {\r\n    $response_data = json_decode($response, true);\r\n    if (json_last_error() !== JSON_ERROR_NONE) {\r\n        die(&quot;JSON解析错误: &quot; . json_last_error_msg());\r\n    }\r\n    echo &quot;API响应: &quot;;\r\n    print_r($response_data);\r\n} else {\r\n    echo &quot;API响应: &quot; . $response;\r\n}\r\n\r\n?&gt;",
+        "Python": "import requests\r\n\r\ndef call_claude4_5_hiku_api(token, question, uid=None, type=None, system=None):\r\n    &quot;&quot;&quot;\r\n    调用Claude4.5-hikuAPI接口\r\n\r\n    :param token: 登录获取用户密钥\r\n    :param question: 对话内容\r\n    :param uid: 六位数字，用来存储记忆对话(云端存储数据，每天零点准时清理，需要重新创建)，不填写则使用默共享记忆，创建速率限制为每60秒1个\r\n    :param type: 返回格式，支持json和text，不填写默认返回text\r\n    :param system: 模型提示词\r\n    :return: API响应内容\r\n    &quot;&quot;&quot;\r\n    url = &quot;https://api.mrcwoods.com/v1/hiku-4.5/&quot;\r\n    \r\n    # 必填参数\r\n    params = {\r\n        &quot;token&quot;: token,\r\n        &quot;question&quot;: question\r\n    }\r\n    \r\n    # 可选参数\r\n    # params[&quot;uid&quot;] = uid\r\n    # params[&quot;type&quot;] = type\r\n    # params[&quot;system&quot;] = system\r\n    \r\n    try:\r\n        response = requests.post(url, data=params)\r\n        response.raise_for_status()  # 检查HTTP请求是否成功\r\n        \r\n        if params.get(&quot;type&quot;) == &quot;json&quot;:\r\n            return response.json()\r\n        else:\r\n            return response.text\r\n    \r\n    except requests.exceptions.HTTPError as http_err:\r\n        print(f&quot;HTTP error occurred: {http_err}&quot;)\r\n    except requests.exceptions.ConnectionError as conn_err:\r\n        print(f&quot;Connection error occurred: {conn_err}&quot;)\r\n    except requests.exceptions.Timeout as timeout_err:\r\n        print(f&quot;Timeout error occurred: {timeout_err}&quot;)\r\n    except requests.exceptions.RequestException as req_err:\r\n        print(f&quot;An error occurred: {req_err}&quot;)\r\n    except ValueError as json_err:\r\n        print(f&quot;JSON decode error: {json_err}&quot;)\r\n\r\n# 示例调用\r\n# result = call_claude4_5_hiku_api(&quot;your_token_here&quot;, &quot;your_question_here&quot;)\r\n# print(result)\r\n请将 your_token_here 和 your_question_here 替换为实际的值以进行测试。",
+        "Go": "package main\r\n\r\nimport (\r\n\t&quot;encoding/json&quot;\r\n\t&quot;fmt&quot;\r\n\t&quot;io/ioutil&quot;\r\n\t&quot;net/http&quot;\r\n\t&quot;net/url&quot;\r\n\t&quot;strings&quot;\r\n)\r\n\r\n// Claude4.5-hikuAPI 请求结构体\r\ntype Claude45HikuAPIRequest struct {\r\n\tToken    string `url:&quot;token&quot;`    // 必填：登录获取用户密钥\r\n\tQuestion string `url:&quot;question&quot;` // 必填：对话内容\r\n\tUID      int    `url:&quot;uid,omitempty&quot;`      // 可选：请填写六位数字，用来存储记忆对话(云端存储数据，每天零点准时清理，需要重新创建)，不填写则使用默共享记忆，创建速率限制为每60秒1个\r\n\tType     string `url:&quot;type,omitempty&quot;`     // 可选：返回格式，支持json和text，不填写默认返回text\r\n\tSystem   string `url:&quot;system,omitempty&quot;`   // 可选：模型提示词\r\n}\r\n\r\n// Claude4.5-hikuAPI 响应结构体\r\ntype Claude45HikuAPIResponse struct {\r\n\t// 根据实际返回格式定义字段\r\n\tAnswer string `json:&quot;answer&quot;`\r\n\tError  string `json:&quot;error&quot;`\r\n}\r\n\r\nfunc main() {\r\n\t// 创建请求实例并设置必填参数\r\n\trequest := Claude45HikuAPIRequest{\r\n\t\tToken:    &quot;your_token_here&quot;, // 替换为实际的token\r\n\t\tQuestion: &quot;your_question_here&quot;, // 替换为实际的对话内容\r\n\t\t// UID:      123456, // 取消注释并设置实际的uid\r\n\t\t// Type:     &quot;json&quot;, // 取消注释并设置实际的返回格式\r\n\t\t// System:   &quot;your_system_prompt_here&quot;, // 取消注释并设置实际的模型提示词\r\n\t}\r\n\r\n\t// 构建URL参数\r\n\tparams := url.Values{}\r\n\tif request.Token != &quot;&quot; {\r\n\t\tparams.Add(&quot;token&quot;, request.Token)\r\n\t}\r\n\tif request.Question != &quot;&quot; {\r\n\t\tparams.Add(&quot;question&quot;, request.Question)\r\n\t}\r\n\tif request.UID != 0 {\r\n\t\tparams.Add(&quot;uid&quot;, fmt.Sprintf(&quot;%d&quot;, request.UID))\r\n\t}\r\n\tif request.Type != &quot;&quot; {\r\n\t\tparams.Add(&quot;type&quot;, request.Type)\r\n\t}\r\n\tif request.System != &quot;&quot; {\r\n\t\tparams.Add(&quot;system&quot;, request.System)\r\n\t}\r\n\r\n\t// 构建完整的请求URL\r\n\tapiURL := &quot;https://api.mrcwoods.com/v1/hiku-4.5/&quot;\r\n\tfullURL := fmt.Sprintf(&quot;%s?%s&quot;, apiURL, params.Encode())\r\n\r\n\t// 发送HTTP请求\r\n\tresp, err := http.Post(fullURL, &quot;application/x-www-form-urlencoded&quot;, strings.NewReader(params.Encode()))\r\n\tif err != nil {\r\n\t\tfmt.Printf(&quot;发送请求失败: %v\\n&quot;, err)\r\n\t\treturn\r\n\t}\r\n\tdefer resp.Body.Close()\r\n\r\n\t// 读取响应内容\r\n\tbody, err := ioutil.ReadAll(resp.Body)\r\n\tif err != nil {\r\n\t\tfmt.Printf(&quot;读取响应内容失败: %v\\n&quot;, err)\r\n\t\treturn\r\n\t}\r\n\r\n\t// 根据返回格式处理响应\r\n\tvar response Claude45HikuAPIResponse\r\n\tif request.Type == &quot;json&quot; || request.Type == &quot;&quot; {\r\n\t\tif err := json.Unmarshal(body, &amp;response); err != nil {\r\n\t\t\tfmt.Printf(&quot;解析JSON响应失败: %v\\n&quot;, err)\r\n\t\t\treturn\r\n\t\t}\r\n\t\tif response.Error != &quot;&quot; {\r\n\t\t\tfmt.Printf(&quot;API返回错误: %v\\n&quot;, response.Error)\r\n\t\t\treturn\r\n\t\t}\r\n\t\tfmt.Printf(&quot;API响应: %v\\n&quot;, response.Answer)\r\n\t} else {\r\n\t\tfmt.Printf(&quot;API响应: %s\\n&quot;, string(body))\r\n\t}\r\n}",
+        "NodeJS": "const axios = require(&apos;axios&apos;);\r\n\r\n/**\r\n * 调用Claude4.5-hikuAPI的函数\r\n * @param {string} token - 登录获取的用户密钥\r\n * @param {string} question - 对话内容\r\n * @returns {Promise} - 返回API的响应结果\r\n */\r\nasync function callClaude45HikuAPI(token, question) {\r\n    // 必填参数\r\n    const requiredParams = {\r\n        token: token,\r\n        question: question\r\n    };\r\n\r\n    // 可选参数，根据需要取消注释并设置值\r\n    const optionalParams = {\r\n        // uid: 123456, // 请填写六位数字，用来存储记忆对话\r\n        // type: &apos;json&apos;, // 返回格式，支持json和text\r\n        // system: &apos;模型提示词&apos; // 模型提示词\r\n    };\r\n\r\n    // 合并参数\r\n    const params = {\r\n        ...requiredParams,\r\n        ...optionalParams\r\n    };\r\n\r\n    try {\r\n        // 发送请求\r\n        const response = await axios({\r\n            method: &apos;POST&apos;, // 或 &apos;GET&apos; 根据API文档要求选择\r\n            url: &apos;https://api.mrcwoods.com/v1/hiku-4.5/&apos;,\r\n            data: params, // 对于POST请求使用data，对于GET请求可以使用params\r\n            headers: {\r\n                &apos;Content-Type&apos;: &apos;application/json&apos;\r\n            }\r\n        });\r\n\r\n        // 返回响应数据\r\n        return response.data;\r\n    } catch (error) {\r\n        // 处理错误\r\n        if (error.response) {\r\n            // 请求已发出但服务器响应的状态码不在2xx范围内\r\n            console.error(&apos;API请求失败:&apos;, error.response.status, error.response.data);\r\n        } else if (error.request) {\r\n            // 请求已发出但没有收到响应\r\n            console.error(&apos;API请求错误:&apos;, error.request);\r\n        } else {\r\n            // 一些设置请求时发生错误\r\n            console.error(&apos;API请求配置错误:&apos;, error.message);\r\n        }\r\n        throw new Error(&apos;调用Claude4.5-hikuAPI失败&apos;);\r\n    }\r\n}\r\n\r\n// 示例调用\r\n// callClaude45HikuAPI(&apos;your_token_here&apos;, &apos;你的对话内容&apos;)\r\n//     .then(response =&gt; console.log(response))\r\n//     .catch(error =&gt; console.error(error));\r\n注意事项：\r\n根据API文档的要求，method 可以选择 GET 或 POST，当前示例中选择了 POST。如果需要使用 GET，请将 data 改为 params。\r\noptionalParams 中的参数是可选的，用户可以根据需要取消注释并设置具体的值。\r\n错误处理已经做了详细的提示，方便调试和维护。"
+    }
+}

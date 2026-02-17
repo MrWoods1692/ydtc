@@ -1,0 +1,1632 @@
+[07-Feb-2026 20:14:22 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:14:22 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:14:22 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:14:22 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:21:28 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:21:28 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:21:28 PRC] [登录检测] MySQL查询失败：MySQL连接失败：SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+[07-Feb-2026 20:21:28 PRC] [主流程] Token验证结果：失败
+[07-Feb-2026 20:22:01 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:22:01 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:22:01 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:22:01 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:22:01 PRC] [用户数据路径] 邮箱：1692138502@qq.com → 编码后：1692138502%40qq.com → 完整路径：../users/1692138502%40qq.com/default/ls.json
+[07-Feb-2026 20:22:01 PRC] [读取用户数据] 文件不存在：../users/1692138502%40qq.com/default/ls.json → 自动创建初始文件
+[07-Feb-2026 20:22:01 PRC] [读取用户数据] 初始文件创建成功：../users/1692138502%40qq.com/default/ls.json
+[07-Feb-2026 20:22:01 PRC] [主流程] 读取用户数据成功：用户名=1692138502@qq.com，等级=1
+[07-Feb-2026 20:22:01 PRC] [用户数据路径] 邮箱：1692138502@qq.com → 编码后：1692138502%40qq.com → 完整路径：../users/1692138502%40qq.com/default/ls.json
+[07-Feb-2026 20:34:37 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:34:37 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:34:37 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:34:37 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:34:37 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:37 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:37 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1014,"used_space_kb":16}
+[07-Feb-2026 20:34:37 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:52 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:34:52 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:34:52 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:34:52 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:34:52 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1014,"used_space_kb":16}
+[07-Feb-2026 20:34:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1014,"used_space_kb":16}
+[07-Feb-2026 20:34:52 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1024,"used_space_kb":16}
+[07-Feb-2026 20:34:52 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:34:52 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:00 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:35:00 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:35:00 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:35:00 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:35:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1024,"used_space_kb":16}
+[07-Feb-2026 20:35:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1024,"used_space_kb":16}
+[07-Feb-2026 20:35:00 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:35:00 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:08 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:35:08 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:35:08 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:35:08 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:35:08 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:08 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:35:08 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:35:08 PRC] 未知错误：SQLSTATE[HY000]: General error: 1 near "FOR": syntax error
+[07-Feb-2026 20:35:08 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:42:38 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:42:38 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:42:38 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:42:38 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:42:38 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:42:38 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:42:38 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:42:38 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:45 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:56:45 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:56:45 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:56:45 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:56:45 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:45 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:45 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:56:56 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:56:56 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:56:56 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:56:56 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:56:56 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1034,"used_space_kb":16}
+[07-Feb-2026 20:56:56 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1035,"used_space_kb":16}
+[07-Feb-2026 20:56:56 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:56:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1035,"used_space_kb":16}
+[07-Feb-2026 20:57:00 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:57:00 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:57:00 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:57:00 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:57:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1035,"used_space_kb":16}
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1035,"used_space_kb":16}
+[07-Feb-2026 20:57:00 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1036,"used_space_kb":16}
+[07-Feb-2026 20:57:00 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1036,"used_space_kb":16}
+[07-Feb-2026 20:57:04 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:57:04 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:57:04 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:57:04 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:57:04 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1036,"used_space_kb":16}
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1036,"used_space_kb":16}
+[07-Feb-2026 20:57:04 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1056,"used_space_kb":16}
+[07-Feb-2026 20:57:04 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1056,"used_space_kb":16}
+[07-Feb-2026 20:57:07 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:57:07 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:57:07 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:57:07 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:57:07 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1056,"used_space_kb":16}
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1056,"used_space_kb":16}
+[07-Feb-2026 20:57:07 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2056,"used_space_kb":16}
+[07-Feb-2026 20:57:07 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:07 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2056,"used_space_kb":16}
+[07-Feb-2026 20:57:56 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 20:57:56 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 20:57:56 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 20:57:56 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 20:57:56 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2056,"used_space_kb":16}
+[07-Feb-2026 20:57:56 PRC] [生成卡密] 成功：48c625cecc6eb0d168bff7aaadec0ecc69a0d25f3748919f6590f0b23748da45 (100积分) 绑定邮箱：1692138502@qq.com
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2056,"used_space_kb":16}
+[07-Feb-2026 20:57:56 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 20:57:56 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 20:57:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:12:29 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:12:29 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:12:29 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:12:29 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:12:29 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:12:29 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:12:29 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:20:57 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:20:57 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:20:57 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:20:57 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:20:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:20:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:20:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:20:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:21:30 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:21:30 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:21:30 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:21:30 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:21:30 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:21:30 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:21:30 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:21:30 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:54 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:24:54 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:24:54 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:24:54 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:24:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:24:58 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:24:58 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:24:58 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:24:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":1956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:24:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:24:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:25:02 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:25:02 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:25:02 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:25:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2956,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:25:05 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:25:05 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:25:05 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:25:05 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2957,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:05 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:05 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:24 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:25:24 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:25:24 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:25:24 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:25:24 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:24 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:25:24 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:25:24 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:40 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:26:40 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:26:40 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:40 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:26:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:26:43 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:26:43 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:43 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:26:43 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2977,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:43 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:43 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:26:46 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:26:46 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:46 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:26:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2997,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:26:50 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:26:50 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:50 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:26:50 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2998,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:50 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:50 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:26:58 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:26:58 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:58 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:26:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [生成卡密] 成功：5f4bfff22a9a20c99d54c3cc45dde3eb3bd1e133f937e4cf6c7f0ffcd44d25f9 (1000积分) 绑定邮箱：1692138502@qq.com
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:26:58 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:26:58 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:06 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:35:06 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:35:06 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:35:06 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:35:06 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:06 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:06 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:06 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:11 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:35:11 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:35:11 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:35:11 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:35:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:56 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:35:56 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:35:56 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:35:56 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:35:56 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:56 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:35:56 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:35:56 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:39:18 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:39:18 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:39:18 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:39:18 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:39:18 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:39:18 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:39:18 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:39:18 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:31 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:40:31 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:40:31 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:40:31 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:40:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:40:34 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:40:34 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:40:34 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:40:34 PRC] [兑换码使用] 成功：5f4bfff22a9a20c99d54c3cc45dde3eb3bd1e133f937e4cf6c7f0ffcd44d25f9 (1000积分) 用户：1692138502@qq.com
+[07-Feb-2026 21:40:34 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":2018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:34 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:34 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:40:53 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:40:53 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:40:53 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:40:53 PRC] [兑换码使用] 成功：fd10081a7960c9667ed64eac1cb4419b3d958530ee0426d3a2236bac50059f07 (1积分) 用户：1692138502@qq.com
+[07-Feb-2026 21:40:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3018,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:40:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:40:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:50:28 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:50:28 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:50:28 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:50:28 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:50:28 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:50:28 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:50:28 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:50:28 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:52:23 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:52:23 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:52:23 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:52:23 PRC] [使用兑换码] 成功：b869bda1a6f48f624b02cc2e748cf611f1a17fbd668f88def032359a66ac407a (11111积分)，已删除
+[07-Feb-2026 21:52:23 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":3019,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:52:23 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:52:23 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:53:04 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:53:04 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:53:04 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:53:04 PRC] [使用兑换码] 成功：9e7601dea978f2a42d76909c6eb95ed7129b955e1e01d56a90ef7153982b7e8c (11111积分)，已删除
+[07-Feb-2026 21:53:04 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":14130,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:04 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:04 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:08 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:53:08 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:53:08 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:53:08 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:53:08 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:08 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:08 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:08 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:39 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:53:39 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:53:39 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:53:39 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:53:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:53:47 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:53:47 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:53:47 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:53:47 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [生成卡密] 成功：71e6a86d9400b40ab49647c78dffbc43b8f2205295f0570dc64c1f94792d6cae (1000积分) 绑定邮箱：1692138502@qq.com
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":25241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:53:47 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:53:47 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:59:31 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 21:59:31 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 21:59:31 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 21:59:31 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 21:59:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:59:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 21:59:31 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 21:59:31 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 22:03:51 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[07-Feb-2026 22:03:51 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[07-Feb-2026 22:03:51 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[07-Feb-2026 22:03:51 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[07-Feb-2026 22:03:51 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 22:03:51 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 22:03:51 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[07-Feb-2026 22:03:51 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24241,"used_space_kb":16}
+[07-Feb-2026 22:33:54 PRC] [主流程] Cookie中读取的user_token：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 是否为空：否
+[07-Feb-2026 22:33:54 PRC] [登录检测] 传入Token：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 清理后：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 长度：64
+[07-Feb-2026 22:33:54 PRC] [登录检测] Token匹配成功，用户邮箱：mail@mrcwoods.com
+[07-Feb-2026 22:33:54 PRC] [主流程] Token验证结果：成功（mail@mrcwoods.com）
+[07-Feb-2026 22:33:54 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[07-Feb-2026 22:33:54 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[07-Feb-2026 22:33:54 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:33:54 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[07-Feb-2026 22:34:49 PRC] [主流程] Cookie中读取的user_token：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 是否为空：否
+[07-Feb-2026 22:34:49 PRC] [登录检测] 传入Token：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 清理后：70705a6ff2abd8a767b5e1bc3b89a21f98d16436e9a2e6d8c5611e3ac3bd6ac5 | 长度：64
+[07-Feb-2026 22:34:49 PRC] [登录检测] Token匹配成功，用户邮箱：mail@mrcwoods.com
+[07-Feb-2026 22:34:49 PRC] [主流程] Token验证结果：成功（mail@mrcwoods.com）
+[07-Feb-2026 22:34:49 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":15,"used_space_kb":0}
+[07-Feb-2026 22:34:49 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":15,"used_space_kb":0}
+[07-Feb-2026 22:34:49 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[07-Feb-2026 22:34:49 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":15,"used_space_kb":0}
+[08-Feb-2026 15:03:53 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[08-Feb-2026 15:03:53 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[08-Feb-2026 15:03:53 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[08-Feb-2026 15:03:53 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[08-Feb-2026 15:03:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":16}
+[08-Feb-2026 15:03:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":16}
+[08-Feb-2026 15:03:53 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:03:53 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":16}
+[08-Feb-2026 15:54:03 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[08-Feb-2026 15:54:03 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[08-Feb-2026 15:54:03 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[08-Feb-2026 15:54:03 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[08-Feb-2026 15:54:03 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 15:54:03 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 15:54:03 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:03 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 15:54:40 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[08-Feb-2026 15:54:40 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[08-Feb-2026 15:54:40 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[08-Feb-2026 15:54:40 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[08-Feb-2026 15:54:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 15:54:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 15:54:40 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[08-Feb-2026 15:54:40 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24238,"used_space_kb":132}
+[08-Feb-2026 20:31:42 PRC] [主流程] Cookie中读取的user_token：a4fdfdd7f1ba1134ea7efb5c5af6da291aea73355a9156c53316cc3747b40adc | 是否为空：否
+[08-Feb-2026 20:31:42 PRC] [登录检测] 传入Token：a4fdfdd7f1ba1134ea7efb5c5af6da291aea73355a9156c53316cc3747b40adc | 清理后：a4fdfdd7f1ba1134ea7efb5c5af6da291aea73355a9156c53316cc3747b40adc | 长度：64
+[08-Feb-2026 20:31:42 PRC] [登录检测] Token匹配成功，用户邮箱：mail@mrcwoods.com
+[08-Feb-2026 20:31:42 PRC] [主流程] Token验证结果：成功（mail@mrcwoods.com）
+[08-Feb-2026 20:31:42 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":35,"used_space_kb":0}
+[08-Feb-2026 20:31:42 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":35,"used_space_kb":0}
+[08-Feb-2026 20:31:42 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[08-Feb-2026 20:31:42 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":35,"used_space_kb":0}
+[09-Feb-2026 15:12:41 PRC] [主流程] Cookie中读取的user_token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 是否为空：否
+[09-Feb-2026 15:12:41 PRC] [登录检测] 传入Token：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 清理后：2086b98138b3fa307c00f105d5da8e92c38148b7bb4285c8fd94d4b6a97b359e | 长度：64
+[09-Feb-2026 15:12:41 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[09-Feb-2026 15:12:41 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[09-Feb-2026 15:12:41 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24256,"used_space_kb":5501}
+[09-Feb-2026 15:12:41 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24256,"used_space_kb":5501}
+[09-Feb-2026 15:12:41 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 15:12:41 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":10,"points":24256,"used_space_kb":5501}
+[09-Feb-2026 21:29:49 PRC] [主流程] Cookie中读取的user_token：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 是否为空：否
+[09-Feb-2026 21:29:49 PRC] [登录检测] 传入Token：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 清理后：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 长度：64
+[09-Feb-2026 21:29:49 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[09-Feb-2026 21:29:49 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[09-Feb-2026 21:29:49 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24265,"used_space_kb":5501}
+[09-Feb-2026 21:29:49 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24265,"used_space_kb":5501}
+[09-Feb-2026 21:29:49 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:49 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24265,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [主流程] Cookie中读取的user_token：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 是否为空：否
+[09-Feb-2026 21:29:52 PRC] [登录检测] 传入Token：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 清理后：4853b1d9560413914d8c5ed7967ff357ce26ef543acdf189869c9d90e2a92ba1 | 长度：64
+[09-Feb-2026 21:29:52 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[09-Feb-2026 21:29:52 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[09-Feb-2026 21:29:52 PRC] [使用兑换码] 成功：3b36389931fcda65424dcb121ade019b4a2653257d32bd04cba4671b461b0944 (1积分)，已删除
+[09-Feb-2026 21:29:52 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24265,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24265,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [更新用户数据] 合并后数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [更新用户数据] 成功写入：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[09-Feb-2026 21:29:52 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[09-Feb-2026 21:29:52 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[09-Feb-2026 22:12:25 PRC] [主流程] Cookie中读取的user_token：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 是否为空：否
+[09-Feb-2026 22:12:25 PRC] [登录检测] 传入Token：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 清理后：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 长度：64
+[09-Feb-2026 22:12:25 PRC] [登录检测] Token匹配成功，用户邮箱：408544572@qq.com
+[09-Feb-2026 22:12:25 PRC] [主流程] Token验证结果：成功（408544572@qq.com）
+[09-Feb-2026 22:12:25 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":2588}
+[09-Feb-2026 22:12:25 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":2588}
+[09-Feb-2026 22:12:25 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:25 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [主流程] Cookie中读取的user_token：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 是否为空：否
+[09-Feb-2026 22:12:27 PRC] [登录检测] 传入Token：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 清理后：0b406702f8747352568e7ba3419d3c3726e34e6886f59643a78c28eb21827b6c | 长度：64
+[09-Feb-2026 22:12:27 PRC] [登录检测] Token匹配成功，用户邮箱：408544572@qq.com
+[09-Feb-2026 22:12:27 PRC] [主流程] Token验证结果：成功（408544572@qq.com）
+[09-Feb-2026 22:12:27 PRC] [使用兑换码] 成功：d09a7688e0a31625e77cf2ad0079b6754e4f19424ef5df5cf5840977d8e96324 (114514积分)，已删除
+[09-Feb-2026 22:12:27 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [更新用户数据] 合并后数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [更新用户数据] 成功写入：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":2588}
+[09-Feb-2026 22:12:27 PRC] [用户数据路径] 生成路径：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 尝试读取文件：../users/408544572%40qq.com/user.json
+[09-Feb-2026 22:12:27 PRC] [读取用户数据] 成功读取：../users/408544572%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":2588}
+[09-Feb-2026 22:27:47 PRC] [主流程] Cookie中读取的user_token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 是否为空：否
+[09-Feb-2026 22:27:47 PRC] [登录检测] 传入Token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 清理后：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 长度：64
+[09-Feb-2026 22:27:47 PRC] [登录检测] Token匹配成功，用户邮箱：1972400933@qq.com
+[09-Feb-2026 22:27:47 PRC] [主流程] Token验证结果：成功（1972400933@qq.com）
+[09-Feb-2026 22:27:47 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:27:47 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:27:47 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:47 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:27:57 PRC] [主流程] Cookie中读取的user_token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 是否为空：否
+[09-Feb-2026 22:27:57 PRC] [登录检测] 传入Token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 清理后：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 长度：64
+[09-Feb-2026 22:27:57 PRC] [登录检测] Token匹配成功，用户邮箱：1972400933@qq.com
+[09-Feb-2026 22:27:57 PRC] [主流程] Token验证结果：成功（1972400933@qq.com）
+[09-Feb-2026 22:27:57 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:27:57 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:27:57 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:27:57 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:33 PRC] [主流程] Cookie中读取的user_token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 是否为空：否
+[09-Feb-2026 22:30:33 PRC] [登录检测] 传入Token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 清理后：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 长度：64
+[09-Feb-2026 22:30:33 PRC] [登录检测] Token匹配成功，用户邮箱：1972400933@qq.com
+[09-Feb-2026 22:30:33 PRC] [主流程] Token验证结果：成功（1972400933@qq.com）
+[09-Feb-2026 22:30:33 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:33 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:33 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:33 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [主流程] Cookie中读取的user_token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 是否为空：否
+[09-Feb-2026 22:30:40 PRC] [登录检测] 传入Token：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 清理后：8a9ccca990b16caaf2a6f02c3533e147b63aacabf9b141018865464c205aef11 | 长度：64
+[09-Feb-2026 22:30:40 PRC] [登录检测] Token匹配成功，用户邮箱：1972400933@qq.com
+[09-Feb-2026 22:30:40 PRC] [主流程] Token验证结果：成功（1972400933@qq.com）
+[09-Feb-2026 22:30:40 PRC] [使用兑换码] 成功：c71c387ecf3c6090c1993a1537ff3bb33b3516a4b06af5a19d653b94e3110a5b (114514积分)，已删除
+[09-Feb-2026 22:30:40 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [更新用户数据] 合并后数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [更新用户数据] 成功写入：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":0}
+[09-Feb-2026 22:30:40 PRC] [用户数据路径] 生成路径：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 尝试读取文件：../users/1972400933%40qq.com/user.json
+[09-Feb-2026 22:30:40 PRC] [读取用户数据] 成功读取：../users/1972400933%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":114514,"used_space_kb":0}
+[10-Feb-2026 14:40:22 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:40:22 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:40:22 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:40:22 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:40:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:40:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:40:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:40:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:00 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:49:00 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:49:00 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:49:00 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:49:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:04 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:49:04 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:49:04 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:49:04 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:49:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:55 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:49:55 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:49:55 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:49:55 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:49:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:49:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:49:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:52:50 PRC] [主流程] Cookie中读取的user_token：6ff5cd0956f8eb5972dbf2543160f5fd669ed3359c40630c843a71ee9eb86a21 | 是否为空：否
+[10-Feb-2026 14:52:50 PRC] [登录检测] 传入Token：6ff5cd0956f8eb5972dbf2543160f5fd669ed3359c40630c843a71ee9eb86a21 | 清理后：6ff5cd0956f8eb5972dbf2543160f5fd669ed3359c40630c843a71ee9eb86a21 | 长度：64
+[10-Feb-2026 14:52:50 PRC] [登录检测] Token匹配成功，用户邮箱：HHZ17777342637@outlook.com
+[10-Feb-2026 14:52:50 PRC] [主流程] Token验证结果：成功（HHZ17777342637@outlook.com）
+[10-Feb-2026 14:52:50 PRC] [用户数据路径] 生成路径：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 尝试读取文件：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 成功读取：../users/HHZ17777342637%40outlook.com/user.json，数据：{"username":"\u5065\u5eb7\u5c0f\u4e50\u4e50","level":1,"points":19,"used_space_kb":0}
+[10-Feb-2026 14:52:50 PRC] [用户数据路径] 生成路径：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 尝试读取文件：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 成功读取：../users/HHZ17777342637%40outlook.com/user.json，数据：{"username":"\u5065\u5eb7\u5c0f\u4e50\u4e50","level":1,"points":19,"used_space_kb":0}
+[10-Feb-2026 14:52:50 PRC] [用户数据路径] 生成路径：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 尝试读取文件：../users/HHZ17777342637%40outlook.com/user.json
+[10-Feb-2026 14:52:50 PRC] [读取用户数据] 成功读取：../users/HHZ17777342637%40outlook.com/user.json，数据：{"username":"\u5065\u5eb7\u5c0f\u4e50\u4e50","level":1,"points":19,"used_space_kb":0}
+[10-Feb-2026 14:56:13 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:56:13 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:56:13 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:56:13 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:56:13 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:13 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:13 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:13 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:18 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:56:18 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:56:18 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:56:18 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:56:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:25 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:56:25 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:56:25 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:56:25 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:56:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:58 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:56:58 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:56:58 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:56:58 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:56:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:56:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:56:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:57:00 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:57:00 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:57:00 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:57:00 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:57:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:57:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:57:00 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:57:00 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:03 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:58:03 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:58:03 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:58:03 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:58:03 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:03 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:03 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:03 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:19 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:58:19 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:58:19 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:58:19 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:58:19 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:19 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:19 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:19 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:23 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:58:23 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:58:23 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:58:23 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:58:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:28 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 14:58:28 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 14:58:28 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 14:58:28 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 14:58:28 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:28 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 14:58:28 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 14:58:28 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:09 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:09 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:09 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:09 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:09 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:09 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:09 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:09 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:15 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:15 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:15 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:15 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:16 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:16 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:16 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:16 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:17 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:17 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:17 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:17 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:20 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:20 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:20 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:20 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:20 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:20 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:20 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:20 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:23 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:23 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:23 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:23 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:23 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:23 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:44 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:01:44 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:01:44 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:01:44 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:01:44 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:44 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:01:44 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:01:44 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":11,"used_space_kb":0}
+[10-Feb-2026 15:09:11 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:09:11 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:09:11 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:09:11 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:09:11 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":110,"used_space_kb":274}
+[10-Feb-2026 15:09:11 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":110,"used_space_kb":274}
+[10-Feb-2026 15:09:11 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:11 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":110,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:09:15 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:09:15 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:09:15 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:09:15 PRC] [使用兑换码] 成功：bad1234f313a213a0af6dcaab751a2d1f661e9f6a440b367776bff48b212d250 (1积分)，已删除
+[10-Feb-2026 15:09:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":110,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":110,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [更新用户数据] 合并后数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [更新用户数据] 成功写入：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:15 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:15 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:38 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:09:38 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:09:38 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:09:38 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:09:38 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:38 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:38 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:38 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:09:55 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:09:55 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:09:55 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:09:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":111,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [更新用户数据] 合并后数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":12,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [更新用户数据] 成功写入：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":12,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":12,"used_space_kb":274}
+[10-Feb-2026 15:09:55 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:09:55 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":12,"used_space_kb":274}
+[10-Feb-2026 15:12:04 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:12:04 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:12:04 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:12:04 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:12:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":274}
+[10-Feb-2026 15:12:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":274}
+[10-Feb-2026 15:12:04 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:12:04 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":274}
+[10-Feb-2026 15:12:36 PRC] [主流程] Cookie中读取的user_token：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 是否为空：否
+[10-Feb-2026 15:12:36 PRC] [登录检测] 传入Token：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 清理后：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 长度：64
+[10-Feb-2026 15:12:36 PRC] [登录检测] Token匹配成功，用户邮箱：mail@mrcwoods.com
+[10-Feb-2026 15:12:36 PRC] [主流程] Token验证结果：成功（mail@mrcwoods.com）
+[10-Feb-2026 15:12:36 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:12:36 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:12:36 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:36 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:12:57 PRC] [主流程] Cookie中读取的user_token：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 是否为空：否
+[10-Feb-2026 15:12:57 PRC] [登录检测] 传入Token：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 清理后：cfca93ff0057b30aa41f73cfe71f6415ab88b7c1a404659927698198ff77ffc8 | 长度：64
+[10-Feb-2026 15:12:57 PRC] [登录检测] Token匹配成功，用户邮箱：mail@mrcwoods.com
+[10-Feb-2026 15:12:57 PRC] [主流程] Token验证结果：成功（mail@mrcwoods.com）
+[10-Feb-2026 15:12:57 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:12:57 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:12:57 PRC] [用户数据路径] 生成路径：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 尝试读取文件：../users/mail%40mrcwoods.com/user.json
+[10-Feb-2026 15:12:57 PRC] [读取用户数据] 成功读取：../users/mail%40mrcwoods.com/user.json，数据：{"username":"mrcwoods","level":1,"points":54,"used_space_kb":0}
+[10-Feb-2026 15:18:17 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:18:17 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:18:17 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:18:17 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:18:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[10-Feb-2026 15:18:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[10-Feb-2026 15:18:17 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:18:17 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[10-Feb-2026 15:28:18 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[10-Feb-2026 15:28:18 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[10-Feb-2026 15:28:18 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[10-Feb-2026 15:28:18 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[10-Feb-2026 15:28:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[10-Feb-2026 15:28:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[10-Feb-2026 15:28:18 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[10-Feb-2026 15:28:18 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 13:21:00 PRC] [主流程] Cookie中读取的user_token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 是否为空：否
+[11-Feb-2026 13:21:00 PRC] [登录检测] 传入Token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 清理后：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 长度：64
+[11-Feb-2026 13:21:00 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[11-Feb-2026 13:21:00 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[11-Feb-2026 13:21:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:21:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:21:00 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:21:00 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:44 PRC] [主流程] Cookie中读取的user_token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 是否为空：否
+[11-Feb-2026 13:23:44 PRC] [登录检测] 传入Token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 清理后：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 长度：64
+[11-Feb-2026 13:23:44 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[11-Feb-2026 13:23:44 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[11-Feb-2026 13:23:44 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:44 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:44 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:44 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:46 PRC] [主流程] Cookie中读取的user_token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 是否为空：否
+[11-Feb-2026 13:23:46 PRC] [登录检测] 传入Token：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 清理后：f31ca02dac1ab3d8794e2fdbd1b84ce68aaa5bbda310c781657e3fd37b27371c | 长度：64
+[11-Feb-2026 13:23:46 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[11-Feb-2026 13:23:46 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[11-Feb-2026 13:23:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 13:23:46 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 13:23:46 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24266,"used_space_kb":5501}
+[11-Feb-2026 15:24:42 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:24:42 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:24:42 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:24:42 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:24:42 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:24:42 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:24:42 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:24:42 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:01 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:01 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:01 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:01 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:01 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:01 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:01 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:01 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:08 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:08 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:08 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:08 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:08 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:08 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:08 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:08 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:12 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:12 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:12 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:12 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:12 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:12 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:12 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:12 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:16 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:16 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:16 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:16 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:21 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:21 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:21 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:21 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:21 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:21 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:21 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:21 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:22 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:22 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:22 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:22 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:25 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:25 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:25 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:25 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:25 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:25 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:30 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:30 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:30 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:30 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:30 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:30 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:30 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:30 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:53 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:53 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:53 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:53 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:53 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:53 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:53 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:53 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:56 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:56 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:56 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:56 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:56 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:56 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:56 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:56 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:58 PRC] [主流程] Cookie中读取的user_token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 是否为空：否
+[11-Feb-2026 15:25:58 PRC] [登录检测] 传入Token：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 清理后：9293ce200593106c2c09dab4053a8b0735a696cd4ca09890df1c737c0238b445 | 长度：64
+[11-Feb-2026 15:25:58 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[11-Feb-2026 15:25:58 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[11-Feb-2026 15:25:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:25:58 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[11-Feb-2026 15:25:58 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[11-Feb-2026 15:29:02 PRC] [主流程] Cookie中读取的user_token：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 是否为空：否
+[11-Feb-2026 15:29:02 PRC] [登录检测] 传入Token：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 清理后：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 长度：64
+[11-Feb-2026 15:29:02 PRC] [登录检测] Token匹配成功，用户邮箱：fishp2024@gmail.com
+[11-Feb-2026 15:29:02 PRC] [主流程] Token验证结果：成功（fishp2024@gmail.com）
+[11-Feb-2026 15:29:02 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 15:29:02 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 15:29:02 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:02 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 15:29:08 PRC] [主流程] Cookie中读取的user_token：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 是否为空：否
+[11-Feb-2026 15:29:08 PRC] [登录检测] 传入Token：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 清理后：41f076dc65deb18a8dd2b3718bcb11cb50640df6d0e6a911b95963377c6ac498 | 长度：64
+[11-Feb-2026 15:29:08 PRC] [登录检测] Token匹配成功，用户邮箱：fishp2024@gmail.com
+[11-Feb-2026 15:29:08 PRC] [主流程] Token验证结果：成功（fishp2024@gmail.com）
+[11-Feb-2026 15:29:08 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 15:29:08 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 15:29:08 PRC] [用户数据路径] 生成路径：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 尝试读取文件：../users/fishp2024%40gmail.com/user.json
+[11-Feb-2026 15:29:08 PRC] [读取用户数据] 成功读取：../users/fishp2024%40gmail.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":14,"used_space_kb":0}
+[11-Feb-2026 21:32:11 PRC] [主流程] Cookie中读取的user_token：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 是否为空：否
+[11-Feb-2026 21:32:11 PRC] [登录检测] 传入Token：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 清理后：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 长度：64
+[11-Feb-2026 21:32:11 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[11-Feb-2026 21:32:11 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[11-Feb-2026 21:32:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[11-Feb-2026 21:32:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[11-Feb-2026 21:32:11 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:11 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[11-Feb-2026 21:32:14 PRC] [主流程] Cookie中读取的user_token：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 是否为空：否
+[11-Feb-2026 21:32:14 PRC] [登录检测] 传入Token：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 清理后：ef204ef7ec23ef6c4d7b4582e0b0c28ea2de007fe78c5e0c218e65c93d31a7a1 | 长度：64
+[11-Feb-2026 21:32:14 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[11-Feb-2026 21:32:14 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[11-Feb-2026 21:32:14 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[11-Feb-2026 21:32:14 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[11-Feb-2026 21:32:14 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[11-Feb-2026 21:32:14 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24277,"used_space_kb":5501}
+[13-Feb-2026 18:26:04 PRC] [主流程] Cookie中读取的user_token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 是否为空：否
+[13-Feb-2026 18:26:04 PRC] [登录检测] 传入Token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 清理后：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 长度：64
+[13-Feb-2026 18:26:04 PRC] [登录检测] Token匹配成功，用户邮箱：jun15223593919@163.com
+[13-Feb-2026 18:26:04 PRC] [主流程] Token验证结果：成功（jun15223593919@163.com）
+[13-Feb-2026 18:26:04 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:26:04 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:26:04 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:26:04 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:31:48 PRC] [主流程] Cookie中读取的user_token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 是否为空：否
+[13-Feb-2026 18:31:48 PRC] [登录检测] 传入Token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 清理后：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 长度：64
+[13-Feb-2026 18:31:48 PRC] [登录检测] Token匹配成功，用户邮箱：jun15223593919@163.com
+[13-Feb-2026 18:31:48 PRC] [主流程] Token验证结果：成功（jun15223593919@163.com）
+[13-Feb-2026 18:31:48 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:31:48 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:31:48 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:31:48 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:08 PRC] [主流程] Cookie中读取的user_token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 是否为空：否
+[13-Feb-2026 18:37:08 PRC] [登录检测] 传入Token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 清理后：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 长度：64
+[13-Feb-2026 18:37:08 PRC] [登录检测] Token匹配成功，用户邮箱：jun15223593919@163.com
+[13-Feb-2026 18:37:08 PRC] [主流程] Token验证结果：成功（jun15223593919@163.com）
+[13-Feb-2026 18:37:08 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:08 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:08 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:08 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [主流程] Cookie中读取的user_token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 是否为空：否
+[13-Feb-2026 18:37:12 PRC] [登录检测] 传入Token：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 清理后：3700d5e52da6a99695c521dddb7c8ce43279391af281485bdd95e507ee5b74ba | 长度：64
+[13-Feb-2026 18:37:12 PRC] [登录检测] Token匹配成功，用户邮箱：jun15223593919@163.com
+[13-Feb-2026 18:37:12 PRC] [主流程] Token验证结果：成功（jun15223593919@163.com）
+[13-Feb-2026 18:37:12 PRC] [使用兑换码] 成功：4c6b9adee47752bebbd08ac56149ae53ab5df47af85a658d3536f8d3f3e7ec59 (99积分)，已删除
+[13-Feb-2026 18:37:12 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [更新用户数据] 合并后数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":99,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [更新用户数据] 成功写入：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":99,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":99,"used_space_kb":0}
+[13-Feb-2026 18:37:12 PRC] [用户数据路径] 生成路径：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 尝试读取文件：../users/jun15223593919%40163.com/user.json
+[13-Feb-2026 18:37:12 PRC] [读取用户数据] 成功读取：../users/jun15223593919%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":99,"used_space_kb":0}
+[13-Feb-2026 18:38:16 PRC] [主流程] Cookie中读取的user_token：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 是否为空：否
+[13-Feb-2026 18:38:16 PRC] [登录检测] 传入Token：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 清理后：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 长度：64
+[13-Feb-2026 18:38:16 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[13-Feb-2026 18:38:16 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[13-Feb-2026 18:38:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 18:38:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 18:38:16 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:16 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 18:38:22 PRC] [主流程] Cookie中读取的user_token：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 是否为空：否
+[13-Feb-2026 18:38:22 PRC] [登录检测] 传入Token：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 清理后：bf29989e6401d7afb60995b8af08168561b47b3fa6fd8559267baf6f1d7c6548 | 长度：64
+[13-Feb-2026 18:38:22 PRC] [登录检测] Token匹配成功，用户邮箱：3634914408@qq.com
+[13-Feb-2026 18:38:22 PRC] [主流程] Token验证结果：成功（3634914408@qq.com）
+[13-Feb-2026 18:38:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 18:38:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 18:38:22 PRC] [用户数据路径] 生成路径：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 尝试读取文件：../users/3634914408%40qq.com/user.json
+[13-Feb-2026 18:38:22 PRC] [读取用户数据] 成功读取：../users/3634914408%40qq.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":2,"points":90,"used_space_kb":0}
+[13-Feb-2026 20:45:31 PRC] [主流程] Cookie中读取的user_token：daeba99bd42ba30ec7649eae5df3f78359852f96dddcb819b4728b8da9994343 | 是否为空：否
+[13-Feb-2026 20:45:31 PRC] [登录检测] 传入Token：daeba99bd42ba30ec7649eae5df3f78359852f96dddcb819b4728b8da9994343 | 清理后：daeba99bd42ba30ec7649eae5df3f78359852f96dddcb819b4728b8da9994343 | 长度：64
+[13-Feb-2026 20:45:31 PRC] [登录检测] Token匹配成功，用户邮箱：qingfeng@qingfengnb.cn
+[13-Feb-2026 20:45:31 PRC] [主流程] Token验证结果：成功（qingfeng@qingfengnb.cn）
+[13-Feb-2026 20:45:31 PRC] [用户数据路径] 生成路径：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 尝试读取文件：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 成功读取：../users/qingfeng%40qingfengnb.cn/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[13-Feb-2026 20:45:31 PRC] [用户数据路径] 生成路径：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 尝试读取文件：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 成功读取：../users/qingfeng%40qingfengnb.cn/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[13-Feb-2026 20:45:31 PRC] [用户数据路径] 生成路径：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 尝试读取文件：../users/qingfeng%40qingfengnb.cn/user.json
+[13-Feb-2026 20:45:31 PRC] [读取用户数据] 成功读取：../users/qingfeng%40qingfengnb.cn/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":17,"used_space_kb":0}
+[14-Feb-2026 13:18:58 PRC] [主流程] Cookie中读取的user_token：df45b3edd823e11f9140f714b8f6ce64a83a3af3f1af0b4227001202f981eb0a | 是否为空：否
+[14-Feb-2026 13:18:58 PRC] [登录检测] 传入Token：df45b3edd823e11f9140f714b8f6ce64a83a3af3f1af0b4227001202f981eb0a | 清理后：df45b3edd823e11f9140f714b8f6ce64a83a3af3f1af0b4227001202f981eb0a | 长度：64
+[14-Feb-2026 13:18:58 PRC] [登录检测] Token匹配成功，用户邮箱：nftshipan2025@163.com
+[14-Feb-2026 13:18:58 PRC] [主流程] Token验证结果：成功（nftshipan2025@163.com）
+[14-Feb-2026 13:18:58 PRC] [用户数据路径] 生成路径：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 尝试读取文件：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 成功读取：../users/nftshipan2025%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":99}
+[14-Feb-2026 13:18:58 PRC] [用户数据路径] 生成路径：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 尝试读取文件：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 成功读取：../users/nftshipan2025%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":99}
+[14-Feb-2026 13:18:58 PRC] [用户数据路径] 生成路径：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 尝试读取文件：../users/nftshipan2025%40163.com/user.json
+[14-Feb-2026 13:18:58 PRC] [读取用户数据] 成功读取：../users/nftshipan2025%40163.com/user.json，数据：{"username":"\u9ed8\u8ba4\u7528\u6237","level":1,"points":0,"used_space_kb":99}
+[14-Feb-2026 20:43:38 PRC] [主流程] Cookie中读取的user_token：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 是否为空：否
+[14-Feb-2026 20:43:38 PRC] [登录检测] 传入Token：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 清理后：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 长度：64
+[14-Feb-2026 20:43:38 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[14-Feb-2026 20:43:38 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[14-Feb-2026 20:43:38 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[14-Feb-2026 20:43:38 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[14-Feb-2026 20:43:38 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 20:43:38 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[14-Feb-2026 21:43:39 PRC] [主流程] Cookie中读取的user_token：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 是否为空：否
+[14-Feb-2026 21:43:39 PRC] [登录检测] 传入Token：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 清理后：ef6803c4850143a5f5d67872e7897d8c7d8ccca37bb56a635d4a526ab13bbd78 | 长度：64
+[14-Feb-2026 21:43:39 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[14-Feb-2026 21:43:39 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[14-Feb-2026 21:43:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[14-Feb-2026 21:43:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[14-Feb-2026 21:43:39 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[14-Feb-2026 21:43:39 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 10:55:35 PRC] [主流程] Cookie中读取的user_token：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 是否为空：否
+[15-Feb-2026 10:55:35 PRC] [登录检测] 传入Token：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 清理后：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 长度：64
+[15-Feb-2026 10:55:35 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[15-Feb-2026 10:55:35 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[15-Feb-2026 10:55:35 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 10:55:35 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 10:55:35 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 10:55:35 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 11:03:02 PRC] [主流程] Cookie中读取的user_token：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 是否为空：否
+[15-Feb-2026 11:03:02 PRC] [登录检测] 传入Token：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 清理后：342f13ae1720d209fec0cfc1e256f72cc006a2fec1f91982d1b9b7edae2bc6b3 | 长度：64
+[15-Feb-2026 11:03:02 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[15-Feb-2026 11:03:02 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[15-Feb-2026 11:03:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 11:03:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 11:03:02 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 11:03:02 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 12:29:57 PRC] [主流程] Cookie中读取的user_token：b545b21873ac8f4a250ba6c9865de922d87d5de8e94fcb3a177ba01198547ac7 | 是否为空：否
+[15-Feb-2026 12:29:57 PRC] [登录检测] 传入Token：b545b21873ac8f4a250ba6c9865de922d87d5de8e94fcb3a177ba01198547ac7 | 清理后：b545b21873ac8f4a250ba6c9865de922d87d5de8e94fcb3a177ba01198547ac7 | 长度：64
+[15-Feb-2026 12:29:57 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[15-Feb-2026 12:29:57 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[15-Feb-2026 12:29:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 12:29:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 12:29:57 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 12:29:57 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 12:30:43 PRC] [主流程] Cookie中读取的user_token： | 是否为空：是
+[15-Feb-2026 12:30:43 PRC] [主流程] Token验证结果：失败
+[15-Feb-2026 23:03:54 PRC] [主流程] Cookie中读取的user_token：2a64dbe4aaadb84bf28bc4dc1ffc0561cfeec04cdbf0c8bf0564d83506d9cff7 | 是否为空：否
+[15-Feb-2026 23:03:54 PRC] [登录检测] 传入Token：2a64dbe4aaadb84bf28bc4dc1ffc0561cfeec04cdbf0c8bf0564d83506d9cff7 | 清理后：2a64dbe4aaadb84bf28bc4dc1ffc0561cfeec04cdbf0c8bf0564d83506d9cff7 | 长度：64
+[15-Feb-2026 23:03:54 PRC] [登录检测] Token匹配成功，用户邮箱：1692138502@qq.com
+[15-Feb-2026 23:03:54 PRC] [主流程] Token验证结果：成功（1692138502@qq.com）
+[15-Feb-2026 23:03:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 23:03:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}
+[15-Feb-2026 23:03:54 PRC] [用户数据路径] 生成路径：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 尝试读取文件：../users/1692138502%40qq.com/user.json
+[15-Feb-2026 23:03:54 PRC] [读取用户数据] 成功读取：../users/1692138502%40qq.com/user.json，数据：{"username":"Mr.C.Woods","level":11,"points":24314,"used_space_kb":5588}

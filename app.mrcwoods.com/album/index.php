@@ -303,7 +303,7 @@ if (is_dir($userDir)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的相册 - Apple Style</title>
+    <title>我的相册e</title>
     <style>
         /* 核心变量 - 苹果风格 */
         :root {

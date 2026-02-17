@@ -1,0 +1,60 @@
+{
+    "name": "图片水印添加",
+    "brief": "添加全方位自适应图片水印",
+    "request_desc": "",
+    "api_url": "https://api.mrcwoods.com/v1/tpsytj/",
+    "request_method": "GET",
+    "return_format": "IMAGE",
+    "request_example": "https://api.mrcwoods.com/v1/tpsytj/?url=图片链接&text=水印内容&doa=3&size=水印大小",
+    "request_params": [
+        {
+            "name": "url",
+            "type": "url",
+            "required": "是",
+            "desc": "图片链接"
+        },
+        {
+            "name": "text",
+            "type": "string",
+            "required": "是",
+            "desc": "水印内容(抖音美好体)"
+        },
+        {
+            "name": "doa",
+            "type": "number",
+            "required": "是",
+            "desc": "水印方位，填1代表左上角显示，填2代表左下角显示，填3代表右下角显示，填4代表右上角显示，填5代表全屏水平垂直铺开，填6代表斜方向全屏铺开，填7代表中间显示，填8代表居中底部显示，填9代表居中置顶显示，填10代表随机方位显示"
+        },
+        {
+            "name": "size",
+            "type": "string",
+            "required": "是",
+            "desc": "水印字体大小，支持1-100(自适应从小到大占满全屏)"
+        }
+    ],
+    "return_params": [
+        {
+            "field": "无",
+            "type": "无",
+            "desc": "无"
+        }
+    ],
+    "status_code": [
+        {
+            "code": "200",
+            "desc": "请求成功"
+        },
+        {
+            "code": "403",
+            "desc": "处理失败"
+        },
+        {
+            "code": "500",
+            "desc": "请求超时"
+        }
+    ],
+    "return_example": "无",
+    "sdk": {
+        "Rust": "use reqwest::Client;\r\nuse std::error::Error;\r\n\r\n#[tokio::main]\r\nasync fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {\r\n    // 创建HTTP客户端\r\n    let client = Client::new();\r\n\r\n    // 必填参数\r\n    let url = &quot;https://example.com/image.jpg&quot;; // 图片链接\r\n    let text = &quot;抖音美好体&quot;; // 水印内容\r\n    let doa = 1; // 水印方位\r\n    let size = &quot;20&quot;; // 水印字体大小\r\n\r\n    // 可选参数（默认注释掉，用户可根据需要取消注释）\r\n    // let param1 = &quot;value1&quot;; // 可选参数1\r\n    // let param2 = &quot;value2&quot;; // 可选参数2\r\n\r\n    // 构建请求URL\r\n    let request_url = format!(\r\n        &quot;https://api.mrcwoods.com/v1/tpsytj/?url={}&amp;text={}&amp;doa={}&amp;size={}&quot;,\r\n        url, text, doa, size\r\n    );\r\n\r\n    // 发送GET请求\r\n    let response = client.get(&amp;request_url).send().await;\r\n\r\n    match response {\r\n        Ok(res) =&gt; {\r\n            if res.status().is_success() {\r\n                // 处理成功的响应\r\n                let bytes = res.bytes().await?;\r\n                // 保存图片或进行其他处理\r\n                println!(&quot;图片水印添加成功，图片大小: {} bytes&quot;, bytes.len());\r\n            } else {\r\n                // 处理HTTP错误\r\n                eprintln!(&quot;请求失败，状态码: {}&quot;, res.status());\r\n                let error_text = res.text().await?;\r\n                eprintln!(&quot;错误信息: {}&quot;, error_text);\r\n            }\r\n        }\r\n        Err(e) =&gt; {\r\n            // 处理网络错误\r\n            eprintln!(&quot;请求过程中发生错误: {}&quot;, e);\r\n        }\r\n    }\r\n\r\n    Ok(())\r\n}"
+    }
+}

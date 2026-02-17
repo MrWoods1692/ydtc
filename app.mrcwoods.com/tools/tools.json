@@ -58,7 +58,7 @@
             "description": "使用说明\r\n一般的图片都是四四方方的，看的多了就会觉得非常呆板。于是就有了圆角图片。\r\n本工具可以轻松地将任意图片转换成透明圆角图片，并且可以指定各个圆角大小，图片的大小完全不限制，生成出来的图片无锯齿。\r\n生成的透明圆角图片可以用于 LOGO 图标，非常美观好看。",
             "icon": "https:\/\/toolwa.com\/image-round\/favicon.png",
             "type": "web",
-            "usage": 11,
+            "usage": 12,
             "adapted_systems": [
                 "windows",
                 "macos",
@@ -76,7 +76,7 @@
             "description": "使用说明\r\n本工具可以在线将 jpg、png、gif 等格式的图片转换成 ico 图标。\r\nfavicon.ico 通常用作网址 url 的前置缩略图，作为网站标志，favicon.ico 显示在浏览器的地址栏或标签上。目前几乎所有浏览器都支持 ico 图标。\r\n当成功生成 favicon.ico 图标文件后，挑选合适大小的图标，点击图标后面的链接即可下载保存。\r\n将图标上传至网站根目录，然后使用以下引用代码即可在网页上使用。",
             "icon": "https:\/\/toolwa.com\/favicon\/favicon.png",
             "type": "web",
-            "usage": 111,
+            "usage": 113,
             "adapted_systems": [
                 "windows",
                 "macos",
@@ -333,7 +333,7 @@
             "description": "Photoshop是Adobe开发的旗舰图像处理软件，具备图层编辑、智能抠图、AI生成填充、RAW处理、3D建模等专业功能，广泛应用于摄影后期、平面设计、数字绘画和视觉特效领域，是创意行业的行业标准工具。",
             "icon": "https:\/\/images-eds-ssl.xboxlive.com\/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxhfRM_njI7Pu32CmBLMdmnnzF6MdNHw4MJwlr.tSWLA2EJBQdZh0p3nNDzGvX2F6NoIc9ZSQ9xJqsGEg5bouOnA-&format=source&h=115",
             "type": "app",
-            "usage": 999999,
+            "usage": 1000001,
             "adapted_systems": [
                 "windows",
                 "macos"
@@ -341,6 +341,90 @@
             "links": {
                 "windows": "https:\/\/pan.baidu.com\/s\/1fFXv1HOW36i5VJ2wDhWldQ",
                 "macos": "https:\/\/pan.baidu.com\/s\/1EiuPJpSVr8a72eJ3wDR1YA"
+            }
+        },
+        {
+            "name": "Pixel Motion",
+            "category": "绘图工具",
+            "description": "网页端像素绘画工具，支持组件化画布，多画布同时绘画，色彩变量",
+            "icon": "https:\/\/pixel-motion.yysuni.com\/favicon.svg",
+            "type": "web",
+            "usage": 1000,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/pixel-motion.yysuni.com\/"
+            }
+        },
+        {
+            "name": "Path Motion",
+            "category": "绘图工具",
+            "description": "在线 svg path 工具，针对 path 绘制、压缩、运动等功能",
+            "icon": "https:\/\/path-motion.yysuni.com\/favicon.svg",
+            "type": "web",
+            "usage": 9999,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/path-motion.yysuni.com\/canvas"
+            }
+        },
+        {
+            "name": "iLoveIMG",
+            "category": "图片工具",
+            "description": "可批量编辑图片 的所有工具  |  你的在线图片编辑器就在这里，而且永远免费！",
+            "icon": "\/img\/favicons-img\/favicon-16x16.png",
+            "type": "web",
+            "usage": 8899,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux",
+                "ios",
+                "android"
+            ],
+            "links": {
+                "web": "https:\/\/www.iloveimg.com\/zh-cn"
+            }
+        },
+        {
+            "name": "Remove bg",
+            "category": "图片工具",
+            "description": "在线抠图软件_图片去除背景 | remove.bg – remove.bg",
+            "icon": "https:\/\/www.remove.bg\/apple-touch-icon.png?v=fc0bfce6e1310f1539afec9729716721",
+            "type": "web",
+            "usage": 2431,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/www.remove.bg\/zh"
+            }
+        },
+        {
+            "name": "Image Toolbox",
+            "category": "图片工具",
+            "description": "Image Toolbox\r\nPNG \/ JPG 转 WEBP\r\n选择图片 → 调整质量 → 一键转换下载",
+            "icon": "https:\/\/www.mrcwoods.com\/favicon.png",
+            "type": "web",
+            "usage": 3,
+            "adapted_systems": [
+                "windows",
+                "macos",
+                "linux"
+            ],
+            "links": {
+                "web": "https:\/\/www.mrcwoods.com\/image-toolbox"
             }
         }
     ]

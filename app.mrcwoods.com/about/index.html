@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="安全稳定的云端图片储存服务，支持原图备份、分类、多端同步。免费起步，TB级空间任选，一键分享外链，摄影师与设计师的首选云相册。">
+    <meta name="description" content="全球CDN加速的云端图片储存，秒开预览不卡顿。自动压缩省流量，支持多种格式托管，外链直传论坛与电商，新用户送2GB空间。">
+    <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
+    <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
+    <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
     <style>
         /* 全局样式重置与基础配置 */
         * {
@@ -83,7 +88,7 @@
             fill: white;
         }
 
-        /* 卡片通用样式 */
+        /* 卡片通用样式 - 移除顶部蓝色条 */
         .card {
             background: var(--card-bg-gradient);
             border-radius: 16px;
@@ -97,16 +102,9 @@
             transform: translateY(20px);
         }
 
+        /* 移除卡片顶部的蓝色渐变条 */
         .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            opacity: 0;
-            transition: var(--transition);
+            display: none;
         }
 
         .card::after {
@@ -125,10 +123,6 @@
         .card:hover {
             box-shadow: var(--hover-shadow);
             transform: translateY(-2px);
-        }
-
-        .card:hover::before {
-            opacity: 1;
         }
 
         .card:hover::after {
@@ -173,12 +167,13 @@
             transform: scale(1.05) rotate(2deg);
         }
 
-        /* 版本信息样式 */
+        /* 版本信息样式 - 优化开源信息显示 */
         .version-info {
             display: flex;
             align-items: center;
             font-size: 18px;
             gap: 12px;
+            margin-bottom: 16px;
         }
 
         .version-info .badge {
@@ -189,6 +184,47 @@
             font-size: 14px;
             font-weight: 500;
             margin-left: 12px;
+        }
+
+        /* 优化开源信息样式 */
+        .open-source-info {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f4ff 100%);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-top: 8px;
+            border: 1px solid #dbeafe;
+        }
+
+        .open-source-info .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            fill: var(--primary-color);
+        }
+
+        .open-source-info .license {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-right: 12px;
+        }
+
+        .open-source-info .github-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background-color: rgba(64, 150, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .open-source-info .github-link:hover {
+            background-color: rgba(64, 150, 255, 0.2);
+            color: #2563eb;
         }
 
         .version-info svg {
@@ -722,6 +758,17 @@
             border-radius: 12px;
         }
 
+        /* 备案号链接样式，去除下划线（可选），保证点击体验 */
+        .icp-record-link {
+            color: #666;
+            text-decoration: none; /* 去除默认下划线，如需保留可删除此行 */
+        }
+
+        .icp-record-link:hover {
+            color: #333; /* 鼠标悬浮加深颜色，提升交互体验 */
+            text-decoration: underline; /* 悬浮显示下划线，提示可点击 */
+        }
+
         /* 响应式适配 */
         @media (max-width: 768px) {
             body {
@@ -799,6 +846,11 @@
                 width: 40px;
                 height: 40px;
             }
+
+            .open-source-info {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -817,9 +869,28 @@
         </div>
         <div class="version-info">
             <span class="label">版本号：</span>
-            <span class="value">v0.9.0</span>
+            <span class="value">v0.5.0</span>
             <span class="badge">Beta</span>
         </div>
+
+        <!-- 优化的开源信息显示 -->
+        <div class="open-source-info">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            <span class="license">开源协议：Apache-2.0 license</span>
+            <a href="https://github.com/MrWoods1692/ydtc" target="_blank" rel="noopener noreferrer" class="github-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                查看源码
+            </a>
+        </div>
+
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="icp-record-link">
+            <br>苏ICP备2024119784号-1
+        </a>
+
     </div>
 
     <!-- QQ群交流卡片 -->
@@ -840,11 +911,11 @@
         </div>
     </div>
 
-    <!-- 开发者详细介绍 -->
+    <!-- 开发者详细 -->
     <div class="card">
         <div class="card-title">
     <img src="../svg/开发者.svg" style="width:20px; height:20px; fill:currentColor;" alt="开发者">
-            开发者介绍
+            开发者
         </div>
         <div class="developer-info">
             <div class="developer-avatar">
@@ -861,7 +932,7 @@
         </div>
     </div>
 
-    <!-- 新增：技术栈板块 -->
+    <!-- 新增：技术栈板块 - 添加Vue和SCSS -->
     <div class="card">
         <div class="card-title">
     <img src="../svg/技术栈.svg" style="width:20px; height:20px; fill:currentColor;" alt="技术栈">
@@ -899,6 +970,14 @@
             <div class="tech-item">
                     <img src="../svg/linux.svg" style="width:20px; height:20px; fill:currentColor;" alt="linux">
                 <div class="tech-name">Linux</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/Vue.svg" style="width:20px; height:20px; fill:currentColor;" alt="vue">
+                <div class="tech-name">Vue</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/scss.svg" style="width:20px; height:20px; fill:currentColor;" alt="scss">
+                <div class="tech-name">SCSS</div>
             </div>
         </div>
     </div>
@@ -972,20 +1051,21 @@
                 </div>
             </a>
 
-            <!-- 新野API -->
-            <a href="https://api.xinyew.cn/" target="_blank" class="platform-link">
+            <!-- 数驰云 -->
+            <a href="https://www.aliyun.com/" target="_blank" class="platform-link">
                 <div class="platform-item">
                     <div class="platform-header">
                         <div class="platform-icon">
-                            <img src="https://api.xinyew.cn/favicon.ico" alt="新野API">
+                            <img src="https://dns.qxnqc.cn/favicon.ico" alt="数驰云">
                         </div>
-                        <div class="platform-name">新野API</div>
+                        <div class="platform-name">数驰云</div>
                     </div>
                     <div class="platform-desc">
-                        提供的公益接口服务，零盈利，为了长久、稳定的发展，认准新野API！
+                        数驰二级分发平台，提供稳定便宜的二级域名分发服务，涵盖企业级二级域名分发、二级域名分发、免费二级域名申请，搭配二级域名批量分发工具，是省心的二级域名管理解决方案。
                     </div>
                 </div>
             </a>
+            
         </div>
     </div>
 
@@ -996,10 +1076,202 @@
             更新日志
         </div>
         <div class="changelog-list">
-            <!-- v1.2.0 版本 -->
+
+
+            <!-- v0.5.0 版本 -->
             <div class="changelog-item">
                 <div class="changelog-header" onclick="toggleChangelog(this)">
-                    <span class="changelog-version">v0.9.0</span>
+                    <span class="changelog-version">v0.5.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-17</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>优化小屏幕图标显示</li>
+                            <li>发行安卓APK,发布安卓端</li>
+                            <li>美化图片查看界面UI</li>
+                            <li>修复AI绘图保存相册逻辑Bug</li>
+                            <li>编写部分API接口文档以及SDK</li>
+                            <li>对产品稍加宣传</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+        
+            <!-- v0.4.3 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.3</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-17</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>更换商场界面为升级界面，去除卡密</li>
+                            <li>重构图床页面</li>
+                            <li>允许图床页面无登录使用（极速简洁版）</li>
+                            <li>优化主页</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <!-- v0.4.2 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.2</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-16</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加二维码扫描功能</li>
+                            <li>去除高清修复功能</li>
+                            <li>添加AI绘画功能</li>
+                            <li>去除AI对话功能</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.4.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-15</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>优化SEO</li>
+                            <li>添加爬虫规则和网站地图</li>
+                            <li>添加502页面</li>
+                            <li>加强网站安全</li>
+                            <li>提交网站到搜索引擎</li>
+                            <li>在其他流量站通过友链</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- v0.4.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-14</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>修复多域Cookie问题</li>
+                            <li>修复登录\注册时验证码相关问题</li>
+                            <li>修复无法退出登录Bug</li>
+                            <li>优化文字提取速度</li>
+                            <li>添加高清修复功能</li>
+                            <li>新增至82个翻译语言选项</li>
+                            <li>优化复制翻译功能</li>
+                            <li>完成开放平台，初始部分API</li>
+                            <li>优化日志显示</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.3.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.3.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-13</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加新域名app.mduge.com</li>
+                            <li>添加企业备案（苏ICP备2024119784号-1）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.3.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.3.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-13</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>更新QQ交流群头像</li>
+                            <li>用Vue完成简易主页功能</li>
+                            <li>用PHP完成访客统计功能</li>
+                            <li>优化关于页面界面显示</li>
+                            <li>优化图床上传和提示</li>
+                            <li>美化图片显示页面的弹窗样式</li>
+                            <li>优化文字提取复制按钮文字提示</li>
+                            <li>优化文本翻译和显示</li>
+                            <li>更换AI修图使用模型Nano Banana Pro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.2.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.2.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-12</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>工具库添加新工具</li>
+                            <li>开源v0.2.0版本</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.2.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.2.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
@@ -1017,10 +1289,10 @@
                 </div>
             </div>
 
-            <!-- v1.1.0 版本 -->
+            <!-- v0.1.0 版本 -->
             <div class="changelog-item">
                 <div class="changelog-header" onclick="toggleChangelog(this)">
-                    <span class="changelog-version">v0.8.0</span>
+                    <span class="changelog-version">v0.1.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
@@ -1031,12 +1303,13 @@
                         <p><strong>主要更新：</strong></p>
                         <ul>
                             <li>完成完整基本功能</li>
+                            <li>域名app.mrcwoods.com</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- v1.0.0 版本 -->
+            <!-- v0.0.0 版本 -->
             <div class="changelog-item">
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.0.0</span>
@@ -1075,7 +1348,7 @@
         function toggleChangelog(header) {
             const content = header.nextElementSibling;
             const toggleIcon = header.querySelector('.changelog-toggle');
-            
+
             // 切换展开/收起状态
             content.classList.toggle('expanded');
             toggleIcon.classList.toggle('rotated');
@@ -1085,12 +1358,12 @@
         function copyQQNumber() {
             const qqNumber = document.getElementById('qqNumber').textContent;
             const toast = document.getElementById('copyToast');
-            
+
             // 复制到剪贴板
             navigator.clipboard.writeText(qqNumber).then(() => {
                 // 显示提示框
                 toast.classList.add('show');
-                
+
                 // 3秒后隐藏提示框
                 setTimeout(() => {
                     toast.classList.remove('show');

@@ -1,0 +1,61 @@
+{
+    "continuous_days": 4,
+    "records": [
+        {
+            "date": "2026-02-06",
+            "base_points": 15,
+            "extra_points": 0,
+            "total_points": 15,
+            "timestamp": 1770374032
+        },
+        {
+            "date": "2026-02-09",
+            "base_points": 18,
+            "extra_points": 0,
+            "total_points": 18,
+            "timestamp": 1770609477
+        },
+        {
+            "date": "2026-02-11",
+            "base_points": 11,
+            "extra_points": 0,
+            "total_points": 11,
+            "timestamp": 1770794836
+        },
+        {
+            "date": "2026-02-12",
+            "base_points": 20,
+            "extra_points": 2,
+            "total_points": 22,
+            "timestamp": 1770895636
+        },
+        {
+            "date": "2026-02-14",
+            "base_points": 15,
+            "extra_points": 0,
+            "total_points": 15,
+            "timestamp": 1771055801
+        },
+        {
+            "date": "2026-02-15",
+            "base_points": 18,
+            "extra_points": 2,
+            "total_points": 20,
+            "timestamp": 1771167854
+        },
+        {
+            "date": "2026-02-16",
+            "base_points": 15,
+            "extra_points": 3,
+            "total_points": 18,
+            "timestamp": 1771174355
+        },
+        {
+            "date": "2026-02-17",
+            "base_points": 13,
+            "extra_points": 4,
+            "total_points": 17,
+            "timestamp": 1771317197
+        }
+    ]
+}

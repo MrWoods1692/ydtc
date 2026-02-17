@@ -1,0 +1,77 @@
+{
+    "name": "Pro-Banana",
+    "brief": "最强大的图片生成/编辑模型",
+    "request_desc": "前往https://yunzhiapi.cn/ 登录获取用户密钥token",
+    "api_url": "https://yunzhiapi.cn/API/nano-banana/pro.php",
+    "request_method": "GET",
+    "return_format": "JSON",
+    "request_example": "https://yunzhiapi.cn/API/nano-banana/pro.php?msg=图片内容",
+    "request_params": [
+        {
+            "name": "token",
+            "type": "string",
+            "required": "是",
+            "desc": "登录获取用户密钥"
+        },
+        {
+            "name": "msg",
+            "type": "string",
+            "required": "是",
+            "desc": "图片生成提示词（文生图必填；图生图选填，默认值为 “素描化”）"
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "required": "是",
+            "desc": "上传的图片链接（图转图必填；文成图忽略此参数）"
+        },
+        {
+            "name": "gs",
+            "type": "string",
+            "required": "可选",
+            "desc": "图片宽高比（h为横屏(4:3)、s为竖屏(3:4)、f为正方形(1:1)，不填写默认为h"
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "required": "可选",
+            "desc": "返回的数据格式，支持json、text、img，不填写默认为json"
+        }
+    ],
+    "return_params": [
+        {
+            "field": "status",
+            "type": "string",
+            "desc": "表示生成成功"
+        },
+        {
+            "field": "mode",
+            "type": "string",
+            "desc": "生成模式：text-to-image（文生图）/ image-to-image（图生图）"
+        },
+        {
+            "field": "image_url",
+            "type": "url",
+            "desc": "图片下载地址"
+        }
+    ],
+    "status_code": [
+        {
+            "code": "200",
+            "desc": "请求成功"
+        },
+        {
+            "code": "400",
+            "desc": "参数错误"
+        },
+        {
+            "code": "500",
+            "desc": "请求超时"
+        }
+    ],
+    "return_example": "无",
+    "sdk": {
+        "PHP": "&lt;?php\r\n\r\n/**\r\n * Pro-Banana API 请求类\r\n */\r\nclass ProBananaAPI {\r\n\r\n    private $requestUrl = &quot;https://yunzhiapi.cn/API/nano-banana/pro.php&quot;;\r\n    private $token;\r\n    private $msg;\r\n    private $url;\r\n    private $gs; // 图片宽高比（h为横屏(4:3)、s为竖屏(3:4)、f为正方形(1:1)，不填写默认为h）\r\n    private $type; // 返回的数据格式，支持json、text、img，不填写默认为json\r\n\r\n    /**\r\n     * 构造函数，初始化必填参数\r\n     *\r\n     * @param string $token 登录获取用户密钥\r\n     * @param string $msg 图片生成提示词\r\n     * @param string $url 上传的图片链接\r\n     */\r\n    public function __construct($token, $msg, $url) {\r\n        $this-&gt;token = $token;\r\n        $this-&gt;msg = $msg;\r\n        $this-&gt;url = $url;\r\n        // 可选参数初始化\r\n        $this-&gt;gs = &quot;&quot;; // 默认为空\r\n        $this-&gt;type = &quot;&quot;; // 默认为空\r\n    }\r\n\r\n    /**\r\n     * 设置图片宽高比\r\n     *\r\n     * @param string $gs 图片宽高比（h为横屏(4:3)、s为竖屏(3:4)、f为正方形(1:1)，不填写默认为h）\r\n     */\r\n    public function setGs($gs) {\r\n        $this-&gt;gs = $gs;\r\n    }\r\n\r\n    /**\r\n     * 设置返回的数据格式\r\n     *\r\n     * @param string $type 返回的数据格式，支持json、text、img，不填写默认为json\r\n     */\r\n    public function setType($type) {\r\n        $this-&gt;type = $type;\r\n    }\r\n\r\n    /**\r\n     * 发送请求并获取结果\r\n     *\r\n     * @return mixed 返回API响应结果\r\n     */\r\n    public function sendRequest() {\r\n        // 构建请求参数\r\n        $params = [\r\n            &apos;token&apos; =&gt; $this-&gt;token,\r\n            &apos;msg&apos; =&gt; $this-&gt;msg,\r\n            &apos;url&apos; =&gt; $this-&gt;url,\r\n            // &apos;gs&apos; =&gt; $this-&gt;gs, // 可选参数，根据需要取消注释\r\n            // &apos;type&apos; =&gt; $this-&gt;type, // 可选参数，根据需要取消注释\r\n        ];\r\n\r\n        // 如果设置了可选参数，则添加到请求参数中\r\n        if (!empty($this-&gt;gs)) {\r\n            $params[&apos;gs&apos;] = $this-&gt;gs;\r\n        }\r\n\r\n        if (!empty($this-&gt;type)) {\r\n            $params[&apos;type&apos;] = $this-&gt;type;\r\n        }\r\n\r\n        // 初始化cURL会话\r\n        $ch = curl_init();\r\n\r\n        // 设置cURL选项\r\n        curl_setopt($ch, CURLOPT_URL, $this-&gt;requestUrl);\r\n        curl_setopt($ch, CURLOPT_POST, true);\r\n        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));\r\n        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\r\n\r\n        // 执行cURL会话\r\n        $response = curl_exec($ch);\r\n\r\n        // 检查cURL错误\r\n        if (curl_errno($ch)) {\r\n            $error_msg = curl_error($ch);\r\n            curl_close($ch);\r\n            throw new Exception(&quot;cURL请求错误: &quot; . $error_msg);\r\n        }\r\n\r\n        // 关闭cURL会话\r\n        curl_close($ch);\r\n\r\n        // 解析响应结果\r\n        if (empty($response)) {\r\n            throw new Exception(&quot;API响应为空&quot;);\r\n        }\r\n\r\n        // 根据返回的数据格式解析响应\r\n        if (empty($this-&gt;type) || $this-&gt;type === &apos;json&apos;) {\r\n            $result = json_decode($response, true);\r\n            if (json_last_error() !== JSON_ERROR_NONE) {\r\n                throw new Exception(&quot;JSON解析错误: &quot; . json_last_error_msg());\r\n            }\r\n        } else {\r\n            $result = $response;\r\n        }\r\n\r\n        return $result;\r\n    }\r\n}\r\n\r\n// 使用示例\r\ntry {\r\n    // 初始化API请求对象，传入必填参数\r\n    $api = new ProBananaAPI(&apos;your_token_here&apos;, &apos;your_prompt_here&apos;, &apos;your_image_url_here&apos;);\r\n\r\n    // 设置可选参数（根据需要取消注释）\r\n    // $api-&gt;setGs(&apos;h&apos;); // 设置图片宽高比为横屏\r\n    // $api-&gt;setType(&apos;json&apos;); // 设置返回数据格式为JSON\r\n\r\n    // 发送请求并获取结果\r\n    $result = $api-&gt;sendRequest();\r\n\r\n    // 处理结果\r\n    print_r($result);\r\n} catch (Exception $e) {\r\n    echo &apos;错误: &apos; . $e-&gt;getMessage();\r\n}\r\n\r\n?&gt;",
+        "NodeJS": "const axios = require(&apos;axios&apos;);\r\n\r\n/**\r\n * Pro-Banana API 请求函数\r\n * @param {string} token - 登录获取的用户密钥\r\n * @param {string} msg - 图片生成提示词（文生图必填；图生图选填，默认值为 “素描化”）\r\n * @param {string} url - 上传的图片链接（图转图必填；文成图忽略此参数）\r\n * @returns {Promise} - 返回API响应\r\n */\r\nasync function proBananaAPI(token, msg, url) {\r\n    // 检查必填参数是否为空\r\n    if (!token) {\r\n        throw new Error(&apos;必填参数 token 不能为空&apos;);\r\n    }\r\n    if (!msg) {\r\n        throw new Error(&apos;必填参数 msg 不能为空&apos;);\r\n    }\r\n    if (!url) {\r\n        throw new Error(&apos;必填参数 url 不能为空&apos;);\r\n    }\r\n\r\n    // 请求URL\r\n    const requestUrl = &apos;https://yunzhiapi.cn/API/nano-banana/pro.php&apos;;\r\n\r\n    // 请求参数\r\n    const params = {\r\n        token: token,\r\n        msg: msg,\r\n        url: url,\r\n        // gs: &apos;h&apos;, // 图片宽高比（h为横屏(4:3)、s为竖屏(3:4)、f为正方形(1:1)，不填写默认为h）\r\n        // type: &apos;json&apos; // 返回的数据格式，支持json、text、img，不填写默认为json\r\n    };\r\n\r\n    try {\r\n        // 发送POST请求\r\n        const response = await axios.post(requestUrl, params);\r\n        return response.data;\r\n    } catch (error) {\r\n        // 处理请求错误\r\n        if (error.response) {\r\n            // 请求已发出但服务器响应的状态码不在 2xx 范围内\r\n            throw new Error(`请求失败，状态码: ${error.response.status}, 响应数据: ${JSON.stringify(error.response.data)}`);\r\n        } else if (error.request) {\r\n            // 请求已发出但没有收到响应\r\n            throw new Error(&apos;请求失败，未收到响应&apos;);\r\n        } else {\r\n            // 一些设置请求时发生错误\r\n            throw new Error(`请求失败，错误信息: ${error.message}`);\r\n        }\r\n    }\r\n}\r\n\r\n// 示例调用\r\n// (async () =&gt; {\r\n//     try {\r\n//         const result = await proBananaAPI(&apos;your_token_here&apos;, &apos;你的提示词&apos;, &apos;图片链接&apos;);\r\n//         console.log(result);\r\n//     } catch (error) {\r\n//         console.error(error);\r\n//     }\r\n// })();\r\n请注意替换 &apos;your_token_here&apos;, &apos;你的提示词&apos;, &apos;图片链接&apos; 为实际的值。"
+    }
+}

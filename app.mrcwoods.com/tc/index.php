@@ -10,10 +10,26 @@ define('ALLOWED_MIME_TYPES', ['image/jpeg', 'image/png', 'image/gif', 'image/web
 define('PSBCTC_SIZE_LIMIT', 2 * 1024 * 1024);
 
 $interfaces = [
+    '360tc' => [
+        'name' => '360图床 - 新野API',
+        'url' => 'https://api.xinyew.cn/api/360tc',
+        'tips' => '稳定&&兼容',
+        'file_field' => 'file',
+        'theme_color' => '#F9E6FF',      
+        'theme_light' => 'rgba(249, 230, 255, 0.8)',
+        'text_color' => '#9C47BC',       
+        'gradient' => 'linear-gradient(135deg, rgba(156, 71, 188, 0.05) 0%, rgba(175, 82, 222, 0.1) 100%)',
+        'errnoKey' => 'errno',
+        'errorKey' => 'error',
+        'urlKey' => 'url',
+        'fileNameKey' => 'imgFile',
+        'successCode' => 0,
+        'dataKey' => 'data'
+    ],
     'sogotc' => [
         'name' => '搜狗图床 - 新野API',
         'url' => 'https://api.xinyew.cn/api/sogotc',
-        'tips' => '来自搜狗，一天后删除图片 （不适合长期存储）',
+        'tips' => '不稳定&&图片有效期一天',
         'file_field' => 'file',
         'theme_color' => '#E6F0FF',      
         'theme_light' => 'rgba(230, 240, 255, 0.8)',
@@ -29,7 +45,7 @@ $interfaces = [
     'psbctc' => [
         'name' => '中国邮政图床 - 新野API',
         'url' => 'https://api.xinyew.cn/api/psbctc',
-        'tips' => '图片大小限制2MB',
+        'tips' => '不稳定&&图片大小限制2MB',
         'file_field' => 'file',
         'theme_color' => '#E6FFEF',      
         'theme_light' => 'rgba(230, 255, 239, 0.8)',
@@ -45,28 +61,12 @@ $interfaces = [
     'yanxuantc' => [
         'name' => '网易严选图床 - 新野API',
         'url' => 'https://api.xinyew.cn/api/yanxuantc',
-        'tips' => '直链，无限制和压缩 （适合长期存储）',
+        'tips' => '不稳定 ',
         'file_field' => 'file',
         'theme_color' => '#FFF3E6',      
         'theme_light' => 'rgba(255, 243, 230, 0.8)',
         'text_color' => '#E07B00',       
         'gradient' => 'linear-gradient(135deg, rgba(224, 123, 0, 0.05) 0%, rgba(255, 149, 0, 0.1) 100%)',
-        'errnoKey' => 'errno',
-        'errorKey' => 'error',
-        'urlKey' => 'url',
-        'fileNameKey' => 'imgFile',
-        'successCode' => 0,
-        'dataKey' => 'data'
-    ],
-    '360tc' => [
-        'name' => '360图床 - 新野API',
-        'url' => 'https://api.xinyew.cn/api/360tc',
-        'tips' => '来自360 ',
-        'file_field' => 'file',
-        'theme_color' => '#F9E6FF',      
-        'theme_light' => 'rgba(249, 230, 255, 0.8)',
-        'text_color' => '#9C47BC',       
-        'gradient' => 'linear-gradient(135deg, rgba(156, 71, 188, 0.05) 0%, rgba(175, 82, 222, 0.1) 100%)',
         'errnoKey' => 'errno',
         'errorKey' => 'error',
         'urlKey' => 'url',
@@ -783,6 +783,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         <div class="interface-selector">
             <label class="selector-label">上传路线</label>
             <div class="interface-buttons" id="interfaceButtons">
+                <button class="interface-btn" data-key="360tc" 
+                        data-color="#F9E6FF" data-text-color="#9C47BC" 
+                        data-light="rgba(249, 230, 255, 0.8)"
+                        data-gradient="linear-gradient(135deg, rgba(156, 71, 188, 0.05) 0%, rgba(175, 82, 222, 0.1) 100%)">360</button>
                 <button class="interface-btn active" data-key="sogotc" 
                         data-color="#E6F0FF" data-text-color="#005CC8" 
                         data-light="rgba(230, 240, 255, 0.8)" 
@@ -795,10 +799,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
                         data-color="#FFF3E6" data-text-color="#E07B00" 
                         data-light="rgba(255, 243, 230, 0.8)"
                         data-gradient="linear-gradient(135deg, rgba(224, 123, 0, 0.05) 0%, rgba(255, 149, 0, 0.1) 100%)">网易严选</button>
-                <button class="interface-btn" data-key="360tc" 
-                        data-color="#F9E6FF" data-text-color="#9C47BC" 
-                        data-light="rgba(249, 230, 255, 0.8)"
-                        data-gradient="linear-gradient(135deg, rgba(156, 71, 188, 0.05) 0%, rgba(175, 82, 222, 0.1) 100%)">360</button>
             </div>
             <div class="interface-tips" id="interfaceTips">来自搜狗，一天后删除图片 （不适合长期存储）</div>
         </div>

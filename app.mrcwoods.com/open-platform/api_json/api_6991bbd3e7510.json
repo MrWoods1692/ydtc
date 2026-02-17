@@ -1,0 +1,68 @@
+{
+    "name": "万能语言翻译",
+    "brief": "全球多语言转换，自研模型润色",
+    "request_desc": "",
+    "api_url": "https://api.mrcwoods.com/v1/wnyyfy/",
+    "request_method": "GET",
+    "return_format": "JSON",
+    "request_example": "https://api.mrcwoods.com/v1/wnyyfy/?msg=内容&target=语言",
+    "request_params": [
+        {
+            "name": "msg",
+            "type": "string",
+            "required": "是",
+            "desc": "翻译内容，支持世界各国语言(AI自动检测)"
+        },
+        {
+            "name": "target",
+            "type": "string",
+            "required": "否",
+            "desc": "目标语言(支持中文名或小字母缩写)，不填写默认翻译成英文"
+        }
+    ],
+    "return_params": [
+        {
+            "field": "status",
+            "type": "string",
+            "desc": "调用状态。success代表成功，error代表失败"
+        },
+        {
+            "field": "original_text",
+            "type": "string",
+            "desc": "翻译内容"
+        },
+        {
+            "field": "target_language",
+            "type": "string",
+            "desc": "目标语言"
+        },
+        {
+            "field": "target_code",
+            "type": "string",
+            "desc": "语言缩写"
+        },
+        {
+            "field": "translated_text",
+            "type": "string",
+            "desc": "翻译结果"
+        }
+    ],
+    "status_code": [
+        {
+            "code": "200",
+            "desc": "获取成功"
+        },
+        {
+            "code": "500",
+            "desc": "获取超时"
+        },
+        {
+            "code": "404",
+            "desc": "文件缺失"
+        }
+    ],
+    "return_example": "{\r\n  \"status\": \"success\",\r\n  \"message\": \"翻译成功\",\r\n  \"data\": {\r\n    \"original_text\": \"云端图片储存 —— 开放平台\",\r\n    \"target_language\": \"英语\",\r\n    \"target_code\": \"en\",\r\n    \"translated_text\": \"Cloud Image Storage — Open Platform\"\r\n  }\r\n}",
+    "sdk": {
+        "PHP": "&lt;?php\r\n\r\n/**\r\n * 调用万能语言翻译API进行语言翻译\r\n *\r\n * @param string $msg 翻译内容，支持世界各国语言(AI自动检测)\r\n * @param string $target 目标语言(支持中文名或小字母缩写)，当target=list时输出语言列表，不填写默认翻译成英文\r\n * @param string $type 返回格式，支持json和text，不填写默认返回json\r\n * @return mixed\r\n */\r\nfunction translateText($msg, $target = &apos;&apos;, $type = &apos;&apos;) {\r\n    // 必填参数\r\n    $params = [\r\n        &apos;msg&apos; =&gt; $msg\r\n    ];\r\n\r\n    // 可选参数，用户可根据需要取消注释并设置值\r\n    // $params[&apos;target&apos;] = $target; // 目标语言\r\n    // $params[&apos;type&apos;] = $type; // 返回格式\r\n\r\n    // 请求URL\r\n    $url = &quot;https://api.mrcwoods.com/v1/wnyyfy/&quot;;\r\n\r\n    // 初始化cURL会话\r\n    $ch = curl_init();\r\n\r\n    // 设置cURL选项\r\n    curl_setopt($ch, CURLOPT_URL, $url);\r\n    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\r\n    curl_setopt($ch, CURLOPT_POST, true);\r\n    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));\r\n\r\n    // 执行cURL请求\r\n    $response = curl_exec($ch);\r\n\r\n    // 检查cURL错误\r\n    if (curl_errno($ch)) {\r\n        $error_msg = &apos;cURL error: &apos; . curl_error($ch);\r\n        curl_close($ch);\r\n        throw new Exception($error_msg);\r\n    }\r\n\r\n    // 关闭cURL会话\r\n    curl_close($ch);\r\n\r\n    // 根据返回格式解析响应\r\n    if ($type === &apos;json&apos; || empty($type)) {\r\n        $response_data = json_decode($response, true);\r\n        if (json_last_error() !== JSON_ERROR_NONE) {\r\n            throw new Exception(&apos;Invalid JSON response: &apos; . json_last_error_msg());\r\n        }\r\n        return $response_data;\r\n    } else {\r\n        return $response;\r\n    }\r\n}\r\n\r\ntry {\r\n    // 示例调用\r\n    $msg = &quot;Hello, World!&quot;;\r\n    $result = translateText($msg);\r\n    print_r($result);\r\n} catch (Exception $e) {\r\n    echo &apos;Error: &apos; . $e-&gt;getMessage();\r\n}\r\n\r\n?&gt;"
+    }
+}

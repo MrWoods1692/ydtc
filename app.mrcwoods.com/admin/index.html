@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>禁止访问 - 安全入口保护</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft Yahei', 'PingFang SC', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .forbidden-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 5rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .forbidden-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(220, 53, 69, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .forbidden-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #dc3545 0%, #bb2d3b 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .forbidden-icon img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .forbidden-title {
+            font-size: 2.5rem;
+            color: #dc3545;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .forbidden-subtitle {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .forbidden-message {
+            font-size: 1rem;
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .security-note {
+            font-size: 0.95rem;
+            color: #868e96;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid #dc3545;
+            border-radius: 8px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 576px) {
+            .forbidden-container {
+                padding: 3rem 1.8rem;
+            }
+
+            .forbidden-title {
+                font-size: 2rem;
+            }
+
+            .forbidden-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .forbidden-icon img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="forbidden-container">
+        <div class="forbidden-icon">
+            <img src="../svg/禁止.svg" alt="禁止访问" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        </div>
+        <h1 class="forbidden-title">禁止访问</h1>
+        <h2 class="forbidden-subtitle">安全入口已受保护</h2>
+        <p class="forbidden-message">
+            你当前的访问路径不符合安全规范<br>
+            安全入口仅对管理员开放，禁止非授权访问
+        </p>
+        <div class="security-note">
+            <strong>安全提示：</strong>任何尝试绕过安全验证访问入口的行为，都将被系统记录并上报。请通过正规流程获取访问权限。
+        </div>
+    </div>
+</body>
+</html>
