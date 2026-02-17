@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vhumct5cuc");
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>登录 / 注册</title>
+    <meta name="description" content="安全稳定的云端图片储存服务，支持原图备份、分类、多端同步。免费起步，TB级空间任选，一键分享外链，摄影师与设计师的首选云相册。">
+    <meta name="description" content="全球CDN加速的云端图片储存，秒开预览不卡顿。自动压缩省流量，支持多种格式托管，外链直传论坛与电商，新用户送2GB空间。">
+    <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
+    <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
+    <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
     <link rel="icon" type="image/png" href="../images/logo.png">
     <style>
         /* 全局重置 & 基础样式 */
@@ -338,8 +350,8 @@
 
         <div class="form-group">
             <label class="form-label" for="verify_code">验证码</label>
-            <input type="text" id="verify_code" class="form-control" placeholder="请输入邮箱收到的验证码" required>
-            <span class="code-count" id="codeCount">0/128</span>
+            <input type="text" id="verify_code" class="form-control" placeholder="请输入邮箱收到的验证码" required maxlength="8" onpaste="return false;">
+            <span class="code-count" id="codeCount">0/8</span>
         </div>
 
         <!-- 按钮区域（调整顺序：先登录按钮，后发送验证码按钮，间距更大） -->
@@ -381,10 +393,12 @@
             }, 6000);
         }
 
+        // 禁止验证码输入框粘贴
+        verifyCodeInput.addEventListener('paste', e => e.preventDefault());
         // 验证码字符计数
         verifyCodeInput.addEventListener('input', () => {
             const length = verifyCodeInput.value.length;
-            codeCountEl.textContent = `${length}/128`;
+            codeCountEl.textContent = `${length}/8`;
         });
 
         // 设置按钮加载状态
@@ -509,7 +523,7 @@
                     // 跳转至home页面（增加动画过渡）
                     setTimeout(() => {
                         window.location.href = res.data.redirect;
-                    }, 3000);
+                    }, 1750);
                 } else {
                     showMessage(res.msg);
                 }

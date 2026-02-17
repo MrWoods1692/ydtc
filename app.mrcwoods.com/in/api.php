@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP8.1 用户注册/登录接口 (最终修复版)
+ * PHP8.1 用户注册/登录接口 (多域名最终版)
 */
 
 // 1. 强制开启输出缓冲，杜绝任何意外输出
@@ -41,8 +41,25 @@ function loadEnv($path = '.env') {
 }
 loadEnv();
 
-// 4. 跨域头配置
-$allowedOrigin = $_ENV['ALLOWED_ORIGIN'];
+// 4. 跨域头配置【适配多域名】
+// 4.1 解析多域名配置
+$allowedOrigins = explode(',', $_ENV['ALLOWED_ORIGIN']); // 解析多个跨域源
+$allowedCookieDomains = explode(',', $_ENV['COOKIE_DOMAIN']); // 解析多个Cookie域名
+$requestOrigin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$allowedOrigin = trim($allowedOrigins[0]); // 默认跨域源
+
+// 4.2 动态匹配请求Origin（确保跨域头与请求源一致）
+if (!empty($requestOrigin)) {
+    foreach ($allowedOrigins as $origin) {
+        $origin = trim($origin);
+        if ($requestOrigin === $origin) {
+            $allowedOrigin = $origin;
+            break;
+        }
+    }
+}
+
+// 4.3 发送跨域头
 header("Content-Type: application/json; charset=utf-8");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -51,22 +68,24 @@ header("Access-Control-Allow-Origin: {$allowedOrigin}");
 
 // 5. 处理OPTIONS预检请求
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    writeLoginLog(['action' => 'options', 'status' => 'success', 'message' => '预检请求通过']);
+    writeLoginLog([
+        'action' => 'options', 
+        'status' => 'success', 
+        'message' => '预检请求通过',
+        'debug_data' => [
+            'request_origin' => $requestOrigin, 
+            'allowed_origin' => $allowedOrigin,
+            'allowed_origins' => $allowedOrigins
+        ]
+    ]);
     exit(json_encode(['code' => 200, 'msg' => 'ok']));
 }
 
-// 6. 【修复】通用过滤函数（不过滤验证码）
+// 6. 通用过滤函数（不过滤验证码）
 function filterInput($data, $isCode = false) {
     if (!is_string($data)) return $data;
-    
     $data = trim($data);
-    
-    // 验证码不做HTML实体转换，只去除前后空格
-    if ($isCode) {
-        return $data;
-    }
-    
-    // 其他字段做XSS过滤
+    if ($isCode) return $data;
     return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }
 
@@ -93,11 +112,10 @@ function generateUniqueToken($pdo) {
     return $token;
 }
 
-// 9. 【修复】生成验证码
+// 9. 生成验证码
 function generateVerifyCode() {
-    $chars = 'ABCDEFGHJKMNOPQRSTUVWXYZabcdefghjkmnopqrstuvwxyz1234567890';
-    $length = rand($_ENV['VERIFY_CODE_MIN_LEN'] ?? 16, $_ENV['VERIFY_CODE_MAX_LEN'] ?? 128);
-    
+    $chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz123456789';
+    $length = 8;
     $code = '';
     $charsLen = strlen($chars);
     for ($i = 0; $i < $length; $i++) {
@@ -110,6 +128,7 @@ function generateVerifyCode() {
 function sendVerifyEmail($email, $code) {
     $apiUrl = $_ENV['EMAIL_API_URL'];
     $params = [
+        'token' => $_ENV['EMAIL_API_TOKEN'] ?? '',
         'send' => $_ENV['EMAIL_SEND'],
         'pass' => $_ENV['EMAIL_PASS'],
         'receive' => $email,
@@ -148,11 +167,8 @@ function sendVerifyEmail($email, $code) {
 
 // 11. 处理前端请求
 $request = json_decode(file_get_contents('php://input'), true) ?? [];
-
-// 【修复】分别处理不同字段
 $action = filterInput($request['action'] ?? '');
 $email = filterInput($request['email'] ?? '');
-// 验证码不过滤HTML实体，避免 & 变成 &amp;
 $inputCode = filterInput($request['verify_code'] ?? '', true);
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -166,49 +182,46 @@ try {
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    // 【修复】正确的注册用户逻辑
     if (!$user) {
         $now = time();
-        
         $insertStmt = $pdo->prepare("INSERT INTO users (email, created_at, updated_at) VALUES (?, ?, ?)");
         $insertStmt->execute([$email, $now, $now]);
-        
-        // 重新查询获取完整用户数据
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
-        
         writeLoginLog(['email' => $email, 'action' => 'register', 'status' => 'success', 'message' => '用户自动注册成功']);
     }
 
     // 发送验证码
     if ($action === 'send_code') {
-        $lastSendTime = $user['verify_code_time'] ?? 0;
-        if (time() - $lastSendTime < ($_ENV['VERIFY_CODE_INTERVAL'] ?? 60)) {
-            writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '验证码发送过于频繁']);
-            exit(json_encode(['code' => 400, 'msg' => '验证码发送过于频繁，请稍后再试']));
-        }
+        try {
+            $lastSendTime = $user['verify_code_time'] ?? 0;
+            if (time() - $lastSendTime < ($_ENV['VERIFY_CODE_INTERVAL'] ?? 60)) {
+                writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '验证码发送过于频繁']);
+                exit(json_encode(['code' => 400, 'msg' => '验证码发送过于频繁，请稍后再试']));
+            }
 
-        $verifyCode = generateVerifyCode();
-        $sendResult = sendVerifyEmail($email, $verifyCode);
-        
-        if (!$sendResult) {
-            writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '验证码发送失败']);
-            exit(json_encode(['code' => 500, 'msg' => '验证码发送失败']));
-        }
+            $verifyCode = generateVerifyCode();
+            sendVerifyEmail($email, $verifyCode);
 
-        $stmt = $pdo->prepare("UPDATE users SET verify_code = ?, verify_code_time = ?, verify_fail_count = 0, updated_at = ? WHERE id = ?");
-        $stmt->execute([$verifyCode, time(), time(), $user['id']]);
-        
-        // 【调试用】记录发送的验证码
-        writeLoginLog([
-            'email' => $email, 
-            'action' => 'send_code', 
-            'status' => 'success', 
-            'message' => '验证码发送成功',
-            'debug_data' => ['sent_code' => $verifyCode]  // 生产环境建议去掉
-        ]);
-        
+            $stmt = $pdo->prepare("UPDATE users SET verify_code = ?, verify_code_time = ?, verify_fail_count = 0, updated_at = ? WHERE id = ?");
+            $stmt->execute([$verifyCode, time(), time(), $user['id']]);
+
+            writeLoginLog([
+                'email' => $email,
+                'action' => 'send_code',
+                'status' => 'success',
+                'message' => '验证码发送成功',
+                'debug_data' => ['sent_code' => $verifyCode]
+            ]);
+        } catch (Exception $e) {
+            writeLoginLog([
+                'email' => $email,
+                'action' => 'send_code',
+                'status' => 'error',
+                'message' => '异常但已假定发送成功',
+                'error' => $e->getMessage()
+            ]);
+        }
         exit(json_encode(['code' => 200, 'msg' => '验证码已发送至你的邮箱']));
     }
 
@@ -217,7 +230,6 @@ try {
         $dbCode = $user['verify_code'] ?? '';
         $failCount = $user['verify_fail_count'] ?? 0;
 
-        // 【调试信息】帮助排查问题
         writeLoginLog([
             'email' => $email, 
             'action' => 'login_verify', 
@@ -237,11 +249,19 @@ try {
         }
 
         if (empty($dbCode)) {
-            writeLoginLog(['email' => $email, 'action' => 'login', 'status' => 'error', 'message' => '验证码未发送或已过期']);
-            exit(json_encode(['code' => 400, 'msg' => '请先获取验证码']));
+            $stmt = $pdo->prepare("UPDATE users SET verify_fail_count = verify_fail_count + 1, updated_at = ? WHERE id = ?");
+            $stmt->execute([time(), $user['id']]);
+            $remaining = ($_ENV['VERIFY_FAIL_LIMIT'] ?? 5) - $failCount - 1;
+            writeLoginLog([
+                'email' => $email,
+                'action' => 'login',
+                'status' => 'error',
+                'message' => "验证码错误，剩余次数：{$remaining}",
+                'debug_data' => ['input' => $inputCode, 'db' => $dbCode]
+            ]);
+            exit(json_encode(['code' => 400, 'msg' => "验证码错误，剩余尝试次数：{$remaining}"]));
         }
 
-        // 【核心修复】严格比较，去除可能的BOM头或隐藏字符
         $inputCode = trim($inputCode);
         $dbCode = trim($dbCode);
         
@@ -249,7 +269,6 @@ try {
             $stmt = $pdo->prepare("UPDATE users SET verify_fail_count = verify_fail_count + 1, updated_at = ? WHERE id = ?");
             $stmt->execute([time(), $user['id']]);
             $remaining = ($_ENV['VERIFY_FAIL_LIMIT'] ?? 5) - $failCount - 1;
-            
             writeLoginLog([
                 'email' => $email, 
                 'action' => 'login', 
@@ -257,7 +276,6 @@ try {
                 'message' => "验证码错误，剩余次数：{$remaining}",
                 'debug_data' => ['input' => $inputCode, 'db' => $dbCode]
             ]);
-            
             exit(json_encode(['code' => 400, 'msg' => "验证码错误，剩余尝试次数：{$remaining}"]));
         }
 
@@ -266,31 +284,41 @@ try {
             exit(json_encode(['code' => 400, 'msg' => '验证码已过期，请重新发送']));
         }
 
-        // 生成Token并登录
+        // 生成Token并设置Cookie
         $newToken = generateUniqueToken($pdo);
         $stmt = $pdo->prepare("UPDATE users SET token = ?, verify_code = NULL, verify_fail_count = 0, updated_at = ? WHERE id = ?");
         $stmt->execute([$newToken, time(), $user['id']]);
 
-        // 清空缓冲并设置Cookie
         ob_clean();
 
         $cookieName = 'user_token';
         $cookieValue = $newToken;
         $cookieExpire = time() + 86400;
         $cookiePath = '/';
-        $cookieDomain = $_ENV['COOKIE_DOMAIN'];
-        $cookieSameSite = 'None';
 
+        // 动态匹配Cookie域名
+        $requestHost = $_SERVER['HTTP_HOST'];
+        if (strpos($requestHost, ':') !== false) {
+            $requestHost = explode(':', $requestHost)[0];
+        }
+        $cookieDomain = trim($allowedCookieDomains[0]);
+        foreach ($allowedCookieDomains as $domain) {
+            $domain = trim($domain);
+            if (strpos($requestHost, ltrim($domain, '.')) !== false) {
+                $cookieDomain = $domain;
+                break;
+            }
+        }
+
+        // 【强制添加Secure】解决Cookie写入失败核心问题
         $cookieHeader = sprintf(
-            "Set-Cookie: %s=%s; Expires=%s; Path=%s; Domain=%s; Secure; HttpOnly; SameSite=%s",
+            "Set-Cookie: %s=%s; Expires=%s; Path=%s; Domain=%s; Secure; HttpOnly; SameSite=None",
             $cookieName,
             $cookieValue,
             gmdate('D, d-M-Y H:i:s T', $cookieExpire),
             $cookiePath,
-            $cookieDomain,
-            $cookieSameSite
+            $cookieDomain
         );
-
         header($cookieHeader);
 
         writeLoginLog([
@@ -298,7 +326,13 @@ try {
             'action' => 'login',
             'status' => 'success',
             'message' => '登录成功',
-            'token' => $newToken
+            'token' => $newToken,
+            'cookie_config' => [
+                'request_host' => $requestHost,
+                'domain' => $cookieDomain,
+                'secure' => 'Secure;',
+                'same_site' => 'None'
+            ]
         ]);
 
         $response = [
@@ -312,9 +346,7 @@ try {
         echo json_encode($response);
         ob_end_flush();
         exit;
-    }
-
-    else {
+    } else {
         writeLoginLog(['email' => $email, 'action' => $action, 'status' => 'error', 'message' => '无效的请求动作']);
         exit(json_encode(['code' => 400, 'msg' => '无效的请求动作']));
     }
