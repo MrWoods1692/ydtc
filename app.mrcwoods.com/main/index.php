@@ -495,17 +495,25 @@ $siteInfo = [
             margin-right: 18px;
             flex-shrink: 0;
             filter: brightness(1);
-            transition: filter 0.2s ease;
+            transition: filter 0.2s ease, margin-right 0.3s ease;
         }
 
         .nav-link.active .nav-icon {
             filter: brightness(10);
         }
 
+        .nav-text {
+            white-space: nowrap;
+            opacity: 1;
+            max-width: 150px;
+            overflow: hidden;
+            transition: opacity 0.3s ease 0.1s, max-width 0.3s ease;
+        }
+
         .sidebar.collapsed .nav-text {
-            display: none;
             opacity: 0;
-            transition: opacity 0.2s ease;
+            max-width: 0;
+            transition: opacity 0.1s ease, max-width 0.3s ease;
         }
 
         .sidebar.collapsed .nav-icon {
@@ -550,17 +558,25 @@ $siteInfo = [
             margin-right: 18px;
             flex-shrink: 0;
             filter: brightness(1);
-            transition: filter 0.2s ease;
+            transition: filter 0.2s ease, margin-right 0.3s ease;
         }
 
         .action-btn.active .action-icon {
             filter: brightness(10);
         }
 
+        .action-text {
+            white-space: nowrap;
+            opacity: 1;
+            max-width: 150px;
+            overflow: hidden;
+            transition: opacity 0.3s ease 0.1s, max-width 0.3s ease;
+        }
+
         .sidebar.collapsed .action-text {
-            display: none;
             opacity: 0;
-            transition: opacity 0.2s ease;
+            max-width: 0;
+            transition: opacity 0.1s ease, max-width 0.3s ease;
         }
 
         .sidebar.collapsed .action-icon {
