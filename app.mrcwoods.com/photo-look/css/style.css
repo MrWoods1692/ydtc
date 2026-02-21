@@ -106,6 +106,10 @@ html, body {
     /* 侧边栏滚动条美化 */
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 #f8fafc;
+    /* 顺滑收缩过渡 */
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: width;
 }
 
 /* 侧边栏滚动条（Chrome/Safari） */
@@ -136,6 +140,10 @@ html, body {
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
+    /* 顺滑淡出过渡 */
+    opacity: 1;
+    max-height: 60px;
+    transition: opacity 0.25s ease, max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
 }
 /* 侧边栏标题装饰线 */
 .sidebar-photo-name::after {
@@ -156,6 +164,12 @@ html, body {
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    /* 顺滑淡出过渡 */
+    opacity: 1;
+    max-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.25s ease, max-height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
 }
 
 /* 侧边栏按钮深度美化 */
@@ -216,9 +230,19 @@ html, body {
     object-fit: contain;
     /* 图标轻微缩放动效 */
     transition: transform 0.2s ease;
+    flex-shrink: 0;
 }
 .sidebar-btn:hover img {
     transform: scale(1.05);
+}
+
+/* 按钮文字标签顺滑过渡 */
+.sidebar-btn span {
+    opacity: 1;
+    max-width: 160px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ========== 主内容区美化 ========== */
@@ -233,6 +257,8 @@ html, body {
     /* 轻微的背景纹理 */
     background-image: radial-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+    /* 跟随侧边栏顺滑过渡 */
+    transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .photo-container {
@@ -641,8 +667,22 @@ html, body {
         padding: 20px 0;
     }
 
-    .sidebar-photo-name, .sidebar-title, .sidebar-btn span {
-        display: none;
+    .sidebar-photo-name, .sidebar-title {
+        opacity: 0;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+        border: none;
+        pointer-events: none;
+    }
+
+    .sidebar-photo-name::after {
+        opacity: 0;
+    }
+
+    .sidebar-btn span {
+        opacity: 0;
+        max-width: 0;
     }
 
     .sidebar-btn {
