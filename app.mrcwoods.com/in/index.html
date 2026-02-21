@@ -236,7 +236,7 @@
             background: #f5f5f7;
             color: #1d1d1f;
             /* 【新增】给发送验证码按钮也加底部间距，避免和容器底部贴太近 */
-            margin-bottom: 8px;
+            margin-bottom: 24px;
         }
 
         .btn-secondary:hover {
@@ -313,6 +313,18 @@
             .btn-primary {
                 margin-bottom: 16px;
             }
+            
+            /* 移动端第三方登录图标调整 */
+            .third-party-btn {
+                width: 48px !important;
+                height: 48px !important;
+                padding: 0 !important;
+            }
+            
+            .third-party-btn img {
+                width: 20px !important;
+                height: 20px !important;
+            }
         }
 
         @media (max-width: 375px) {
@@ -323,6 +335,90 @@
             .logo {
                 margin-bottom: 28px;
             }
+        }
+
+        /* 新增：第三方登录样式 - 横向图标版 */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 28px 0 20px;
+            color: #86868b;
+            font-size: 14px;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e6e6e6;
+        }
+        
+        .divider span {
+            padding: 0 16px;
+        }
+        
+        /* 核心修改：横向排列，只显示图标 */
+        .third-party-login {
+            display: flex;
+            flex-direction: row; /* 改为横向排列 */
+            justify-content: center; /* 水平居中 */
+            gap: 20px; /* 图标之间的间距 */
+            margin-bottom: 8px;
+        }
+        
+        .third-party-btn {
+            /* 改为固定宽高的圆形按钮 */
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            background: #f8f8f9;
+            border: 1px solid #e6e6e6;
+            border-radius: 50%; /* 圆形 */
+            flex-shrink: 0; /* 防止压缩 */
+        }
+        
+        .third-party-btn:hover {
+            background: #f0f0f2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .third-party-btn:active {
+            background: #e9e9eb;
+            transform: translateY(0);
+        }
+        
+        .third-party-btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        /* 隐藏按钮文字 */
+        .third-party-btn .btn-text {
+            display: none;
+        }
+        
+        /* 各第三方按钮专属配色（hover效果） */
+        .github-btn:hover {
+            background: #f5f5f5;
+            border-color: #e0e0e0;
+        }
+        
+        .google-btn:hover {
+            background: #f5f9ff;
+            border-color: #d7e3fc;
+        }
+        
+        .linuxdo-btn:hover {
+            background: #f0f5fa;
+            border-color: #d4e0ec;
+        }
+        
+        /* 第三方按钮加载动画适配 */
+        .third-party-btn .loader {
+            border-top-color: #1d1d1f;
         }
     </style>
 </head>
@@ -350,7 +446,8 @@
 
         <div class="form-group">
             <label class="form-label" for="verify_code">验证码</label>
-            <input type="text" id="verify_code" class="form-control" placeholder="请输入邮箱收到的验证码" required maxlength="8" onpaste="return false;">
+            <!-- 【修改1】移除 onpaste="return false;" 属性 -->
+            <input type="text" id="verify_code" class="form-control" placeholder="请输入邮箱收到的验证码" required maxlength="8">
             <span class="code-count" id="codeCount">0/8</span>
         </div>
 
@@ -364,6 +461,28 @@
             <span class="btn-text">发送验证码</span>
             <div class="loader"></div>
         </button>
+
+        <!-- 新增：第三方登录区域（横向图标版） -->
+        <div class="divider" id="thirdPartyDivider">
+            <span>其他登录方式</span>
+        </div>
+        
+        <div class="third-party-login" id="thirdPartyLogin">
+            <button class="btn third-party-btn github-btn" id="githubLoginBtn" title="使用Github登录">
+                <img src="../svg/github.svg" alt="Github图标">
+                <span class="btn-text">使用 Github 登录</span>
+            </button>
+            
+            <button class="btn third-party-btn google-btn" id="googleLoginBtn" title="使用Google登录">
+                <img src="../svg/google.svg" alt="Google图标">
+                <span class="btn-text">使用 Google 登录</span>
+            </button>
+            
+            <button class="btn third-party-btn linuxdo-btn" id="linuxDoLoginBtn" title="使用Linux DO登录">
+                <img src="../svg/linuxDo.svg" alt="Linux DO图标">
+                <span class="btn-text">使用 Linux DO 登录</span>
+            </button>
+        </div>
     </div>
 
     <script>
@@ -374,9 +493,36 @@
         const loginBtn = document.getElementById('loginBtn');
         const messageEl = document.getElementById('message');
         const codeCountEl = document.getElementById('codeCount');
+        
+        // 新增：第三方登录按钮获取
+        const githubLoginBtn = document.getElementById('githubLoginBtn');
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const linuxDoLoginBtn = document.getElementById('linuxDoLoginBtn');
+        // 新增：获取第三方登录区域元素
+        const thirdPartyDivider = document.getElementById('thirdPartyDivider');
+        const thirdPartyLogin = document.getElementById('thirdPartyLogin');
 
         // 存储倒计时定时器，防止重复计时【新增：修复倒计时多实例问题】
         let countdownTimer = null;
+
+// ========== 双条件检测：Tauri环境 或 路径含app_index 都隐藏 ==========
+// 检测是否在Tauri环境
+function isTauri() {
+  return !!window.__TAURI__ || !!window.Tauri || /Tauri|tauri/i.test(navigator.userAgent);
+}
+
+// 检测路径是否包含app_index
+function hasAppIndexPath() {
+  // 获取当前URL的路径部分，判断是否包含"app_index"
+  return window.location.pathname.includes('app_index');
+}
+
+// 满足任一条件就隐藏第三方登录
+if (isTauri() || hasAppIndexPath()) {
+  thirdPartyDivider.style.display = 'none';
+  thirdPartyLogin.style.display = 'none';
+}
+// =====================================================
 
         // 显示消息
         function showMessage(text, type = 'error') {
@@ -393,8 +539,9 @@
             }, 6000);
         }
 
-        // 禁止验证码输入框粘贴
-        verifyCodeInput.addEventListener('paste', e => e.preventDefault());
+        // 【修改2】移除禁止粘贴的事件监听代码
+        // verifyCodeInput.addEventListener('paste', e => e.preventDefault());
+        
         // 验证码字符计数
         verifyCodeInput.addEventListener('input', () => {
             const length = verifyCodeInput.value.length;
@@ -532,6 +679,61 @@
             } finally {
                 // 取消加载状态
                 setBtnLoading(loginBtn, false);
+            }
+        });
+
+        // 新增：第三方登录事件处理
+        // Github登录
+        githubLoginBtn.addEventListener('click', async () => {
+            setBtnLoading(githubLoginBtn, true);
+            try {
+                // 这里替换为你的Github OAuth登录接口
+                window.location.href = './auth/github/auth/';
+                
+                // 演示用提示
+                showMessage('前往Github授权登录', 'success');
+                setTimeout(() => {
+                    setBtnLoading(githubLoginBtn, false);
+                }, 1500);
+            } catch (error) {
+                showMessage('Github登录失败，请重试');
+                setBtnLoading(githubLoginBtn, false);
+            }
+        });
+
+        // Google登录
+        googleLoginBtn.addEventListener('click', async () => {
+            setBtnLoading(googleLoginBtn, true);
+            try {
+                // 这里替换为你的Google OAuth登录接口
+                window.location.href = './auth/google/auth';
+                
+                // 演示用提示
+                showMessage('前往Google授权登录', 'success');
+                setTimeout(() => {
+                    setBtnLoading(googleLoginBtn, false);
+                }, 1500);
+            } catch (error) {
+                showMessage('Google登录失败，请重试');
+                setBtnLoading(googleLoginBtn, false);
+            }
+        });
+
+        // Linux DO登录
+        linuxDoLoginBtn.addEventListener('click', async () => {
+            setBtnLoading(linuxDoLoginBtn, true);
+            try {
+                // 这里替换为你的Linux DO授权登录接口
+                window.location.href = './auth/linuxdo/auth';
+                
+                // 演示用提示
+                showMessage('前往Linux Do授权登录', 'success');
+                setTimeout(() => {
+                    setBtnLoading(linuxDoLoginBtn, false);
+                }, 1500);
+            } catch (error) {
+                showMessage('Linux DO登录失败，请重试');
+                setBtnLoading(linuxDoLoginBtn, false);
             }
         });
     </script>

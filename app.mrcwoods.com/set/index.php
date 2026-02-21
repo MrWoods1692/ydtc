@@ -18,7 +18,7 @@ header('X-Frame-Options: ALLOWALL');
 header('Frame-Options: ALLOWALL');
 
 // 1. 读取.env配置文件
-function loadEnv($path = '.env') {
+function loadEnv($path = '../in/.env') {
     if (!file_exists($path)) {
         logUserOperation('', '配置文件.env不存在，访问失败');
         die('配置文件.env不存在');
@@ -90,7 +90,7 @@ if (isset($_COOKIE['user_token']) && !empty($_COOKIE['user_token'])) {
         $logPath = "../users/{$encodedEmail}/log.txt";
         
         // 记录访问日志
-        logUserOperation($logPath, "访问个人设置页面，当前用户名：{$userData['username']}");
+        logUserOperation($logPath, "访问个人设置页面，{$userData['username']}");
         
         // 读取user.json文件
         if (file_exists($userJsonPath) && is_readable($userJsonPath)) {
@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($userEmail)) {
             font-display: swap;
         }
 
-        /* 苹果风格基础样式（优化美化） */
+        /* 苹果风格基础样式（全屏优化） */
         * {
             margin: 0;
             padding: 0;
@@ -193,156 +193,270 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($userEmail)) {
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* 隐藏滚动条 - 核心修改 */
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* 隐藏全局滚动条 */
+        }
+
         body {
             background-color: #f5f5f7;
             color: #1d1d1f;
-            min-height: 100vh;
+            background-image: linear-gradient(135deg, #f8f8fa 0%, #f5f5f7 100%); /* 优化渐变角度 */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
-            background-image: linear-gradient(to bottom, #f8f8fa, #f5f5f7); /* 渐变背景更贴近苹果风格 */
+            /* 隐藏滚动条兼容各浏览器 */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
+        /* Chrome, Safari and Opera 隐藏滚动条 */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 全屏容器 - 核心修改 */
         .container {
             width: 100%;
-            max-width: 500px;
-            background-color: #ffffff;
-            border-radius: 20px; /* 更圆润的圆角 */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); /* 更细腻的阴影 */
-            padding: 40px 32px;
-            position: relative;
-            overflow: hidden;
+            height: 100%;
+            padding: 40px 5% 80px; /* 底部增加80px边距 */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* 内部滚动，不显示滚动条 */
+            /* 内部滚动条也隐藏 */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .container::-webkit-scrollbar {
+            display: none;
         }
 
         /* 苹果风格顶部装饰条 */
-        .container::before {
-            content: '';
-            position: absolute;
+        .top-bar {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, #0071e3, #34c759, #ff9500, #ff3b30);
+            z-index: 100;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 36px;
+        /* 用户信息卡片布局 - 单列展示 */
+        .user-info-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
         }
 
-        .header h1 {
-            font-size: 28px;
-            color: #1d1d1f;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px; /* 苹果字体紧凑感 */
-        }
-
-        .header p {
-            color: #86868b;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
+        /* 可复制的信息卡片 - 核心美化 */
         .user-info {
-            margin-bottom: 28px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e6e6e8;
-            transition: all 0.2s ease;
+            background-color: #ffffff;
+            padding: 36px;
+            border-radius: 24px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer; /* 提示可点击 */
         }
 
+        /* 卡片悬浮效果增强 */
         .user-info:hover {
-            border-color: #d1d1d6;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #f0f0f5;
+        }
+
+        /* 复制成功提示 */
+        .user-info .copy-toast {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #34c759;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .user-info .copy-toast.show {
+            opacity: 1;
         }
 
         .user-info .label {
-            font-size: 13px;
+            font-size: 16px;
             color: #86868b;
-            margin-bottom: 8px;
+            margin-bottom: 14px;
             display: block;
+            transition: color 0.2s ease;
+        }
+
+        .user-info:hover .label {
+            color: #0071e3;
         }
 
         .user-info .value {
-            font-size: 17px;
+            font-size: 26px;
             color: #1d1d1f;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .user-info:hover .value {
+            color: #0071e3;
+        }
+
+        /* 优化长邮箱显示 */
+        .email-value {
+            font-size: 26px;
+            color: #1d1d1f;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+            word-break: break-all; /* 允许在任意字符处换行 */
+            overflow-wrap: break-word; /* 兼容不同浏览器 */
+            max-width: 100%; /* 限制最大宽度 */
+            display: inline-block; /* 确保宽度限制生效 */
+            line-height: 1.5; /* 调整行高，提升可读性 */
+            transition: color 0.2s ease;
+        }
+
+        .user-info:hover .email-value {
+            color: #0071e3;
+        }
+
+        /* 表单区域样式 - 美化升级 */
+        .form-section {
+            background-color: #ffffff;
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .form-section:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 36px;
         }
 
         .form-group label {
             display: block;
-            font-size: 15px;
+            font-size: 18px;
             color: #1d1d1f;
-            margin-bottom: 10px;
-            font-weight: 450; /* 轻微加粗标签 */
+            margin-bottom: 14px;
+            font-weight: 500;
         }
 
         .form-group input {
             width: 100%;
-            padding: 14px 18px;
+            padding: 20px 24px;
             border: 1px solid #e6e6e8;
-            border-radius: 14px;
-            font-size: 17px;
-            transition: all 0.2s ease;
+            border-radius: 18px;
+            font-size: 18px;
+            transition: all 0.3s ease;
             background-color: #fafafa;
+            outline: none;
         }
 
+        /* 输入框聚焦美化 */
         .form-group input:focus {
-            outline: none;
             border-color: #0071e3;
-            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.08); /* 更柔和的聚焦阴影 */
+            box-shadow: 0 0 0 6px rgba(0, 113, 227, 0.08);
             background-color: #ffffff;
+            transform: translateY(-2px);
         }
 
         .form-group input::placeholder {
             color: #a1a1a6;
-            font-size: 16px;
+            font-size: 17px;
         }
 
+        /* 按钮美化升级 */
         .btn {
             width: 100%;
-            padding: 14px;
+            padding: 20px;
             background-color: #0071e3;
             color: #ffffff;
             border: none;
-            border-radius: 14px;
-            font-size: 17px;
+            border-radius: 18px;
+            font-size: 18px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             overflow: hidden;
+            font-weight: 500;
         }
 
-        /* 苹果按钮hover/active效果 */
+        /* 按钮水波纹效果 */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease-out;
+        }
+
+        .btn:active::after {
+            transform: translate(-50%, -50%) scale(40);
+            opacity: 0;
+        }
+
+        /* 苹果按钮hover/active效果增强 */
         .btn:hover {
             background-color: #0077ed;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 113, 227, 0.25);
         }
 
         .btn:active {
             background-color: #0066cc;
-            transform: translateY(0);
-            box-shadow: 0 2px 6px rgba(0, 113, 227, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.2);
         }
 
         /* 提示消息样式（优化） */
         .message {
-            padding: 14px 18px;
-            border-radius: 14px;
-            margin-bottom: 24px;
-            font-size: 15px;
+            padding: 24px 28px;
+            border-radius: 18px;
+            margin-bottom: 48px;
+            font-size: 18px;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.6;
             transition: all 0.3s ease;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.4s ease;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -365,40 +479,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($userEmail)) {
         }
 
         .points-note {
-            font-size: 13px;
+            font-size: 15px;
             color: #86868b;
-            margin-top: 10px;
+            margin-top: 14px;
             font-style: italic;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         /* 响应式适配（苹果风格移动端优化） */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .container {
-                padding: 32px 24px;
-                border-radius: 16px;
+                padding: 30px 4% 60px; /* 移动端底部边距调整 */
             }
-            .header h1 {
-                font-size: 24px;
+            
+            .user-info {
+                padding: 28px;
             }
+            
+            .email-value, .user-info .value {
+                font-size: 22px;
+            }
+            
+            .form-section {
+                padding: 36px 28px;
+            }
+            
             .form-group input {
-                padding: 12px 16px;
+                padding: 16px 20px;
                 font-size: 16px;
             }
+            
             .btn {
-                padding: 12px;
+                padding: 16px;
+                font-size: 16px;
+            }
+            
+            .message {
+                padding: 20px 24px;
                 font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 顶部装饰条 -->
+    <div class="top-bar"></div>
+    
     <div class="container">
-        <div class="header">
-            <h1>个人设置</h1>
-            <p>修改您的用户名（消耗1积分）</p>
-        </div>
-
         <!-- 提示消息 -->
         <?php if (!empty($message)): ?>
             <div class="message <?php echo htmlspecialchars($messageType); ?>">
@@ -406,39 +533,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($userEmail)) {
             </div>
         <?php endif; ?>
 
-        <!-- 用户信息展示 -->
+        <!-- 用户信息展示 - 单列布局（可点击复制） -->
         <?php if (!empty($userEmail)): ?>
-            <div class="user-info">
-                <span class="label">当前邮箱</span>
-                <span class="value"><?php echo htmlspecialchars($userEmail); ?></span>
-            </div>
-            <div class="user-info">
-                <span class="label">当前用户名</span>
-                <span class="value"><?php echo htmlspecialchars($userData['username']); ?></span>
-            </div>
-            <div class="user-info">
-                <span class="label">当前积分</span>
-                <span class="value"><?php echo intval($userData['points']); ?></span>
+            <div class="user-info-wrapper">
+                <!-- 邮箱信息（可复制） -->
+                <div class="user-info" onclick="copyToClipboard(this, '<?php echo htmlspecialchars($userEmail); ?>')">
+                    <span class="copy-toast">复制成功</span>
+                    <span class="label">当前邮箱</span>
+                    <span class="email-value"><?php echo htmlspecialchars($userEmail); ?></span>
+                </div>
+                
+                <!-- 用户名信息（可复制） -->
+                <div class="user-info" onclick="copyToClipboard(this, '<?php echo htmlspecialchars($userData['username']); ?>')">
+                    <span class="copy-toast">复制成功</span>
+                    <span class="label">当前用户名</span>
+                    <span class="value"><?php echo htmlspecialchars($userData['username']); ?></span>
+                </div>
+                
+                <!-- 积分信息（可复制） -->
+                <div class="user-info" onclick="copyToClipboard(this, '<?php echo intval($userData['points']); ?>')">
+                    <span class="copy-toast">复制成功</span>
+                    <span class="label">当前积分</span>
+                    <span class="value"><?php echo intval($userData['points']); ?></span>
+                </div>
             </div>
 
             <!-- 用户名修改表单 -->
-            <form method="POST" action="" autocomplete="off">
-                <div class="form-group">
-                    <label for="new_username">新用户名</label>
-                    <input 
-                        type="text" 
-                        id="new_username" 
-                        name="new_username" 
-                        value="<?php echo htmlspecialchars($userData['username']); ?>"
-                        placeholder="请输入新用户名"
-                        required
-                        autocomplete="new-username"
-                    >
-                    <div class="points-note">修改将消耗1个积分</div>
-                </div>
-                <button type="submit" class="btn">保存修改</button>
-            </form>
+            <div class="form-section">
+                <form method="POST" action="" autocomplete="off">
+                    <div class="form-group">
+                        <label for="new_username">新用户名</label>
+                        <input 
+                            type="text" 
+                            id="new_username" 
+                            name="new_username" 
+                            value="<?php echo htmlspecialchars($userData['username']); ?>"
+                            placeholder="请输入新用户名"
+                            required
+                            autocomplete="new-username"
+                        >
+                        <div class="points-note">修改将消耗1个积分</div>
+                    </div>
+                    <button type="submit" class="btn">保存修改</button>
+                </form>
+            </div>
         <?php endif; ?>
     </div>
+
+    <!-- 复制功能JS -->
+    <script>
+        // 复制到剪贴板函数
+        function copyToClipboard(element, text) {
+            // 创建临时文本区域
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // 显示复制成功提示
+            const toast = element.querySelector('.copy-toast');
+            toast.classList.add('show');
+            
+            // 3秒后隐藏提示
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
 </body>
 </html>

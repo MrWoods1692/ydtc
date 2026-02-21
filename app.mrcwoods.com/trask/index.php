@@ -547,12 +547,12 @@ $trash_files_json = json_encode($trash_files, JSON_UNESCAPED_UNICODE);
         <!-- 提示消息 -->
         <?php if (isset($success_msg)): ?>
             <div class="msg msg-success">
-                ✅ <?= htmlspecialchars($success_msg) ?>
+                <?= htmlspecialchars($success_msg) ?>
             </div>
         <?php endif; ?>
         <?php if (isset($error_msg)): ?>
             <div class="msg msg-error">
-                ❌ <?= htmlspecialchars($error_msg) ?>
+                <?= htmlspecialchars($error_msg) ?>
             </div>
         <?php endif; ?>
 

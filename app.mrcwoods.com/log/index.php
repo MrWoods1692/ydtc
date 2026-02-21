@@ -3,7 +3,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 ini_set('display_errors', '1');
 
 // ===================== 核心配置与函数 =====================
-function loadEnv(string $path = '.env'): array
+function loadEnv(string $path = '../in/.env'): array
 {
     if (!file_exists($path)) {
         die("配置文件 .env 不存在");

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
-
+define('ENV_FILE_PATH', __DIR__ . '/../in/.env');
 // 3. 初始化变量
 $userEmail = '';
 $pdo = null;
@@ -48,9 +48,7 @@ $isSignRequest = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'sign') {
     $isSignRequest = true;
     header("Content-Type: application/json; charset=utf-8"); // 仅签到请求返回JSON
-    
-    // 连接数据库
-    $dbResult = connectDB(__DIR__ . '/.env');
+    $dbResult = connectDB(ENV_FILE_PATH);
     if (isset($dbResult['error'])) {
         echo json_encode(['code' => -1, 'msg' => $dbResult['error']]);
         exit;
@@ -193,7 +191,7 @@ if (!$isSignRequest) {
 }
 
 // 连接数据库（页面展示用）
-$dbResult = connectDB(__DIR__ . '/.env');
+$dbResult = connectDB(ENV_FILE_PATH);
 if (isset($dbResult['error'])) {
     die("<div style='text-align:center; margin-top:50px; font-size:18px; color:red;'>{$dbResult['error']}</div>");
 }
@@ -1068,12 +1066,13 @@ $userColor = $levelColors[$userData['level']] ?? $levelColors['default'];
             }
         }
         
+
         // 页面初始化
         document.addEventListener('DOMContentLoaded', () => {
             const loaderAnimation = lottie.loadAnimation({
                 container: document.getElementById('lottie-loader'),
                 renderer: 'canvas',
-                loop: true,
+                loop: false,              // 只播放一次
                 autoplay: true,
                 path: '../../lottie/bg.json',
                 rendererSettings: {
@@ -1084,35 +1083,42 @@ $userColor = $levelColors[$userData['level']] ?? $levelColors['default'];
             const minLoadTime = 3000;
             const startTime = Date.now();
             
+            // 绑定事件函数（提前定义）
+            function bindEvents() {
+                // 单位切换
+                document.getElementById('unitToggleBtn').addEventListener('click', () => {
+                    currentUnitIndex = (currentUnitIndex + 1) % unitOrder.length;
+                    updateSpaceDisplay(unitOrder[currentUnitIndex], true);
+                    
+                    const btn = document.getElementById('unitToggleBtn');
+                    btn.style.transform = 'translateY(-2px) scale(0.98)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                    }, 200);
+                });
+                
+                // 签到按钮
+                document.getElementById('signBtn').addEventListener('click', doSign);
+            }
+            
+            // 使用 DOMLoaded 事件
             loaderAnimation.addEventListener('DOMLoaded', () => {
                 const waitTime = Math.max(minLoadTime - (Date.now() - startTime), 0);
+                
                 setTimeout(() => {
-                    loaderAnimation.loop = false;
-                    loaderAnimation.goToAndPlay(0, true);
-                    
+                    // 等待动画完成（因为 loop: false）
                     loaderAnimation.addEventListener('complete', () => {
                         document.getElementById('loader-wrapper').classList.add('hidden');
                         document.querySelector('.container').classList.add('show');
                         
+                        // 初始化页面动画
                         animateNumber('levelValue', targetLevel);
                         animateNumber('pointsValue', targetPoints);
                         updateSpaceDisplay(unitOrder[currentUnitIndex], true);
                         animateProgressBar();
                         
-                        // 单位切换
-                        document.getElementById('unitToggleBtn').addEventListener('click', () => {
-                            currentUnitIndex = (currentUnitIndex + 1) % unitOrder.length;
-                            updateSpaceDisplay(unitOrder[currentUnitIndex], true);
-                            
-                            const btn = document.getElementById('unitToggleBtn');
-                            btn.style.transform = 'translateY(-2px) scale(0.98)';
-                            setTimeout(() => {
-                                btn.style.transform = '';
-                            }, 200);
-                        });
-                        
-                        // 签到按钮
-                        document.getElementById('signBtn').addEventListener('click', doSign);
+                        // 绑定事件
+                        bindEvents();
                     });
                 }, waitTime);
             });

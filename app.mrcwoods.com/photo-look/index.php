@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 // 加载环境变量
-$env = parse_ini_file(__DIR__ . '/.env');
+$env = parse_ini_file(__DIR__ . DIRECTORY_SEPARATOR . '../in/.env');
 if (!$env) {
     die("配置文件.env加载失败");
 }

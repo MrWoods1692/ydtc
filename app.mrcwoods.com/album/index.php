@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // -------------------------- 1. 基础配置与函数定义 --------------------------
-function loadEnv(string $filePath = '.env'): array {
+function loadEnv(string $filePath = '../in/.env'): array {
     $env = [];
     if (!file_exists($filePath)) {
         die("环境配置文件.env不存在");
@@ -134,18 +134,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errorMsg = "相册名称仅支持中文、英文、数字，且长度为1-16字符";
                 break;
             }
-            // 新增：禁止创建chat相册
-            if ($albumName === 'chat') {
-                $errorMsg = "相册名称不能为chat";
+            // 新增：禁止创建draw相册
+            if ($albumName === 'draw') {
+                $errorMsg = "相册名称不能为draw";
                 break;
             }
 
-            // 删掉重复的这几行 ↓
-            // $albumDirs = glob($userDir . '/' . '*', GLOB_ONLYDIR);
-            // $currentAlbumCount = count($albumDirs);
-            // $maxAlbums = getMaxAlbums($userLevel);
-
-            $albumDirs = glob($userDir . '/' . '*', GLOB_ONLYDIR);
+            // 获取所有相册目录，但排除 draw 和 回收站
+            $allDirs = glob($userDir . '/' . '*', GLOB_ONLYDIR);
+            $albumDirs = array_filter($allDirs, function($dir) {
+                $name = basename($dir);
+                // 排除 draw 和 回收站 这两个特殊目录
+                return !in_array($name, ['draw', '回收站']);
+            });
             $currentAlbumCount = count($albumDirs);
             $maxAlbums = getMaxAlbums($userLevel);
 
@@ -219,9 +220,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $errorMsg = "相册名称格式错误";
                 break;
             }
-            // 新增：禁止相册名称为chat
-            if ($albumName === 'chat') {
-                $errorMsg = "相册名称不能为chat";
+            // 新增：禁止相册名称为draw
+            if ($albumName === 'draw') {
+                $errorMsg = "相册名称不能为draw";
                 break;
             }
             $oldAlbumDir = $userDir . '/' . $oldAlbumName;
@@ -277,8 +278,8 @@ if (is_dir($userDir)) {
     foreach ($albumDirs as $dir) {
         $albumName = basename($dir);
         
-        // 新增：跳过chat和回收站相册，不显示
-        if (in_array($albumName, ['chat', '回收站'])) {
+        // 新增：跳过draw和回收站相册，不显示
+        if (in_array($albumName, ['draw', '回收站'])) {
             continue;
         }
         
@@ -1188,9 +1189,9 @@ if (is_dir($userDir)) {
                     const name = nameInput.value.trim();
                     const pattern = /^[\u4e00-\u9fa5a-zA-Z0-9]{1,16}$/;
                     
-                    // JS版：禁止名称为chat
-                    if (name === 'chat') {
-                        alertModal('错误', '相册名称不能为chat');
+                    // JS版：禁止名称为draw
+                    if (name === 'draw') {
+                        alertModal('错误', '相册名称不能为draw');
                         e.preventDefault();
                         return;
                     }
@@ -1210,9 +1211,9 @@ if (is_dir($userDir)) {
                     const name = nameInput.value.trim();
                     const pattern = /^[\u4e00-\u9fa5a-zA-Z0-9]{1,16}$/;
                     
-                    // JS版：禁止名称为chat
-                    if (name === 'chat') {
-                        alertModal('错误', '相册名称不能为chat');
+                    // JS版：禁止名称为draw
+                    if (name === 'draw') {
+                        alertModal('错误', '相册名称不能为draw');
                         e.preventDefault();
                         return;
                     }

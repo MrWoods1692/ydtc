@@ -66,7 +66,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/font/') !== false) {
 // 加载环境变量
 static $env;
 if (!isset($env)) {
-    $envPath = '.env';
+    $envPath = '../in/.env';
     $env = file_exists($envPath) ? parse_ini_file($envPath) : [];
 }
 if (empty($env)) {
@@ -109,7 +109,7 @@ if (empty($userToken)) {
         } else {
             $isValidLogin = true;
             // 优化Cookie配置：兼容HTTPS/HTTP，增加容错
-            $cookieExpire = isset($env['COOKIE_EXPIRE']) ? (int)$env['COOKIE_EXPIRE'] : 86400 * 7; // 默认7天
+            $cookieExpire = isset($env['COOKIE_EXPIRE']) ? (int)$env['COOKIE_EXPIRE'] : 86400;
             $secureFlag = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'); // 自动判断HTTPS
             
             setcookie(
@@ -139,7 +139,7 @@ $navMap = [
     'aidraw' => ['page' => '../aidraw/', 'name' => 'AI绘画'],
     'uplevel' => ['page' => '../uplevel/', 'name' => '升级'],
     'tools' => ['page' => '../tools/', 'name' => '工具'],
-    'open-platform' => ['page' => '../open-platform/', 'name' => '开放平台'],
+    'app' => ['page' => '../app/', 'name' => 'APP'],
     'log' => ['page' => '../log/', 'name' => '日志'],
     'about' => ['page' => '../about/', 'name' => '关于'],
     'setting' => ['page' => '../set/', 'name' => '设置']
@@ -952,7 +952,6 @@ if (DOM.logoutbtn) {
 
         // 首屏后配置
         document.addEventListener('DOMContentLoaded', () => {
-            // ===== 新增：初始化时检查屏幕尺寸 =====
             checkScreenSize();
             
             if (DOM.contentiframe) {

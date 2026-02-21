@@ -1867,8 +1867,47 @@ $userAlbums = getUserAlbums($userDir);
 
     <!-- 提示框 -->
     <div class="toast" id="toast"></div>
+<script>
+// ========== 统一的智能打开函数 ==========
 
-    <script>
+// 生成唯一消息 ID
+function generateMsgId() {
+    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+// 智能打开链接：检测 Tauri 环境，支持多层 iframe
+function openLinkSmart(url) {
+    console.log('openLinkSmart called:', url);
+    
+    // 检测是否在 Tauri 环境中（任何一层有 __TAURI__ 就算）
+    const isTauri = (function() {
+        let win = window;
+        while (win) {
+            if (win.__TAURI__?.core) return true;
+            if (win === win.parent) break; // 到顶层了
+            win = win.parent;
+        }
+        return false;
+    })();
+    
+    if (isTauri) {
+        console.log('Tauri detected in hierarchy, sending postMessage to top');
+        // Tauri 环境：发消息到顶层，让 Tauri 创建新窗口
+        const message = {
+            type: 'OPEN_EXTERNAL_LINK',
+            url: url,
+            msgId: generateMsgId(),
+            timestamp: Date.now()
+        };
+        window.top.postMessage(message, '*');
+    } else {
+        // 普通浏览器：直接用 window.open
+        console.log('Not in Tauri, using window.open');
+        window.open(url, '_blank');
+    }
+}
+    
+    
         // 全局变量
         let selectedPhotos = [];
         let allPhotos = <?= json_encode($photoList) ?>;
@@ -2055,7 +2094,7 @@ $userAlbums = getUserAlbums($userDir);
                             const albumName = encodeURIComponent('<?= $safeAlbumName ?>');
                             const userEmail = encodeURIComponent('<?= $urlUserEmail ?>');
                             const photoUrl = encodeURIComponent(url);
-                            window.open(`../photo-look/?user=${userEmail}&album=${albumName}&photo=${photoUrl}`, '_blank');
+openLinkSmart(`https://app.mrcwoods.com/photo-look/?user=${userEmail}&album=${albumName}&photo=${photoUrl}`);
                         }
                     });
                 });

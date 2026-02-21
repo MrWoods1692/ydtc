@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云端图片储存</title>
+    <script>
+        // ========== 安全防护代码：禁止右键、控制台、快捷键 ==========
+        (function() {
+            'use strict';
+            
+            // 1. 禁止右键菜单
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            }, true);
+            
+            // 2. 禁止 F12 和 开发者工具快捷键
+            document.addEventListener('keydown', function(e) {
+                // F12
+                if (e.key === 'F12' || e.keyCode === 123) {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Ctrl+Shift+I/J/C 或 Ctrl+U
+                if (e.ctrlKey) {
+                    if ((e.shiftKey && ['I','J','C'].includes(e.key)) || 
+                        ['U','S','P'].includes(e.key)) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+                
+                // 禁止 Alt 键
+                if (e.altKey) {
+                    e.preventDefault();
+                    return false;
+                }
+            }, true);
+            
+            // 3. debugger 陷阱（干扰开发者工具）
+            setInterval(function() {
+                (function(){}).constructor('debugger')();
+            }, 1000);
+            
+            // 4. 禁用 console（放在最后执行）
+            setTimeout(function() {
+                ['log','debug','info','warn','error','table','clear'].forEach(function(m) {
+                    console[m] = function(){};
+                });
+            }, 0);
+            
+        })();
+    </script>
+    <script>
+        // 监听来自子 iframe 的消息
+        window.addEventListener('message', async (event) => {
+            console.log('Received message:', event.data, 'from:', event.origin);
+            
+            // 验证消息类型
+            if (event.data && event.data.type === 'OPEN_EXTERNAL_LINK') {
+                const url = event.data.url;
+                console.log('Opening URL in browser:', url);
+                
+                try {
+                    const { invoke } = window.__TAURI__.core;
+                    await invoke('open_in_browser', { url: url });
+                    console.log('Successfully opened in browser');
+                } catch (e) {
+                    console.error('Failed to open:', e);
+                    // 降级：直接打开
+                    window.open(url, '_blank');
+                }
+            }
+        });
+        
+        // 向下层 iframe 传递 Tauri 准备就绪信号（可选）
+        window.addEventListener('load', () => {
+            const iframe = document.getElementById('webframe');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.postMessage({
+                    type: 'TAURI_READY',
+                    tauriAvailable: true
+                }, '*');
+            }
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .titlebar {
+            height: 40px;
+            background: linear-gradient(to bottom, #f6f6f6 0%, #e5e5e5 100%);
+            border-bottom: 1px solid #c8c8c8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            user-select: none;
+            position: relative;
+            z-index: 1000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .titlebar {
+                background: linear-gradient(to bottom, #3c3c3c 0%, #2d2d2d 100%);
+                border-bottom: 1px solid #1a1a1a;
+            }
+            .window-title {
+                color: #e0e0e0;
+            }
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .window-btn {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .window-btn:active {
+            transform: scale(0.92);
+        }
+
+        .close-btn {
+            background: #ff5f56;
+            box-shadow: inset 0 0 0 0.5px #e0443e;
+        }
+
+        .close-btn::after, .close-btn::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 1.5px;
+            background: #4c0000;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+        .close-btn::after { transform: rotate(45deg); }
+        .close-btn::before { transform: rotate(-45deg); }
+        .close-btn:hover::after, .close-btn:hover::before { opacity: 0.8; }
+
+        .minimize-btn {
+            background: #ffbd2e;
+            box-shadow: inset 0 0 0 0.5px #dea123;
+        }
+
+        .minimize-btn::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 1.5px;
+            background: #995700;
+            opacity: 0;
+            transition: opacity 0.15s;
+            border-radius: 0.5px;
+        }
+        .minimize-btn:hover::after { opacity: 0.8; }
+
+        .maximize-btn {
+            background: #27c93f;
+            box-shadow: inset 0 0 0 0.5px #1aab29;
+        }
+
+        .maximize-btn::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border: 1.5px solid #006500;
+            border-radius: 1px;
+            opacity: 0;
+            transition: opacity 0.15s;
+        }
+        .maximize-btn:hover::after { opacity: 0.8; }
+
+        .window-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            letter-spacing: 0.3px;
+            pointer-events: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .window-title { color: #e0e0e0; }
+        }
+
+        .titlebar-spacer {
+            width: 70px;
+        }
+
+        .content-wrapper {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            background: #fff;
+            position: relative;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .content-wrapper {
+                background: #1c1c1e;
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 100;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .loading-overlay {
+                background: #1c1c1e;
+            }
+            .loading-text {
+                color: #e0e0e0;
+            }
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e0e0e0;
+            border-top-color: #3498db;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .spinner {
+                border-color: #3a3a3c;
+                border-top-color: #5ac8fa;
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .error-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            z-index: 101;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .error-overlay {
+                background: #1c1c1e;
+            }
+        }
+
+        .error-overlay.show {
+            display: flex;
+        }
+
+        .error-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .error-container {
+                background: #2c2c2e;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .error-icon {
+            font-size: 72px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .error-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .error-title {
+                color: #f5f5f7;
+            }
+        }
+
+        .error-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .error-text {
+                color: #c7c7cc;
+            }
+        }
+
+        .error-tips {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .error-tips {
+                color: #a1a1aa;
+            }
+        }
+
+        .refresh-btn {
+            padding: 10px 24px;
+            background: #007aff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .refresh-btn:hover {
+            background: #0066e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="titlebar" data-tauri-drag-region>
+        <div class="window-controls">
+            <button class="window-btn close-btn" onclick="appClose()" title="关闭"></button>
+            <button class="window-btn minimize-btn" onclick="appMinimize()" title="最小化"></button>
+            <button class="window-btn maximize-btn" onclick="appMaximize()" title="最大化"></button>
+        </div>
+        <div class="window-title">云端图片储存</div>
+        <div class="titlebar-spacer"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="loading-overlay" id="loading">
+            <div class="spinner"></div>
+            <div class="loading-text">loading...</div>
+        </div>
+
+        <div class="error-overlay" id="error">
+            <div class="error-container">
+                <div class="error-icon">😱</div>
+                <div class="error-title">网络连接失败</div>
+                <div class="error-text">无法加载云端图片储存页面，请检查您的网络连接</div>
+                <div class="error-tips">
+                    请确保：<br>
+                    • 已连接到互联网<br>
+                    • 网络连接稳定<br>
+                    • 防火墙未阻止应用访问网络
+                </div>
+                <button class="refresh-btn" onclick="location.reload()">
+                    重新加载
+                </button>
+            </div>
+        </div>
+
+        <iframe 
+            id="webframe"
+            src="https://app.mrcwoods.com/app_main" 
+            allow="fullscreen; clipboard-write; clipboard-read; autoplay; camera; microphone"
+        ></iframe>
+    </div>
+
+    <script>
+        // Tauri v2 API
+        const { invoke } = window.__TAURI__?.core || { invoke: () => {} };
+        
+        function appClose() { invoke('close_window'); }
+        function appMinimize() { invoke('minimize_window'); }
+        function appMaximize() { invoke('maximize_window'); }
+
+        const iframe = document.getElementById('webframe');
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+    // 记录已处理的消息 ID，防止重复
+    const processedMessages = new Set();
+    
+    window.addEventListener('message', async (event) => {
+        const data = event.data;
+        
+        // 验证消息格式
+        if (!data || data.type !== 'OPEN_EXTERNAL_LINK') return;
+        
+        // 防止重复处理（使用消息 ID + 时间戳）
+        const msgId = data.msgId || `${data.url}_${data.timestamp}`;
+        if (processedMessages.has(msgId)) {
+            console.log('Duplicate message ignored:', msgId);
+            return;
+        }
+        processedMessages.add(msgId);
+        
+        // 清理旧记录（防止内存泄漏）
+        if (processedMessages.size > 100) {
+            const first = processedMessages.values().next().value;
+            processedMessages.delete(first);
+        }
+        
+        console.log('Processing message:', data);
+        
+        try {
+            const { invoke } = window.__TAURI__.core;
+            await invoke('create_window', { url: data.url });
+        } catch (e) {
+            console.error('Failed to create window:', e);
+            // 降级：系统浏览器
+            window.open(data.url, '_blank');
+        }
+    });
+        // 加载事件
+        iframe.addEventListener('load', () => {
+            loading.classList.add('hidden');
+        });
+
+        iframe.addEventListener('error', () => {
+            loading.classList.add('hidden');
+            error.classList.add('show');
+        });
+
+        setTimeout(() => {
+            if (!loading.classList.contains('hidden')) {
+                loading.classList.add('hidden');
+                error.classList.add('show');
+            }
+        }, 10000);
+
+        window.addEventListener('offline', () => {
+            loading.classList.add('hidden');
+            error.classList.add('show');
+        });
+
+        // ========== 使用系统浏览器打开链接 ==========
+        
+        // 打开外部链接函数
+        async function openInBrowser(url) {
+            try {
+                await invoke('open_in_browser', { url });
+            } catch (e) {
+                console.error('Failed to open browser:', e);
+                // 降级方案
+                window.open(url, '_blank');
+            }
+        }
+
+        // 监听 iframe 的点击事件（同源情况下）
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('a');
+            if (target && target.target === '_blank') {
+                e.preventDefault();
+                openInBrowser(target.href);
+            }
+        });
+
+        // 监听来自 iframe 的消息（跨域通信）
+        window.addEventListener('message', (event) => {
+            // 可选：验证来源
+            // if (event.origin !== 'https://app.mrcwoods.com') return;
+            
+            if (event.data && event.data.type === 'OPEN_EXTERNAL_LINK') {
+                openInBrowser(event.data.url);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vhumct5cuc");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>登录 / 注册</title>
+    <meta name="description" content="安全稳定的云端图片储存服务，支持原图备份、分类、多端同步。免费起步，TB级空间任选，一键分享外链，摄影师与设计师的首选云相册。">
+    <meta name="description" content="全球CDN加速的云端图片储存，秒开预览不卡顿。自动压缩省流量，支持多种格式托管，外链直传论坛与电商，新用户送2GB空间。">
+    <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
+    <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
+    <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <style>
+        /* 全局重置 & 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* 背景装饰 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm2 2v16h16V2H2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* 登录容器 */
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            width: 100%;
+            max-width: 450px;
+            padding: 48px 40px;
+            border-radius: 20px;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.08),
+                0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo区域 */
+        .logo {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .logo-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 16px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+        }
+
+        .logo-icon:hover {
+            transform: rotate(15deg);
+        }
+
+        .logo-icon img {
+            width: 40px;
+            height: 40px;
+            filter: invert(1);
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            color: #1d1d1f;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .logo p {
+            font-size: 14px;
+            color: #86868b;
+            line-height: 1.5;
+        }
+
+        /* 提示消息 */
+        .message-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .message.error {
+            background: rgba(255, 59, 48, 0.08);
+            color: #ff3b30;
+            border: 1px solid rgba(255, 59, 48, 0.2);
+        }
+
+        .message.success {
+            background: rgba(52, 199, 89, 0.08);
+            color: #34c759;
+            border: 1px solid rgba(52, 199, 89, 0.2);
+        }
+
+        /* 表单组 */
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 8px;
+            padding-left: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1px solid #e6e6e6;
+            border-radius: 14px;
+            font-size: 17px;
+            color: #1d1d1f;
+            background: #fbfbfb;
+            transition: all 0.3s ease;
+            caret-color: #0071e3;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0071e3;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+
+        .form-control:focus + .form-label {
+            color: #0071e3;
+        }
+
+        .form-control::placeholder {
+            color: #c7c7cc;
+        }
+
+        /* 验证码计数提示 */
+        .code-count {
+            position: absolute;
+            right: 18px;
+            bottom: 18px;
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #0071e3;
+            color: #ffffff;
+            /* 【修改1】增大登录按钮与发送按钮的间距，从12px改为20px */
+            margin-bottom: 20px;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3);
+        }
+
+        .btn-primary:active {
+            background: #0066cc;
+            transform: translateY(1px);
+        }
+
+        .btn-secondary {
+            background: #f5f5f7;
+            color: #1d1d1f;
+            /* 【新增】给发送验证码按钮也加底部间距，避免和容器底部贴太近 */
+            margin-bottom: 24px;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8ed;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-secondary:active {
+            background: #dcdcdc;
+            transform: translateY(1px);
+        }
+
+        /* 【强化】禁用状态样式，确保视觉上明显区分，且完全无法点击 */
+        .btn:disabled {
+            background: #f1f1f3 !important;
+            color: #c7c7cc !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            transform: none !important;
+            opacity: 0.8;
+        }
+
+        /* 加载动画 */
+        .loader {
+            width: 18px;
+            height: 18px;
+            border: 2px solid transparent;
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        .btn.loading .loader {
+            display: block;
+        }
+
+        .btn.loading .btn-text {
+            opacity: 0.8;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 移动端适配（更细腻的响应式） */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 36px 24px;
+                border-radius: 16px;
+            }
+
+            .logo-icon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .form-control {
+                padding: 14px 16px;
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            /* 移动端也保持按钮间距 */
+            .btn-primary {
+                margin-bottom: 16px;
+            }
+            
+            /* 移动端第三方登录图标调整 */
+            .third-party-btn {
+                width: 48px !important;
+                height: 48px !important;
+                padding: 0 !important;
+            }
+            
+            .third-party-btn img {
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                margin-bottom: 28px;
+            }
+        }
+
+        /* 新增：第三方登录样式 - 横向图标版 */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 28px 0 20px;
+            color: #86868b;
+            font-size: 14px;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e6e6e6;
+        }
+        
+        .divider span {
+            padding: 0 16px;
+        }
+        
+        /* 核心修改：横向排列，只显示图标 */
+        .third-party-login {
+            display: flex;
+            flex-direction: row; /* 改为横向排列 */
+            justify-content: center; /* 水平居中 */
+            gap: 20px; /* 图标之间的间距 */
+            margin-bottom: 8px;
+        }
+        
+        .third-party-btn {
+            /* 改为固定宽高的圆形按钮 */
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            background: #f8f8f9;
+            border: 1px solid #e6e6e6;
+            border-radius: 50%; /* 圆形 */
+            flex-shrink: 0; /* 防止压缩 */
+        }
+        
+        .third-party-btn:hover {
+            background: #f0f0f2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .third-party-btn:active {
+            background: #e9e9eb;
+            transform: translateY(0);
+        }
+        
+        .third-party-btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        /* 隐藏按钮文字 */
+        .third-party-btn .btn-text {
+            display: none;
+        }
+        
+        /* 各第三方按钮专属配色（hover效果） */
+        .github-btn:hover {
+            background: #f5f5f5;
+            border-color: #e0e0e0;
+        }
+        
+        .google-btn:hover {
+            background: #f5f9ff;
+            border-color: #d7e3fc;
+        }
+        
+        .linuxdo-btn:hover {
+            background: #f0f5fa;
+            border-color: #d4e0ec;
+        }
+        
+        /* 第三方按钮加载动画适配 */
+        .third-party-btn .loader {
+            border-top-color: #1d1d1f;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo区域 -->
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="../images/logo.png" alt="Logo">
+            </div>
+            <h1>登录 / 注册</h1>
+            <p>使用邮箱验证码安全登录你的账户</p>
+        </div>
+
+        <!-- 提示消息 -->
+        <div class="message-wrapper">
+            <div class="message" id="message"></div>
+        </div>
+
+        <!-- 表单区域 -->
+        <div class="form-group">
+            <label class="form-label" for="email">邮箱</label>
+            <input type="email" id="email" class="form-control" placeholder="请输入你的邮箱地址" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="verify_code">验证码</label>
+            <!-- 【修改1】移除 onpaste="return false;" 属性 -->
+            <input type="text" id="verify_code" class="form-control" placeholder="请输入邮箱收到的验证码" required maxlength="8">
+            <span class="code-count" id="codeCount">0/8</span>
+        </div>
+
+        <!-- 按钮区域（调整顺序：先登录按钮，后发送验证码按钮，间距更大） -->
+        <button class="btn btn-primary" id="loginBtn">
+            <span class="btn-text">登录</span>
+            <div class="loader"></div>
+        </button>
+
+        <button class="btn btn-secondary" id="sendCodeBtn">
+            <span class="btn-text">发送验证码</span>
+            <div class="loader"></div>
+        </button>
+    </div>
+
+    <script>
+        // 元素获取
+        const emailInput = document.getElementById('email');
+        const verifyCodeInput = document.getElementById('verify_code');
+        const sendCodeBtn = document.getElementById('sendCodeBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const messageEl = document.getElementById('message');
+        const codeCountEl = document.getElementById('codeCount');
+        
+        // 新增：第三方登录按钮获取
+        const githubLoginBtn = document.getElementById('githubLoginBtn');
+        const googleLoginBtn = document.getElementById('googleLoginBtn');
+        const linuxDoLoginBtn = document.getElementById('linuxDoLoginBtn');
+        // 新增：获取第三方登录区域元素
+        const thirdPartyDivider = document.getElementById('thirdPartyDivider');
+        const thirdPartyLogin = document.getElementById('thirdPartyLogin');
+
+        // 存储倒计时定时器，防止重复计时【新增：修复倒计时多实例问题】
+        let countdownTimer = null;
+
+        // 显示消息
+        function showMessage(text, type = 'error') {
+            messageEl.textContent = text;
+            messageEl.className = `message ${type} show`;
+            
+            // 3秒后隐藏
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+                setTimeout(() => {
+                    messageEl.textContent = '';
+                    messageEl.className = 'message';
+                }, 900);
+            }, 6000);
+        }
+
+        // 【修改2】移除禁止粘贴的事件监听代码
+        // verifyCodeInput.addEventListener('paste', e => e.preventDefault());
+        
+        // 验证码字符计数
+        verifyCodeInput.addEventListener('input', () => {
+            const length = verifyCodeInput.value.length;
+            codeCountEl.textContent = `${length}/8`;
+        });
+
+        // 设置按钮加载状态
+        function setBtnLoading(btn, isLoading) {
+            if (isLoading) {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            } else {
+                btn.classList.remove('loading');
+                // 只有非倒计时状态才启用按钮【修改2：避免加载结束后覆盖倒计时禁用】
+                if (!btn.classList.contains('countdown')) {
+                    btn.disabled = false;
+                }
+            }
+        }
+
+        // 验证码发送倒计时【重构：强化禁用逻辑】
+        function countdown(seconds) {
+            // 先清除旧定时器，防止叠加
+            if (countdownTimer) clearInterval(countdownTimer);
+            
+            // 标记按钮为倒计时状态，禁用并添加视觉标识
+            sendCodeBtn.disabled = true;
+            sendCodeBtn.classList.add('countdown');
+            let count = seconds;
+            sendCodeBtn.querySelector('.btn-text').textContent = `重新发送(${count}s)`;
+            
+            countdownTimer = setInterval(() => {
+                count--;
+                sendCodeBtn.querySelector('.btn-text').textContent = `重新发送(${count}s)`;
+                
+                if (count <= 0) {
+                    clearInterval(countdownTimer);
+                    countdownTimer = null;
+                    // 倒计时结束，恢复按钮状态
+                    sendCodeBtn.disabled = false;
+                    sendCodeBtn.classList.remove('countdown');
+                    sendCodeBtn.querySelector('.btn-text').textContent = '发送验证码';
+                }
+            }, 1000);
+        }
+
+        // 发送验证码
+        sendCodeBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            
+            // 基础校验
+            if (!email) {
+                showMessage('请输入邮箱地址');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showMessage('邮箱格式错误');
+                return;
+            }
+
+            // 设置加载状态
+            setBtnLoading(sendCodeBtn, true);
+
+            try {
+                const response = await fetch('api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'send_code',
+                        email: email
+                    })
+                });
+                
+                const res = await response.json();
+                
+                if (res.code === 200) {
+                    showMessage(res.msg, 'success');
+                    countdown(90); // 90s倒计时
+                } else {
+                    showMessage(res.msg);
+                    // 接口失败时恢复按钮状态
+                    setBtnLoading(sendCodeBtn, false);
+                }
+            } catch (error) {
+                showMessage('网络错误，请重试');
+                // 网络错误时恢复按钮状态
+                setBtnLoading(sendCodeBtn, false);
+            }
+        });
+
+        // 登录
+        loginBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            const verifyCode = verifyCodeInput.value.trim();
+            
+            // 基础校验
+            if (!email || !verifyCode) {
+                showMessage('请填写邮箱和验证码');
+                return;
+            }
+
+            // 设置加载状态
+            setBtnLoading(loginBtn, true);
+
+            try {
+                const response = await fetch('api.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        action: 'login',
+                        email: email,
+                        verify_code: verifyCode
+                    })
+                });
+                
+                const res = await response.json();
+                
+                if (res.code === 200) {
+                    showMessage(res.msg, 'success');
+                    // 跳转至home页面（增加动画过渡）
+                    setTimeout(() => {
+                        window.location.href = res.data.redirect;
+                    }, 1750);
+                } else {
+                    showMessage(res.msg);
+                }
+            } catch (error) {
+                showMessage('网络错误，请重试');
+            } finally {
+                // 取消加载状态
+                setBtnLoading(loginBtn, false);
+            }
+        });
+    </script>
+</body>
+</html>

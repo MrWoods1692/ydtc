@@ -349,7 +349,7 @@
             "description": "网页端像素绘画工具，支持组件化画布，多画布同时绘画，色彩变量",
             "icon": "https:\/\/pixel-motion.yysuni.com\/favicon.svg",
             "type": "web",
-            "usage": 1000,
+            "usage": 1010,
             "adapted_systems": [
                 "windows",
                 "macos",
@@ -383,7 +383,7 @@
             "description": "可批量编辑图片 的所有工具  |  你的在线图片编辑器就在这里，而且永远免费！",
             "icon": "\/img\/favicons-img\/favicon-16x16.png",
             "type": "web",
-            "usage": 8899,
+            "usage": 8900,
             "adapted_systems": [
                 "windows",
                 "macos",
