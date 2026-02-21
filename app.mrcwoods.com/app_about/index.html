@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
     <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
     <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
-    
+
     <style>
         /* 全局样式重置与基础配置 */
         * {
@@ -51,11 +52,13 @@
             flex-direction: column;
             letter-spacing: 0.2px;
         }
+
         a {
             text-decoration: none;
-            cursor: pointer; /* 添加手型光标 */
+            cursor: pointer;
+            /* 添加手型光标 */
         }
-        
+
         /* 可复制链接样式 */
         .copyable-link {
             position: relative;
@@ -66,12 +69,12 @@
             text-underline-offset: 4px;
             transition: var(--transition);
         }
-        
+
         .copyable-link:hover {
             color: var(--secondary-color);
             text-decoration-style: solid;
         }
-        
+
         .copyable-link::after {
             content: "";
             display: inline-block;
@@ -82,7 +85,7 @@
             opacity: 0.7;
             vertical-align: middle;
         }
-        
+
         /* 回到顶部按钮 */
         .back-to-top {
             position: fixed;
@@ -339,7 +342,8 @@
             flex-wrap: wrap;
         }
 
-        .qq-link-btn, .copy-qq-btn {
+        .qq-link-btn,
+        .copy-qq-btn {
             padding: 10px 24px;
             border-radius: 8px;
             font-size: 16px;
@@ -387,7 +391,8 @@
             box-shadow: var(--active-shadow);
         }
 
-        .copy-qq-btn svg, .qq-link-btn svg {
+        .copy-qq-btn svg,
+        .qq-link-btn svg {
             width: 20px;
             height: 20px;
             fill: currentColor;
@@ -586,7 +591,8 @@
             box-shadow: 0 4px 12px rgba(64, 150, 255, 0.15);
         }
 
-        .platform-icon img, .platform-icon svg {
+        .platform-icon img,
+        .platform-icon svg {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -793,30 +799,33 @@
         /* 备案号链接样式，去除下划线（可选），保证点击体验 */
         .icp-record-link {
             color: #666;
-            text-decoration: none; /* 去除默认下划线，如需保留可删除此行 */
+            text-decoration: none;
+            /* 去除默认下划线，如需保留可删除此行 */
         }
 
         .icp-record-link:hover {
-            color: #333; /* 鼠标悬浮加深颜色，提升交互体验 */
-            text-decoration: underline; /* 悬浮显示下划线，提示可点击 */
+            color: #333;
+            /* 鼠标悬浮加深颜色，提升交互体验 */
+            text-decoration: underline;
+            /* 悬浮显示下划线，提示可点击 */
         }
 
         /* 修复联系交流卡片图标 */
         .qq-card .card-title .custom-svg-icon {
             fill: var(--secondary-color);
         }
-        
+
         /* 修复链接样式 */
         .qq-group .value a {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
         }
-        
+
         .qq-group .value a:hover {
             text-decoration: underline;
         }
-        
+
         /* 确保所有卡片标题都有图标 */
         .card-title:has(img):not(:has(svg)) {
             /* 如果坚持用img，需要调整样式 */
@@ -868,7 +877,8 @@
                 gap: 12px;
             }
 
-            .qq-link-btn, .copy-qq-btn {
+            .qq-link-btn,
+            .copy-qq-btn {
                 flex: 1;
                 justify-content: center;
                 padding: 10px 16px;
@@ -907,34 +917,38 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- 回到顶部按钮 -->
     <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
-    <img src="../svg/返回顶部.svg" style="width:20px; height:20px; fill:currentColor;" alt="返回顶部">
+        <img src="../svg/返回顶部.svg" style="width:20px; height:20px; fill:currentColor;" alt="返回顶部">
     </div>
 
     <!-- 版本信息卡片 - 使用信息SVG图标 -->
     <div class="card">
         <div class="card-title">
-    <img src="../svg/信息.svg" style="width:20px; height:20px; fill:currentColor;" alt="信息">
+            <img src="../svg/信息.svg" style="width:20px; height:20px; fill:currentColor;" alt="信息">
             当前版本
         </div>
         <div class="version-info">
             <span class="label">版本号：</span>
-            <span class="value">v0.5.3</span>
+            <span class="value">v0.6.0</span>
             <span class="badge">Beta</span>
         </div>
 
         <!-- 优化的开源信息显示 -->
         <div class="open-source-info">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
             </svg>
             <span class="license">开源协议：Apache-2.0 license</span>
-            <span class="github-link copyable-link" data-link="https://github.com/MrWoods1692/ydtc" onclick="copyLink(this)">
+            <span class="github-link copyable-link" data-link="https://github.com/MrWoods1692/ydtc"
+                onclick="copyLink(this)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
                 查看源码
             </span>
@@ -946,38 +960,40 @@
 
     </div>
 
-<div class="card qq-card">
-    <div class="card-title">
-        联系 & 交流
+    <div class="card qq-card">
+        <div class="card-title">
+            联系 & 交流
+        </div>
+
+        <!-- QQ群 -->
+        <div class="qq-group">
+            <span class="label">腾讯QQ群聊：</span>
+            <span class="value copyable-link" data-link="1077208238" onclick="copyLink(this)">1077208238</span>
+        </div>
+
+        <!-- Telegram频道 -->
+        <div class="qq-group">
+            <span class="label">Telegram频道：</span>
+            <span class="value">
+                <span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods"
+                    onclick="copyLink(this)">点击复制链接</span>
+            </span>
+        </div>
+
+        <!-- Telegram群组 -->
+        <div class="qq-group">
+            <span class="label">Telegram群组：</span>
+            <span class="value">
+                <span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl"
+                    onclick="copyLink(this)">点击复制链接</span>
+            </span>
+        </div>
     </div>
-    
-    <!-- QQ群 -->
-    <div class="qq-group">
-        <span class="label">腾讯QQ群聊：</span>
-        <span class="value copyable-link" data-link="1077208238" onclick="copyLink(this)">1077208238</span>
-    </div>
-    
-    <!-- Telegram频道 -->
-    <div class="qq-group">
-        <span class="label">Telegram频道：</span>
-        <span class="value">
-            <span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods" onclick="copyLink(this)">点击复制链接</span>
-        </span>
-    </div>
-    
-    <!-- Telegram群组 -->
-    <div class="qq-group">
-        <span class="label">Telegram群组：</span>
-        <span class="value">
-            <span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl" onclick="copyLink(this)">点击复制链接</span>
-        </span>
-    </div>
-</div>
 
     <!-- 开发者详细 -->
     <div class="card">
         <div class="card-title">
-    <img src="../svg/开发者.svg" style="width:20px; height:20px; fill:currentColor;" alt="开发者">
+            <img src="../svg/开发者.svg" style="width:20px; height:20px; fill:currentColor;" alt="开发者">
             开发者
         </div>
         <div class="developer-info">
@@ -986,10 +1002,12 @@
             </div>
             <div class="developer-desc">
                 <p><strong>Name：</strong>Mr.C.Woods</p>
-                <p><strong>擅长领域：</strong>HTML/CSS/JavaScript、Vue/React框架开发、API接口对接、前端工程化，数据库设计与操作（MySQL、SQLite）、接口设计与开发（RESTful API、鉴权机制 JWT/Session）、服务器部署与运维（Linux、Nginx、Docker 基础）</p>
+                <p><strong>擅长领域：</strong>HTML/CSS/JavaScript、Vue/React框架开发、API接口对接、前端工程化，数据库设计与操作（MySQL、SQLite）、接口设计与开发（RESTful
+                    API、鉴权机制 JWT/Session）、服务器部署与运维（Linux、Nginx、Docker 基础）</p>
                 <p><strong>从业经验：</strong>3年C++编程经验、2年PHP开发经验</p>
                 <p><strong>个人理念：</strong>以用户体验为核心，用技术解决实际问题，持续学习和优化技术栈</p>
-                <p><strong>企业邮箱：</strong><span class="copyable-link" data-link="mail@mrcwoods.com" onclick="copyLink(this)">mail@mrcwoods.com</span></p>
+                <p><strong>企业邮箱：</strong><span class="copyable-link" data-link="mail@mrcwoods.com"
+                        onclick="copyLink(this)">mail@mrcwoods.com</span></p>
                 <p><strong>联系方式：</strong>可通过QQ群或企业邮箱进行沟通协作</p>
             </div>
         </div>
@@ -998,60 +1016,60 @@
     <!-- 新增：技术栈板块 - 添加Vue和SCSS -->
     <div class="card">
         <div class="card-title">
-    <img src="../svg/技术栈.svg" style="width:20px; height:20px; fill:currentColor;" alt="技术栈">
+            <img src="../svg/技术栈.svg" style="width:20px; height:20px; fill:currentColor;" alt="技术栈">
             技术栈
         </div>
         <div class="tech-stack">
             <div class="tech-item">
-                    <img src="../svg/html.svg" style="width:20px; height:20px; fill:currentColor;" alt="html">
+                <img src="../svg/html.svg" style="width:20px; height:20px; fill:currentColor;" alt="html">
                 <div class="tech-name">HTML</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/css.svg" style="width:20px; height:20px; fill:currentColor;" alt="css">
+                <img src="../svg/css.svg" style="width:20px; height:20px; fill:currentColor;" alt="css">
                 <div class="tech-name">CSS</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/JavaScript.svg" style="width:20px; height:20px; fill:currentColor;" alt="js">
+                <img src="../svg/JavaScript.svg" style="width:20px; height:20px; fill:currentColor;" alt="js">
                 <div class="tech-name">JavaScript</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/sqlite.svg" style="width:20px; height:20px; fill:currentColor;" alt="sqlite">
+                <img src="../svg/sqlite.svg" style="width:20px; height:20px; fill:currentColor;" alt="sqlite">
                 <div class="tech-name">SQLite</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/nginx.svg" style="width:20px; height:20px; fill:currentColor;" alt="nginx">
+                <img src="../svg/nginx.svg" style="width:20px; height:20px; fill:currentColor;" alt="nginx">
                 <div class="tech-name">Nginx</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/php.svg" style="width:20px; height:20px; fill:currentColor;" alt="php">
+                <img src="../svg/php.svg" style="width:20px; height:20px; fill:currentColor;" alt="php">
                 <div class="tech-name">PHP</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/mysql.svg" style="width:20px; height:20px; fill:currentColor;" alt="mysql">
+                <img src="../svg/mysql.svg" style="width:20px; height:20px; fill:currentColor;" alt="mysql">
                 <div class="tech-name">MySQL</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/linux.svg" style="width:20px; height:20px; fill:currentColor;" alt="linux">
+                <img src="../svg/linux.svg" style="width:20px; height:20px; fill:currentColor;" alt="linux">
                 <div class="tech-name">Linux</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/Vue.svg" style="width:20px; height:20px; fill:currentColor;" alt="vue">
+                <img src="../svg/Vue.svg" style="width:20px; height:20px; fill:currentColor;" alt="vue">
                 <div class="tech-name">Vue</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/scss.svg" style="width:20px; height:20px; fill:currentColor;" alt="scss">
+                <img src="../svg/scss.svg" style="width:20px; height:20px; fill:currentColor;" alt="scss">
                 <div class="tech-name">SCSS</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/Rust.svg" style="width:20px; height:20px; fill:currentColor;" alt="Rust">
+                <img src="../svg/Rust.svg" style="width:20px; height:20px; fill:currentColor;" alt="Rust">
                 <div class="tech-name">Rust</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/Tauri.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
+                <img src="../svg/Tauri.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
                 <div class="tech-name">Tauri</div>
             </div>
             <div class="tech-item">
-                    <img src="../svg/bt.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
+                <img src="../svg/bt.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
                 <div class="tech-name">bt</div>
             </div>
         </div>
@@ -1060,15 +1078,17 @@
     <!-- 合作平台 - 每个平台项hover显示信息SVG图标 -->
     <div class="card">
         <div class="card-title">
-    <img src="../svg/合作平台.svg" style="width:20px; height:20px; fill:currentColor;" alt="合作平台">
+            <img src="../svg/合作平台.svg" style="width:20px; height:20px; fill:currentColor;" alt="合作平台">
             合作平台
         </div>
         <div class="platform-list">
             <!-- 阿里巴巴矢量图标库 -->
-            <div class="platform-item copyable-item" data-link="https://www.iconfont.cn/" onclick="copyLinkFromElement(this)">
+            <div class="platform-item copyable-item" data-link="https://www.iconfont.cn/"
+                onclick="copyLinkFromElement(this)">
                 <div class="platform-header">
                     <div class="platform-icon">
-                        <img src="https://img.alicdn.com/imgextra/i4/O1CN01XZe8pH1USpiUNT1QN_ !!6000000002517-2-tps-114-114.png" alt="阿里巴巴矢量图标库">
+                        <img src="https://img.alicdn.com/imgextra/i4/O1CN01XZe8pH1USpiUNT1QN_ !!6000000002517-2-tps-114-114.png"
+                            alt="阿里巴巴矢量图标库">
                     </div>
                     <div class="platform-name">阿里巴巴矢量图标库</div>
                 </div>
@@ -1078,7 +1098,8 @@
             </div>
 
             <!-- 云智API -->
-            <div class="platform-item copyable-item" data-link="https://yunzhiapi.cn/" onclick="copyLinkFromElement(this)">
+            <div class="platform-item copyable-item" data-link="https://yunzhiapi.cn/"
+                onclick="copyLinkFromElement(this)">
                 <div class="platform-header">
                     <div class="platform-icon">
                         <img src="https://yunzhiapi.cn/favicon.ico?v=1770787001 " alt="云智API">
@@ -1086,16 +1107,19 @@
                     <div class="platform-name">云智API</div>
                 </div>
                 <div class="platform-desc">
-                    为开发者打造的优质接口服务平台，基于 PHP 8.0+ JIT 引擎构建的高性能 API 聚合服务。支持 JSON 和 TEXT 标准输出,无论小程序、Web 站还是 APP,一行代码极速接入,为高新产业赋能。
+                    为开发者打造的优质接口服务平台，基于 PHP 8.0+ JIT 引擎构建的高性能 API 聚合服务。支持 JSON 和 TEXT 标准输出,无论小程序、Web 站还是
+                    APP,一行代码极速接入,为高新产业赋能。
                 </div>
             </div>
 
             <!-- 失控图床 -->
-            <div class="platform-item copyable-item" data-link="https://img.scdn.io/" onclick="copyLinkFromElement(this)">
+            <div class="platform-item copyable-item" data-link="https://img.scdn.io/"
+                onclick="copyLinkFromElement(this)">
                 <div class="platform-header">
                     <div class="platform-icon">
                         <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 100 100">
-                        <img src="https://th.bing.com/th/id/ODF.jEyMgH7pRez4paB6waupXA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2 " alt="失控图床">
+                            <img src="https://th.bing.com/th/id/ODF.jEyMgH7pRez4paB6waupXA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2 "
+                                alt="失控图床">
                         </svg>
                     </div>
                     <div class="platform-name">失控图床</div>
@@ -1106,7 +1130,8 @@
             </div>
 
             <!-- 阿里云 -->
-            <div class="platform-item copyable-item" data-link="https://www.aliyun.com/" onclick="copyLinkFromElement(this)">
+            <div class="platform-item copyable-item" data-link="https://www.aliyun.com/"
+                onclick="copyLinkFromElement(this)">
                 <div class="platform-header">
                     <div class="platform-icon">
                         <img src="../svg/阿里云官方-中文LOGO.svg" alt="阿里云">
@@ -1119,7 +1144,8 @@
             </div>
 
             <!-- 数驰云 -->
-            <div class="platform-item copyable-item" data-link="https://dns.qxnqc.cn/" onclick="copyLinkFromElement(this)">
+            <div class="platform-item copyable-item" data-link="https://dns.qxnqc.cn/"
+                onclick="copyLinkFromElement(this)">
                 <div class="platform-header">
                     <div class="platform-icon">
                         <img src="https://dns.qxnqc.cn/favicon.ico " alt="数驰云">
@@ -1137,16 +1163,40 @@
     <!-- 更新日志（可折叠） -->
     <div class="card">
         <div class="card-title">
-    <img src="../svg/更新日志.svg" style="width:20px; height:20px; fill:currentColor;" alt="更新日志">
+            <img src="../svg/更新日志.svg" style="width:20px; height:20px; fill:currentColor;" alt="更新日志">
             更新日志
         </div>
         <div class="changelog-list">
+
+
+            <!-- v0.6.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.6.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z" />
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-21</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加Linux、Windows客户端</li>
+                            <li>优化下载功能</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
             <!-- v0.5.3 版本 -->
             <div class="changelog-item">
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.5.3</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1163,13 +1213,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- v0.5.2 版本 -->
             <div class="changelog-item">
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.5.2</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1178,8 +1228,10 @@
                         <p><strong>更新：</strong></p>
                         <ul>
                             <li>新建Telegram群组和频道</li>
-                            <li>群组<span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl" onclick="copyLink(this)">https://t.me/+gTx_i8DCfdozYzRl</span></li>
-                            <li>频道<span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods" onclick="copyLink(this)">https://t.me/boost/ydtcmrcwoods</span></li>
+                            <li>群组<span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl"
+                                    onclick="copyLink(this)">https://t.me/+gTx_i8DCfdozYzRl</span></li>
+                            <li>频道<span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods"
+                                    onclick="copyLink(this)">https://t.me/boost/ydtcmrcwoods</span></li>
                             <li>迁移并扩展服务器</li>
                             <li>加强网站安全防护</li>
                         </ul>
@@ -1192,7 +1244,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.5.1</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1212,7 +1264,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.5.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1236,7 +1288,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.4.3</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1258,7 +1310,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.4.2</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1280,7 +1332,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.4.1</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1304,7 +1356,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.4.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1331,7 +1383,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.3.1</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1339,7 +1391,8 @@
                         <p><strong>更新时间：</strong>2026-02-13</p>
                         <p><strong>更新：</strong></p>
                         <ul>
-                            <li>添加新域名<span class="copyable-link" data-link="app.mduge.com" onclick="copyLink(this)">app.mduge.com</span></li>
+                            <li>添加新域名<span class="copyable-link" data-link="app.mduge.com"
+                                    onclick="copyLink(this)">app.mduge.com</span></li>
                             <li>添加企业备案（苏ICP备2024119784号-1）</li>
                         </ul>
                     </div>
@@ -1351,7 +1404,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.3.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1378,7 +1431,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.2.1</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1398,7 +1451,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.2.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1419,7 +1472,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.1.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1428,7 +1481,8 @@
                         <p><strong>主要更新：</strong></p>
                         <ul>
                             <li>完成完整基本功能</li>
-                            <li>域名<span class="copyable-link" data-link="app.mrcwoods.com" onclick="copyLink(this)">app.mrcwoods.com</span></li>
+                            <li>域名<span class="copyable-link" data-link="app.mrcwoods.com"
+                                    onclick="copyLink(this)">app.mrcwoods.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -1439,7 +1493,7 @@
                 <div class="changelog-header" onclick="toggleChangelog(this)">
                     <span class="changelog-version">v0.0.0</span>
                     <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-                        <path d="M7 10l5 5 5-5z"/>
+                        <path d="M7 10l5 5 5-5z" />
                     </svg>
                 </div>
                 <div class="changelog-content">
@@ -1463,7 +1517,7 @@
     <!-- 复制成功提示框 -->
     <div class="copy-toast" id="copyToast">
         <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
         </svg>
         Copy Success！
     </div>
@@ -1473,32 +1527,32 @@
         function copyLink(element) {
             // 获取要复制的链接
             const link = element.getAttribute('data-link');
-            
+
             // 创建临时文本区域
             const tempInput = document.createElement('textarea');
             tempInput.value = link;
             document.body.appendChild(tempInput);
-            
+
             // 选中并复制
             tempInput.select();
             document.execCommand('copy');
-            
+
             // 移除临时元素
             document.body.removeChild(tempInput);
-            
+
             // 显示复制成功提示
             showCopyToast();
-            
+
             // 阻止默认行为
             return false;
         }
-        
+
         // 复制平台链接的函数
         function copyLinkFromElement(element) {
             const link = element.getAttribute('data-link');
             copyTextToClipboard(link);
         }
-        
+
         // 通用复制文本函数
         function copyTextToClipboard(text) {
             // 现代浏览器使用 Clipboard API
@@ -1521,12 +1575,12 @@
                 showCopyToast();
             }
         }
-        
+
         // 显示复制成功提示
         function showCopyToast() {
             const toast = document.getElementById('copyToast');
             toast.classList.add('show');
-            
+
             // 3秒后隐藏提示
             setTimeout(() => {
                 toast.classList.remove('show');
@@ -1542,7 +1596,7 @@
             content.classList.toggle('expanded');
             toggleIcon.classList.toggle('rotated');
         }
-        
+
         // 回到顶部功能
         function scrollToTop() {
             window.scrollTo({
@@ -1552,7 +1606,7 @@
         }
 
         // 监听滚动显示/隐藏回到顶部按钮
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const backToTopBtn = document.getElementById('backToTop');
             if (window.scrollY > 300) {
                 backToTopBtn.classList.add('show');
@@ -1562,7 +1616,7 @@
         });
 
         // 初始化页面动画
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // 给所有卡片添加渐入动画
             const cards = document.querySelectorAll('.card');
             cards.forEach((card, index) => {
@@ -1574,4 +1628,5 @@
         });
     </script>
 </body>
+
 </html>
