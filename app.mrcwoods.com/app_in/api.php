@@ -339,7 +339,7 @@ try {
             'code' => 200,
             'msg' => '登录成功',
             'data' => [
-                'redirect' => '../main/',
+                'redirect' => '../app_main/',
                 'token' => $newToken
             ]
         ];
