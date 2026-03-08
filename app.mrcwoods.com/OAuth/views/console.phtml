@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发者控制台 - OAuth 2.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-red: #ff3b30;
+            --apple-green: #34c759;
+            --apple-gray-1: #f5f5f7;
+            --apple-gray-2: #e8e8ed;
+            --apple-gray-3: #d2d2d7;
+            --apple-gray-4: #86868b;
+            --apple-gray-5: #6e6e73;
+            --apple-gray-6: #1d1d1f;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.2s ease;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--apple-gray-1);
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            color: var(--apple-gray-6);
+            line-height: 1.6;
+        }
+
+        /* 苹果风格窗口控制按钮 */
+        .window-controls {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .window-control:hover {
+            opacity: 0.8;
+        }
+
+        .control-red {
+            background-color: #ff5f57;
+        }
+
+        .control-yellow {
+            background-color: #ffbd2e;
+        }
+
+        .control-green {
+            background-color: #28ca42;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--apple-whrite) 0%, var(--apple-blue-hover) 100%);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar h1 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .navbar .avatar {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md), var(--shadow-sm);
+            margin-bottom: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), var(--shadow-sm);
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--apple-gray-1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--apple-gray-6);
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header h2 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--apple-blue);
+        }
+
+        .card-body {
+            padding: 24px;
+            background-color: #ffffff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-gray-6);
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: var(--apple-red);
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--apple-gray-3);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            transition: var(--transition);
+            background-color: #ffffff;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        }
+
+        .form-group input:disabled,
+        .form-group textarea:disabled {
+            background: var(--apple-gray-1);
+            color: var(--apple-gray-5);
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--apple-gray-4);
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .form-hint svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--apple-gray-4);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-primary {
+            background: var(--apple-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--apple-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 113, 227, 0.2);
+        }
+
+        .btn-secondary {
+            background: var(--apple-gray-1);
+            color: var(--apple-gray-6);
+        }
+
+        .btn-secondary:hover {
+            background: var(--apple-gray-2);
+        }
+
+        .btn-danger {
+            background: #fff;
+            color: var(--apple-red);
+            border: 1px solid var(--apple-red);
+        }
+
+        .btn-danger:hover {
+            background: #ffebee;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        .empty-state .icon {
+            width: 80px;
+            height: 80px;
+            background: var(--apple-gray-1);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .empty-state .icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--apple-gray-5);
+        }
+
+        .empty-state h3 {
+            font-size: 18px;
+            color: var(--apple-gray-6);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+            color: var(--apple-gray-4);
+            margin-bottom: 24px;
+        }
+
+        .credentials-box {
+            background: var(--apple-gray-1);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--apple-gray-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credentials-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-green));
+        }
+
+        .credential-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--apple-gray-2);
+        }
+
+        .credential-item:last-child {
+            border-bottom: none;
+        }
+
+        .credential-item label {
+            font-size: 12px;
+            color: var(--apple-gray-4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+
+        .credential-item .value {
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--apple-gray-6);
+            word-break: break-all;
+            text-align: right;
+            max-width: 500px;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--apple-blue);
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 12px;
+            transition: var(--transition);
+            border-radius: var(--radius-sm);
+        }
+
+        .copy-btn:hover {
+            color: var(--apple-blue-hover);
+            background-color: rgba(0, 113, 227, 0.05);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--apple-gray-6);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.success {
+            background: var(--apple-green);
+        }
+
+        .toast.error {
+            background: var(--apple-red);
+        }
+
+        .alert {
+            padding: 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            font-size: 14px;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .alert svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .alert-warning {
+            background: #fff8e6;
+            color: #e65100;
+            border: 1px solid #ffcc80;
+        }
+
+        .alert-info {
+            background: #e8f4ff;
+            color: var(--apple-blue);
+            border: 1px solid #90caf9;
+        }
+
+        .alert-success {
+            background: #e8f8e8;
+            color: var(--apple-green);
+            border: 1px solid #a5d6a7;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transform: translateY(-20px);
+            animation: slideUp 0.2s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        .modal-content h3 {
+            font-size: 18px;
+            color: var(--apple-gray-6);
+            margin-bottom: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-content h3 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--apple-red);
+        }
+
+        .modal-content p {
+            font-size: 14px;
+            color: var(--apple-gray-4);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            background: var(--apple-gray-1);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            border: 1px solid var(--apple-gray-2);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: #f0f0f7;
+        }
+
+        .info-item label {
+            font-size: 12px;
+            color: var(--apple-gray-4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .info-item span {
+            font-size: 14px;
+            color: var(--apple-gray-6);
+            font-weight: 500;
+        }
+
+        /* 文档样式优化 */
+        .docs-section {
+            margin-bottom: 32px;
+        }
+
+        .docs-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--apple-gray-6);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--apple-gray-2);
+        }
+
+        .docs-section h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--apple-blue);
+            margin: 20px 0 12px 0;
+        }
+
+        .docs-section p {
+            margin-bottom: 12px;
+            color: var(--apple-gray-5);
+        }
+
+        .docs-section ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            color: var(--apple-gray-5);
+        }
+
+        .docs-section li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background: var(--apple-gray-1) !important;
+            padding: 16px !important;
+            border-radius: var(--radius-md) !important;
+            margin: 12px 0 20px 0 !important;
+            overflow-x: auto !important;
+            font-size: 12px !important;
+            border: 1px solid var(--apple-gray-2) !important;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: attr(data-lang);
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 10px;
+            color: var(--apple-gray-4);
+            text-transform: uppercase;
+        }
+
+        .code-block code {
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace !important;
+        }
+
+        .api-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .api-table th,
+        .api-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--apple-gray-2);
+        }
+
+        .api-table th {
+            background-color: var(--apple-gray-1);
+            font-weight: 600;
+            color: var(--apple-gray-6);
+            font-size: 13px;
+        }
+
+        .api-table td {
+            color: var(--apple-gray-5);
+            font-size: 13px;
+        }
+
+        .api-table tr:hover td {
+            background-color: rgba(0, 113, 227, 0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-primary {
+            background-color: rgba(0, 113, 227, 0.1);
+            color: var(--apple-blue);
+        }
+
+        .badge-danger {
+            background-color: rgba(255, 59, 48, 0.1);
+            color: var(--apple-red);
+        }
+
+        .badge-success {
+            background-color: rgba(52, 199, 89, 0.1);
+            color: var(--apple-green);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .window-controls {
+                top: 12px;
+                left: 12px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .card-body {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <?php if ($appData): ?>
+        <!-- 已有应用 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 4h-4L7 16H4v3h16v-3h-3l-4-12zm-7 9L15 6h-4l-2 7z"/>
+                    </svg>
+                    我的应用
+                </h2>
+                <button class="btn btn-danger" onclick="showDeleteModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                    删除应用
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    <div>
+                        <strong>安全提醒</strong><br>
+                        请妥善保管您的客户端密钥，不要泄露给他人。如需重新生成，请点击下方按钮。
+                    </div>
+                </div>
+
+                <form id="appForm">
+                    <input type="hidden" name="action" value="update">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>应用名称 <span class="required">*</span></label>
+                            <input type="text" name="name" value="<?= $appData['name'] ?>" required placeholder="您的应用名称">
+                        </div>
+
+                        <div class="form-group">
+                            <label>应用主页</label>
+                            <input type="url" name="homepage" value="<?= $appData['homepage'] ?>" placeholder="https://example.com">
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                                </svg>
+                                应用的官方网站地址
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>应用描述</label>
+                        <textarea name="description" placeholder="简要描述您的应用功能和服务..."><?= $appData['description'] ?></textarea>
+                        <p class="form-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                            </svg>
+                            在授权页面展示给用户
+                        </p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>应用图标</label>
+                            <input type="url" name="icon" value="<?= $appData['icon'] ?>" placeholder="https://example.com/icon.png">
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                </svg>
+                                推荐尺寸 128x128，支持 PNG/JPG，大小不超过2MB
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>回调地址 <span class="required">*</span></label>
+                            <input type="url" name="redirect_uri" value="<?= $appData['redirect_uri'] ?>" required placeholder="https://example.com/callback">
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                </svg>
+                                用户授权后重定向到此地址，必须使用HTTPS
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="credentials-box">
+                        <div class="credential-item">
+                            <label>Client ID</label>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="value" id="clientId"><?= $appData['client_id'] ?></span>
+                                <button type="button" class="copy-btn" onclick="copyText('clientId')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
+                                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                    </svg>
+                                    复制
+                                </button>
+                            </div>
+                        </div>
+                        <div class="credential-item">
+                            <label>Client Secret</label>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="value" id="clientSecret"><?= $appData['client_secret'] ?></span>
+                                <button type="button" class="copy-btn" onclick="copyText('clientSecret')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
+                                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                    </svg>
+                                    复制
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                            </svg>
+                            保存修改
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="regenerateSecret()">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v3l-4-4 4-4v3c1.57 0 3.03-.46 4.26-1.24l1.56 1.56c1.5-1.25 2.44-3.22 2.44-5.32 0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            重新生成密钥
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <?php else: ?>
+        <!-- 创建新应用 -->
+        <div class="card">
+            <div class="empty-state">
+                <div class="icon">
+                    <img src="https://app.mrcwoods.com/images/logo.png" alt="logo">
+                </div>
+                <h3>创建您的应用</h3>
+                <p>每个账户只能创建一个应用，创建后即可获取OAuth 2.0凭证</p>
+            </div>
+            <div class="card-body" style="padding-top: 0;">
+                <form id="appForm">
+                    <input type="hidden" name="action" value="create">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>应用名称 <span class="required">*</span></label>
+                            <input type="text" name="name" placeholder="您的应用名称" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>应用主页</label>
+                            <input type="url" name="homepage" placeholder="https://example.com">
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                                </svg>
+                                应用的官方网站地址
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>应用描述</label>
+                        <textarea name="description" placeholder="简要描述您的应用功能和服务..."></textarea>
+                        <p class="form-hint">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                            </svg>
+                            在授权页面展示给用户
+                        </p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>应用图标</label>
+                            <input type="url" name="icon" placeholder="https://example.com/icon.png">
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                </svg>
+                                推荐尺寸 128x128，支持 PNG/JPG，大小不超过2MB
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>回调地址 <span class="required">*</span></label>
+                            <input type="url" name="redirect_uri" placeholder="https://example.com/callback" required>
+                            <p class="form-hint">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                                </svg>
+                                用户授权后重定向到此地址，必须使用HTTPS
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                            创建应用
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <!-- 使用说明 -->
+        <div class="card">
+            <div class="card-header">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/>
+                    </svg>
+                    OAuth 2.0 文档
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="docs-section">
+                    <h3>OAuth 2.0 授权流程</h3>
+                    <p>本平台采用 OAuth 2.0 授权码模式（Authorization Code Flow），这是最安全且推荐的授权方式。</p>
+                    
+                    <h4>1. 引导用户授权</h4>
+                    <p>将用户重定向到授权服务器的授权端点，请求用户授权：</p>
+                    <pre class="code-block" data-lang="http">
+GET /OAuth/public/authorize.php
+  ?client_id=YOUR_CLIENT_ID
+  &redirect_uri=YOUR_REDIRECT_URI
+  &response_type=code
+  &scope=basic
+  &state=RANDOM_STRING</pre>
+                    
+                    <table class="api-table">
+                        <tr>
+                            <th>参数</th>
+                            <th>是否必填</th>
+                            <th>说明</th>
+                        </tr>
+                        <tr>
+                            <td>client_id</td>
+                            <td>是</td>
+                            <td>您的应用客户端ID</td>
+                        </tr>
+                        <tr>
+                            <td>redirect_uri</td>
+                            <td>是</td>
+                            <td>授权成功后的回调地址，必须与应用配置的一致</td>
+                        </tr>
+                        <tr>
+                            <td>response_type</td>
+                            <td>是</td>
+                            <td>固定值：code</td>
+                        </tr>
+                        <tr>
+                            <td>scope</td>
+                            <td>否</td>
+                            <td>请求的权限范围，目前仅支持 basic</td>
+                        </tr>
+                        <tr>
+                            <td>state</td>
+                            <td>是</td>
+                            <td>随机字符串，用于防止CSRF攻击</td>
+                        </tr>
+                    </table>
+
+                    <h4>2. 接收授权码</h4>
+                    <p>用户同意授权后，授权服务器会将用户重定向到您的回调地址，并附带授权码：</p>
+                    <pre class="code-block" data-lang="http">
+GET YOUR_REDIRECT_URI
+  ?code=AUTHORIZATION_CODE
+  &state=RANDOM_STRING</pre>
+                    
+                    <p>如果用户拒绝授权，将返回错误信息：</p>
+                    <pre class="code-block" data-lang="http">
+GET YOUR_REDIRECT_URI
+  ?error=access_denied
+  &error_description=User denied the request
+  &state=RANDOM_STRING</pre>
+
+                    <h4>3. 换取访问令牌</h4>
+                    <p>在您的服务器端，使用授权码换取访问令牌：</p>
+                    <pre class="code-block" data-lang="http">
+POST /OAuth/public/token.php
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&code=AUTHORIZATION_CODE
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&redirect_uri=YOUR_REDIRECT_URI</pre>
+                    
+                    <p>成功响应：</p>
+                    <pre class="code-block" data-lang="json">
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 86400,
+  "refresh_token": "5f9b7c8d9e8f7a6b5c4d3e2f1a0b9c8d"
+}</pre>
+
+                    <h4>4. 使用访问令牌获取用户信息</h4>
+                    <p>使用访问令牌调用资源服务器API获取用户信息：</p>
+                    <pre class="code-block" data-lang="http">
+GET /OAuth/public/resource.php
+Authorization: Bearer ACCESS_TOKEN</pre>
+                    
+                    <p>成功响应：</p>
+                    <pre class="code-block" data-lang="json">
+{
+  "user_id": 12345,
+  "email": "user@example.com",
+  "created_at": 1708123456
+}</pre>
+
+                    <h4>5. 刷新访问令牌</h4>
+                    <p>访问令牌过期后，使用刷新令牌获取新的访问令牌：</p>
+                    <pre class="code-block" data-lang="http">
+POST /OAuth/public/token.php
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token
+&refresh_token=REFRESH_TOKEN
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET</pre>
+                </div>
+
+                <div class="docs-section">
+                    <h3>错误码参考</h3>
+                    <table class="api-table">
+                        <tr>
+                            <th>错误码</th>
+                            <th>说明</th>
+                            <th>解决方案</th>
+                        </tr>
+                        <tr>
+                            <td>invalid_client</td>
+                            <td>客户端ID或密钥无效</td>
+                            <td>检查client_id和client_secret是否正确</td>
+                        </tr>
+                        <tr>
+                            <td>invalid_grant</td>
+                            <td>授权码已过期或无效</td>
+                            <td>重新引导用户授权获取新的授权码</td>
+                        </tr>
+                        <tr>
+                            <td>invalid_request</td>
+                            <td>请求参数缺失或格式错误</td>
+                            <td>检查请求参数是否完整且格式正确</td>
+                        </tr>
+                        <tr>
+                            <td>invalid_token</td>
+                            <td>访问令牌无效或已过期</td>
+                            <td>使用刷新令牌获取新令牌或重新授权</td>
+                        </tr>
+                        <tr>
+                            <td>access_denied</td>
+                            <td>用户拒绝授权</td>
+                            <td>引导用户重新授权</td>
+                        </tr>
+                        <tr>
+                            <td>unsupported_grant_type</td>
+                            <td>不支持的授权类型</td>
+                            <td>确认grant_type参数值正确</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="docs-section">
+                    <h3>最佳实践</h3>
+                    <ul>
+                        <li><strong>安全存储凭证</strong>：Client Secret 应存储在服务器端，切勿在前端代码中暴露</li>
+                        <li><strong>验证state参数</strong>：授权回调时必须验证state参数，防止CSRF攻击</li>
+                        <li><strong>使用HTTPS</strong>：所有API请求必须使用HTTPS协议，防止数据被窃听</li>
+                        <li><strong>令牌过期处理</strong>：合理处理令牌过期，使用刷新令牌机制</li>
+                        <li><strong>限制授权码使用</strong>：授权码一次性使用，有效期10分钟</li>
+                        <li><strong>访问令牌有效期</strong>：访问令牌有效期24小时，刷新令牌有效期30天</li>
+                        <li><strong>错误处理</strong>：完善的错误处理机制，友好提示用户授权失败原因</li>
+                    </ul>
+                </div>
+
+                <div class="docs-section">
+                    <h3>示例代码</h3>
+                    <h4>PHP 示例</h4>
+                    <pre class="code-block" data-lang="php">
+&lt;?php
+// 1. 获取授权码后的回调处理
+if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+    $state = $_GET['state'];
+    
+    // 验证state参数，防止CSRF攻击
+    if ($state !== $_SESSION['oauth_state']) {
+        die('Invalid state parameter');
+    }
+    
+    // 2. 换取访问令牌
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.example.com/OAuth/public/token.php');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+        'grant_type' => 'authorization_code',
+        'code' => $code,
+        'client_id' => 'YOUR_CLIENT_ID',
+        'client_secret' => 'YOUR_CLIENT_SECRET',
+        'redirect_uri' => 'YOUR_REDIRECT_URI'
+    ]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    
+    $tokenData = json_decode($response, true);
+    
+    // 3. 使用访问令牌获取用户信息
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://api.example.com/OAuth/public/resource.php');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Bearer ' . $tokenData['access_token']
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $userData = curl_exec($ch);
+    curl_close($ch);
+    
+    $user = json_decode($userData, true);
+    print_r($user);
+}
+?&gt;</pre>
+
+                    <h4>JavaScript (Node.js) 示例</h4>
+                    <pre class="code-block" data-lang="javascript">
+// 使用axios库发送请求
+const axios = require('axios');
+
+// 换取访问令牌
+async function getAccessToken(code) {
+  try {
+    const response = await axios.post('https://api.example.com/OAuth/public/token.php', 
+      new URLSearchParams({
+        grant_type: 'authorization_code',
+        code: code,
+        client_id: 'YOUR_CLIENT_ID',
+        client_secret: 'YOUR_CLIENT_SECRET',
+        redirect_uri: 'YOUR_REDIRECT_URI'
+      })
+    );
+    return response.data;
+  } catch (error) {
+    console.error('获取令牌失败:', error.response.data);
+    throw error;
+  }
+}
+
+// 获取用户信息
+async function getUserInfo(accessToken) {
+  try {
+    const response = await axios.get('https://api.example.com/OAuth/public/resource.php', {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('获取用户信息失败:', error.response.data);
+    throw error;
+  }
+}
+
+// 使用示例
+// getAccessToken('AUTHORIZATION_CODE')
+//   .then(tokenData => getUserInfo(tokenData.access_token))
+//   .then(user => console.log(user))
+//   .catch(err => console.error(err));</pre>
+                </div>
+
+                <div class="alert alert-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    <div>
+                        <strong>技术支持</strong><br>
+                        如果您在集成过程中遇到问题，请联系开发者支持
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认弹窗 -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+                确认删除
+            </h3>
+            <p>删除后，所有使用此应用的授权都将失效，Client ID和Client Secret将被回收。此操作不可恢复。</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="hideDeleteModal()">取消</button>
+                <button class="btn btn-danger" onclick="deleteApp()">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div class="toast" id="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script>
+        const form = document.getElementById('appForm');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const deleteModal = document.getElementById('deleteModal');
+
+        // 显示提示
+        function showToast(message, type = 'success') {
+            toastMessage.textContent = message;
+            toast.className = 'toast ' + type + ' show';
+            
+            // 设置图标
+            const icon = toast.querySelector('svg');
+            if (type === 'success') {
+                icon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>';
+            } else if (type === 'error') {
+                icon.innerHTML = '<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>';
+            }
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // 复制文本
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('已复制到剪贴板');
+            }).catch(() => {
+                showToast('复制失败', 'error');
+            });
+        }
+
+        // 重新生成密钥
+        function regenerateSecret() {
+            if (!confirm('重新生成密钥后，旧密钥将立即失效。所有使用旧密钥的集成都需要更新。确定继续？')) {
+                return;
+            }
+
+            fetch('', {
+                method: 'POST',
+                body: new URLSearchParams({ action: 'regenerate_secret' })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('clientSecret').textContent = data.client_secret;
+                    showToast(data.message);
+                } else {
+                    showToast(data.message, 'error');
+                }
+            })
+            .catch(() => {
+                showToast('操作失败，请稍后重试', 'error');
+            });
+        }
+
+        // 删除应用
+        function showDeleteModal() {
+            deleteModal.classList.add('show');
+        }
+
+        function hideDeleteModal() {
+            deleteModal.classList.remove('show');
+        }
+
+        function deleteApp() {
+            fetch('', {
+                method: 'POST',
+                body: new URLSearchParams({ action: 'delete' })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message);
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    showToast(data.message, 'error');
+                }
+            })
+            .catch(() => {
+                showToast('删除失败，请稍后重试', 'error');
+            });
+            hideDeleteModal();
+        }
+
+        // 表单提交
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            fetch('', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message);
+                    if (data.app) {
+                        // 新创建的应用，刷新页面显示
+                        setTimeout(() => {
+                            location.reload();
+                        }, 1000);
+                    }
+                } else {
+                    showToast(data.message, 'error');
+                }
+            })
+            .catch(() => {
+                showToast('操作失败，请检查网络连接', 'error');
+            });
+        });
+
+        // 页面加载完成后的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>

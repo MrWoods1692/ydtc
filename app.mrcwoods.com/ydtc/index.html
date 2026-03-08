@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公共上传 API 文档</title>
+    <style>
+        :root {
+            --apple-blue: #007aff;
+            --apple-gray: #8e8e93;
+            --apple-light-gray: #f2f2f7;
+            --apple-dark-gray: #1c1c1e;
+            --apple-red: #ff3b30;
+            --apple-yellow: #ffcc00;
+            --apple-green: #34c759;
+            --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --apple-radius: 12px;
+            --apple-border: 1px solid rgba(0, 0, 0, 0.05);
+            --backdrop-blur: blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: #1c1c1e;
+            background-color: #f5f5f7;
+            padding-bottom: 4rem;
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 苹果风格头部 */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            color: var(--apple-dark-gray);
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--apple-shadow);
+            border-bottom: var(--apple-border);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--apple-dark-gray);
+        }
+
+        .header-description {
+            font-size: 1.1rem;
+            color: #636366;
+            max-width: 800px;
+        }
+
+        h2 {
+            color: var(--apple-dark-gray);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: var(--apple-dark-gray);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+        }
+
+        /* 苹果风格警告框 */
+        .warning {
+            background: rgba(255, 251, 235, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: var(--apple-border);
+            border-left: 4px solid var(--apple-yellow);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: var(--apple-radius);
+            box-shadow: var(--apple-shadow);
+        }
+
+        .warning h3 {
+            color: #866200;
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        /* API端点 - 苹果窗口样式 */
+        .endpoint {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: var(--apple-border);
+            padding: 1.5rem;
+            border-radius: var(--apple-radius);
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+            font-family: SF Mono, Menlo, monospace;
+            box-shadow: var(--apple-shadow);
+            position: relative;
+        }
+
+        /* 左上角三点样式 */
+        .window-dots {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background-color: var(--apple-red);
+        }
+
+        .dot-yellow {
+            background-color: var(--apple-yellow);
+        }
+
+        .dot-green {
+            background-color: var(--apple-green);
+        }
+
+        .endpoint-content {
+            margin-top: 10px;
+        }
+
+        .endpoint-method {
+            background-color: var(--apple-green);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* 苹果风格表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: var(--apple-border);
+            border-radius: var(--apple-radius);
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.03);
+            color: var(--apple-dark-gray);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            font-size: 0.9rem;
+            color: #3a3a3c;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 122, 255, 0.03);
+        }
+
+        /* 代码样式 - 苹果终端风格 */
+        code {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: SF Mono, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+            color: #007aff;
+        }
+
+        .code-block {
+            position: relative;
+            margin: 1rem 0;
+            border-radius: var(--apple-radius);
+            overflow: hidden;
+            box-shadow: var(--apple-shadow);
+        }
+
+        /* 苹果终端样式 */
+        .code-header {
+            background-color: #1c1c1e;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .code-window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        pre {
+            background-color: #1c1c1e;
+            color: #e5e5ea;
+            padding: 1.5rem;
+            margin: 0;
+            font-family: SF Mono, Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        /* 复制按钮样式 - 苹果风格 */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .code-block:hover .copy-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .copy-btn:hover {
+            background-color: rgba(0, 122, 255, 0.8);
+        }
+
+        .copy-btn img {
+            width: 14px;
+            height: 14px;
+            filter: invert(1);
+        }
+
+        .copy-toast {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            background-color: var(--apple-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+        }
+
+        /* 响应示例样式 - 苹果窗口 */
+        .response-example {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: var(--apple-border);
+            border-radius: var(--apple-radius);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--apple-shadow);
+        }
+
+        /* 代码标签切换 - 苹果风格 */
+        .code-tabs {
+            display: flex;
+            margin: 2rem 0 0;
+            gap: 4px;
+        }
+
+        .code-tab {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
+            border: var(--apple-border);
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.2s ease;
+            color: #636366;
+            font-size: 0.95rem;
+        }
+
+        .code-tab:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--apple-dark-gray);
+        }
+
+        .code-tab.active {
+            background: var(--apple-blue);
+            color: white;
+            border-color: var(--apple-blue);
+        }
+
+        .code-content {
+            display: none;
+            padding: 1.5rem 0;
+        }
+
+        .code-content.active {
+            display: block;
+        }
+
+        /* 错误码样式 */
+        .error-code-table td:first-child {
+            font-weight: 600;
+            color: var(--apple-red);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            header {
+                padding: 2rem 0;
+            }
+
+            .code-tabs {
+                flex-wrap: wrap;
+            }
+
+            .code-tab {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+
+            .window-dots {
+                top: 8px;
+                left: 8px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>公共上传 API 文档</h1>
+            <p class="header-description">欢迎使用我们的公共图片上传 API。您可以通过编程方式将图片上传到本站，支持多种格式转换和安全保护功能。</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 重要提示 -->
+        <div class="warning">
+            <h3>重要提示：关于内容审查</h3>
+            <p>本图床不会在上传的时候进行图片内容审查，但是会在之后的时间段中根据该图片访问次数来触发内容审查，毕竟内容审查也会产生成本。</p>
+            <p>一旦发现内容违法，会根据实际情况针对上传者特征删除该上传者所有图片。如果您想利用本API做成一个第三方图床，我们完全不介意，但是请务必注意内容审查。</p>
+            <p>本公益图床基本没怎么盈利，就不要为我们带来更多的麻烦了，感谢理解。</p>
+        </div>
+
+        <!-- API 端点 -->
+        <h2>API 端点</h2>
+        <p>所有API请求都应发送到以下URL：</p>
+        <div class="endpoint">
+            <!-- 左上角三点 -->
+            <div class="window-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="endpoint-content">
+                <span class="endpoint-method">POST</span>
+                https://img.scdn.io/api/v1.php
+            </div>
+        </div>
+        <p>请求体必须使用 <code>multipart/form-data</code> 格式进行编码。</p>
+
+        <!-- 请求参数 -->
+        <h2>请求参数</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>参数名</th>
+                    <th>类型</th>
+                    <th>必需</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>image</td>
+                    <td>File</td>
+                    <td>是</td>
+                    <td>要上传的图片文件。支持的格式包括：jpg, png, webp, bmp, tiff, gif。</td>
+                </tr>
+                <tr>
+                    <td>outputFormat</td>
+                    <td>String</td>
+                    <td>否</td>
+                    <td>输出格式（auto, jpeg, png, webp, gif, webp_animated），默认为 auto。<br>
+                        webp: 输出静态WebP。如果输入是动图，则只转换第一帧。<br>
+                        gif: 输出优化后的GIF动图。<br>
+                        webp_animated: 输出动态WebP。<br>
+                        为了获得更好的压缩率和显示效果，我们强烈建议将静态图片转换为 webp，将动态图片转换为 webp_animated。
+                    </td>
+                </tr>
+                <tr>
+                    <td>password_enabled</td>
+                    <td>String</td>
+                    <td>否</td>
+                    <td>设为 "true" 以启用密码保护。必须与 image_password 参数一同使用。</td>
+                </tr>
+                <tr>
+                    <td>image_password</td>
+                    <td>String</td>
+                    <td>否</td>
+                    <td>为图片设置的访问密码。当 password_enabled 为 "true" 时此项为必需。</td>
+                </tr>
+                <tr>
+                    <td>cdn_domain</td>
+                    <td>String</td>
+                    <td>否</td>
+                    <td>指定图片外链使用的CDN域名。具体可用域名请参考下方的“可用 CDN 域名”列表。如果不指定，将使用系统默认域名。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 可用 CDN 域名 -->
+        <h2>可用 CDN 域名</h2>
+        <p>您可以在上传时通过 cdn_domain 参数指定以下任意一个域名。如果不指定，系统将自动选择。</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>域名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>失控的防御系统</td>
+                    <td>img.scdn.io</td>
+                </tr>
+                <tr>
+                    <td>CloudFlare</td>
+                    <td>cloudflareimg.cdn.sn</td>
+                </tr>
+                <tr>
+                    <td>EdgeOne</td>
+                    <td>edgeoneimg.cdn.sn</td>
+                </tr>
+                <tr>
+                    <td>ESA</td>
+                    <td>esaimg.cdn1.vip</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 响应格式 -->
+        <h2>响应格式</h2>
+        <p>API 的响应将采用 JSON 格式。</p>
+
+        <h3>成功响应示例 (公开图片)</h3>
+        <div class="response-example">
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>{
+  "success": true,
+  "url": "https://img.scdn.io/i/6640c49c7161b_1715519644.webp",
+  "data": {
+    "filename": "6640c49c7161b_1715519644.webp",
+    "original_size": 102400,
+    "compressed_size": 20480,
+    "compression_ratio": 80
+  }
+}</pre>
+            </div>
+        </div>
+
+        <h3>成功响应示例 (带密码)</h3>
+        <div class="response-example">
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>{
+  "success": true,
+  "url": "https://img.scdn.io/p/unique_encrypted_id_string.webp"
+}</pre>
+            </div>
+        </div>
+
+        <h3>秒传成功响应示例</h3>
+        <div class="response-example">
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>{
+  "success": true,
+  "url": "https://img.scdn.io/i/existing_image_name.webp",
+  "message": "图片已存在，秒传成功！"
+}</pre>
+            </div>
+        </div>
+
+        <h3>失败响应示例</h3>
+        <div class="response-example">
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>{
+  "success": false,
+  "message": "请求过于频繁，请稍后再试。"
+}</pre>
+            </div>
+        </div>
+
+        <!-- 代码示例 -->
+        <h2>代码示例</h2>
+        <div class="code-tabs">
+            <button class="code-tab active" onclick="showCode('curl')">cURL</button>
+            <button class="code-tab" onclick="showCode('javascript')">JavaScript</button>
+            <button class="code-tab" onclick="showCode('python')">Python</button>
+            <button class="code-tab" onclick="showCode('php')">PHP</button>
+        </div>
+
+        <!-- cURL 示例 -->
+        <div id="curl" class="code-content active">
+            <h3>上传公开图片:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>curl -X POST -F "image=@/path/to/your/image.jpg" https://img.scdn.io/api/v1.php</pre>
+            </div>
+
+            <h3>将GIF动图转换为WebP动图:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>curl -X POST \
+-F "image=@/path/to/your/animation.gif" \
+-F "outputFormat=webp_animated" \
+https://img.scdn.io/api/v1.php</pre>
+            </div>
+
+            <h3>上传加密图片:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>curl -X POST \
+-F "image=@/path/to/your/image.jpg" \
+-F "password_enabled=true" \
+-F "image_password=your_secret_password" \
+https://img.scdn.io/api/v1.php</pre>
+            </div>
+
+            <h3>指定CDN域名上传 (需在后台配置):</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>curl -X POST \
+-F "image=@/path/to/your/image.jpg" \
+-F "cdn_domain=img.scdn.io" \
+https://img.scdn.io/api/v1.php</pre>
+            </div>
+        </div>
+
+        <!-- JavaScript 示例 -->
+        <div id="javascript" class="code-content">
+            <h3>上传公开图片 (Fetch API):</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>const uploadImage = async (file) => {
+  const formData = new FormData();
+  formData.append('image', file);
+
+  try {
+    const response = await fetch('https://img.scdn.io/api/v1.php', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error('上传失败:', error);
+  }
+};
+
+// 使用示例
+// const fileInput = document.querySelector('input[type="file"]');
+// fileInput.addEventListener('change', (e) => {
+//   uploadImage(e.target.files[0]);
+// });</pre>
+            </div>
+
+            <h3>上传带WebP动图格式的图片:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>const uploadAnimatedWebp = async (file) => {
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('outputFormat', 'webp_animated');
+
+  try {
+    const response = await fetch('https://img.scdn.io/api/v1.php', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error('上传失败:', error);
+  }
+};</pre>
+            </div>
+        </div>
+
+        <!-- Python 示例 -->
+        <div id="python" class="code-content">
+            <h3>上传公开图片 (requests):</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>import requests
+
+def upload_image(file_path):
+    url = 'https://img.scdn.io/api/v1.php'
+    with open(file_path, 'rb') as file:
+        files = {'image': file}
+        response = requests.post(url, files=files)
+    return response.json()
+
+# 使用示例
+# result = upload_image('/path/to/your/image.jpg')
+# print(result)</pre>
+            </div>
+
+            <h3>上传加密图片:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>import requests
+
+def upload_encrypted_image(file_path, password):
+    url = 'https://img.scdn.io/api/v1.php'
+    with open(file_path, 'rb') as file:
+        data = {
+            'password_enabled': 'true',
+            'image_password': password
+        }
+        files = {'image': file}
+        response = requests.post(url, files=files, data=data)
+    return response.json()
+
+# 使用示例
+# result = upload_encrypted_image('/path/to/your/image.jpg', 'your_secret_password')
+# print(result)</pre>
+            </div>
+        </div>
+
+        <!-- PHP 示例 -->
+        <div id="php" class="code-content">
+            <h3>上传公开图片:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>&lt;?php
+$url = 'https://img.scdn.io/api/v1.php';
+$file_path = '/path/to/your/image.jpg';
+
+$curl = curl_init();
+$post_fields = [
+    'image' => new CURLFile($file_path)
+];
+
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $post_fields);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+$result = json_decode($response, true);
+print_r($result);
+?&gt;</pre>
+            </div>
+
+            <h3>指定CDN域名上传:</h3>
+            <div class="code-block">
+                <!-- 左上角三点 -->
+                <div class="code-header">
+                    <div class="code-window-dots">
+                        <div class="code-dot dot-red"></div>
+                        <div class="code-dot dot-yellow"></div>
+                        <div class="code-dot dot-green"></div>
+                    </div>
+                </div>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <img src="../svg/复制.svg" alt="复制">
+                </button>
+                <div class="copy-toast">已复制</div>
+                <pre>&lt;?php
+$url = 'https://img.scdn.io/api/v1.php';
+$file_path = '/path/to/your/image.jpg';
+
+$curl = curl_init();
+$post_fields = [
+    'image' => new CURLFile($file_path),
+    'cdn_domain' => 'img.scdn.io'
+];
+
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $post_fields);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+$result = json_decode($response, true);
+print_r($result);
+?&gt;</pre>
+            </div>
+        </div>
+
+        <!-- 错误码 -->
+        <h2>错误码</h2>
+        <table class="error-code-table">
+            <thead>
+                <tr>
+                    <th>状态码</th>
+                    <th>描述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>400 Bad Request</td>
+                    <td>没有上传文件，或者上传过程中发生错误，或者文件格式不被支持。</td>
+                </tr>
+                <tr>
+                    <td>405 Method Not Allowed</td>
+                    <td>使用了非 POST 请求方法。</td>
+                </tr>
+                <tr>
+                    <td>429 Too Many Requests</td>
+                    <td>请求过于频繁。默认限制为5秒内3次请求。</td>
+                </tr>
+                <tr>
+                    <td>500 Internal Server Error</td>
+                    <td>服务器内部发生错误，例如数据库连接失败、压缩失败等。</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // 代码标签切换功能
+        function showCode(tabName) {
+            // 隐藏所有代码内容
+            const contents = document.getElementsByClassName('code-content');
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+
+            // 移除所有标签的激活状态
+            const tabs = document.getElementsByClassName('code-tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // 显示选中的代码内容和激活标签
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // 复制代码功能
+        function copyCode(button) {
+            // 获取代码块元素
+            const codeBlock = button.parentElement;
+            const preElement = codeBlock.querySelector('pre');
+            const toast = codeBlock.querySelector('.copy-toast');
+            
+            // 获取代码文本
+            const codeText = preElement.textContent;
+            
+            // 复制到剪贴板
+            navigator.clipboard.writeText(codeText).then(() => {
+                // 显示复制成功提示
+                toast.classList.add('show');
+                
+                // 2秒后隐藏提示
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                toast.textContent = '复制失败';
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.textContent = '已复制';
+                }, 2000);
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保复制按钮可见
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => {
+                const copyBtn = block.querySelector('.copy-btn');
+                if (copyBtn) {
+                    copyBtn.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

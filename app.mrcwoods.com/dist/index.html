@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云端图片储存平台</title>
+    <link rel="stylesheet" href="./lib/L2Dwidget.min.css">
+
+    <style>
+        /* 全局字体 */
+        @font-face {
+            font-family: 'AlimamaAgile';
+            src: url('/../font/AlimamaAgileVF-Thin.woff2') format('woff2'),
+                 url('/../font/AlimamaAgileVF-Thin.woff') format('woff'),
+                 url('/../font/AlimamaAgileVF-Thin.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: url(../svg/鼠标.svg), auto !important;
+            font-family: 'AlimamaAgile', sans-serif !important;
+        }
+
+        /* 隐藏滚动条 - 核心代码 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html,body {
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body {
+            opacity: 0;
+            animation: pageFadeIn 1s ease forwards;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 30%, #f5f7ff 100%);
+            padding-top: 80px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes pageFadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #165DFF, #54A2FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* 桌面导航 */
+        .nav-menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #165DFF;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #165DFF;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            background: transparent;
+            border: 1.5px dashed #165DFF;
+            padding: 6px 10px;
+            border-radius: 8px;
+            color: #165DFF;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: #f0f7ff;
+        }
+
+        /* 移动端菜单 + 导航按钮虚线边框 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 72px;
+                right: 0;
+                width: 220px;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: -2px 10px 15px rgba(0,0,0,0.1);
+                gap: 16px;
+                transform: translateX(100%);
+                transition: transform 0.35s ease;
+                border-radius: 0 0 0 12px;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-menu a {
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                border: 1.5px dashed #ccc;
+                border-radius: 8px;
+            }
+
+            .nav-menu a:hover {
+                border-color: #165DFF;
+                background: #f7fbff;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* 主内容 —— 修复手机底部空白 */
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        h1 {
+            font-size: 42px;
+            background: linear-gradient(90deg, #165DFF, #3688FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+
+        .desc {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* ====================== 按钮样式 ====================== */
+        .explore-btn {
+            position: relative;
+            padding: 12px 40px;
+            background: #ffffff;
+            color: #165DFF;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 1;
+        }
+
+        /* 外圈彩色呼吸环 */
+        .explore-btn::after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #165DFF, #36CFCF, #54A2FF, #165DFF);
+            background-size: 300% 300%;
+            animation: breathRing 3s linear infinite;
+            z-index: -2;
+            opacity: 0.9;
+        }
+
+        /* 内部遮挡 */
+        .explore-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            border-radius: 50px;
+            z-index: -1;
+        }
+
+        @keyframes breathRing {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .explore-btn:hover {
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="../images/logo.jpg" alt="Logo">
+                <span class="logo-text">YDTC</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="../in/">注册/登录</a>
+                <a href="../tc/">快捷图床</a>
+                <a href="https://img.scdn.io/explore.php" target="_blank">发现</a>
+                <a href="../open-platform/">开放平台</a>
+                <a href="../about/">关于</a>
+                <a href="#">客服</a>
+                <a href="https://github.com/MrWoods1692/ydtc" target="_blank">Github</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <h1>云端图片储存平台</h1>
+        <p class="desc">极速上传 · 永久存储 · 全球加速 · 安全可靠</p>
+        
+        <button class="explore-btn" onclick="window.open('../main/','_self')">探索网站</button>
+    </main>
+
+    <!-- Live2D -->
+    <div id="live2d-container"></div>
+    <script src="./lib/L2Dwidget.min.js"></script>
+    <script>
+        L2Dwidget.init({
+            model: { jsonPath: "./assets/miku.model.json", scale: 1 },
+            display: {
+                position: "left",
+                width: 180,
+                height: 280,
+                hOffset: 15,
+                vOffset: -15
+            },
+            mobile: { 
+                show: true, 
+                scale: 0.5 
+            },
+            react: { opacity: 0.85 }
+        });
+
+        // 移动端菜单
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

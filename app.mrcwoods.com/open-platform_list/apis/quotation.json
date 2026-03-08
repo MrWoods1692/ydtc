@@ -1,0 +1,48 @@
+{
+    "id": "quotation",
+    "name": "语录",
+    "method": "GET",
+    "url": "\/api\/语录.php",
+    "description": "随机一条语录，支持POST",
+    "responseFormat": "JSON",
+    "params": [],
+    "responseParams": {
+        "code": {
+            "type": "int",
+            "desc": "状态码"
+        },
+        "msg": {
+            "type": "string",
+            "desc": "success表示成功"
+        },
+        "content": {
+            "type": "string",
+            "desc": "语录"
+        },
+        "author": {
+            "type": "string",
+            "desc": "作者"
+        },
+        "timestamp": {
+            "type": "int",
+            "desc": "时间"
+        }
+    },
+    "statusCodes": {
+        "200": {
+            "msg": "获取成功",
+            "desc": ""
+        }
+    },
+    "example": "",
+    "response": {
+        "code": 200,
+        "msg": "success",
+        "data": {
+            "content": "心有所期，全力以赴，定有所成。",
+            "author": "佚名"
+        },
+        "timestamp": 1772325541
+    },
+    "exampleLang": "json"
+}

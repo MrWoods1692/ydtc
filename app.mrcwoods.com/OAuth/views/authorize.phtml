@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>授权确认 - <?= $app['name'] ?></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            /* 浅色背景 + 细微网格纹理 */
+            background-color: #f5f5f7;
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* 苹果风格窗口容器 */
+        .authorize-container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+            max-width: 460px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            /* 模拟mac窗口轻微的毛玻璃效果 */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* 苹果风格窗口控制按钮 */
+        .window-controls {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .window-control:hover {
+            opacity: 0.8;
+        }
+
+        .control-red {
+            background-color: #ff5f57;
+        }
+
+        .control-yellow {
+            background-color: #ffbd2e;
+        }
+
+        .control-green {
+            background-color: #28ca42;
+        }
+
+        .authorize-header {
+            padding: 40px 30px 32px; /* 顶部留出控制按钮空间 */
+            text-align: center;
+            border-bottom: 1px solid #f5f5f7;
+            background-color: #ffffff;
+        }
+
+        .app-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px; /* 苹果风格圆角 */
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        .app-icon .default-icon {
+            width: 36px;
+            height: 36px;
+            fill: #6e6e73; /* 苹果风格灰色 */
+        }
+
+        .authorize-header h1 {
+            color: #1d1d1f; /* 苹果正文色 */
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .authorize-header .app-name {
+            color: #0066cc; /* 苹果链接蓝 */
+            font-weight: 600;
+        }
+
+        .authorize-header p {
+            color: #86868b; /* 苹果次要文本色 */
+            font-size: 14px;
+            letter-spacing: 0.1px;
+        }
+
+        .authorize-body {
+            padding: 24px 30px;
+            background-color: #ffffff;
+        }
+
+        .app-info {
+            background: #f9f9fb; /* 更浅的背景色 */
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #f0f0f2;
+        }
+
+        .app-description {
+            font-size: 14px;
+            color: #1d1d1f;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+        }
+
+        .app-links a {
+            color: #0066cc; /* 苹果链接蓝 */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .app-links a:hover {
+            color: #0071e3; /* 苹果悬停蓝 */
+            text-decoration: underline;
+        }
+
+        .app-links svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #f9f9fb;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #f0f0f2;
+        }
+
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+            font-weight: 600;
+            font-size: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .user-details .label {
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        .user-details .email {
+            font-size: 14px;
+            color: #1d1d1f;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .permissions {
+            margin-bottom: 24px;
+        }
+
+        .permissions h3 {
+            font-size: 13px;
+            color: #86868b;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .permissions h3::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #0066cc;
+            border-radius: 50%;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f7;
+        }
+
+        .permission-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .permission-item .check-icon {
+            width: 22px;
+            height: 22px;
+            background: #f0f8f0; /* 更浅的绿色背景 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .permission-item .check-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: #34c759; /* 苹果绿色 */
+        }
+
+        .permission-item .permission-text {
+            flex: 1;
+        }
+
+        .permission-item .permission-title {
+            font-size: 14px;
+            color: #1d1d1f;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .permission-item .permission-desc {
+            font-size: 12px;
+            color: #86868b;
+        }
+
+        .authorize-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-deny {
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .btn-deny:hover {
+            background: #e8e8ed;
+        }
+
+        .btn-allow {
+            background: #0071e3; /* 苹果主蓝色 */
+            color: #fff;
+        }
+
+        .btn-allow:hover {
+            background: #0077ed;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0, 113, 227, 0.2);
+        }
+
+        .authorize-footer {
+            padding: 16px 30px;
+            background: #f9f9fb;
+            text-align: center;
+            border-top: 1px solid #f5f5f7;
+        }
+
+        .authorize-footer p {
+            font-size: 12px;
+            color: #86868b;
+            line-height: 1.5;
+        }
+
+        .authorize-footer a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .authorize-footer a:hover {
+            color: #0071e3;
+            text-decoration: underline;
+        }
+
+        .divider {
+            height: 1px;
+            background: #f5f5f7;
+            margin: 0 -30px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 400px) {
+            .authorize-header {
+                padding: 36px 20px 28px;
+            }
+            
+            .authorize-body {
+                padding: 20px 20px;
+            }
+            
+            .window-controls {
+                top: 12px;
+                left: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="authorize-container">
+        <!-- 苹果风格窗口控制按钮 -->
+        <div class="window-controls">
+            <div class="window-control control-red"></div>
+            <div class="window-control control-yellow"></div>
+            <div class="window-control control-green"></div>
+        </div>
+
+        <div class="authorize-header">
+            <div class="app-icon">
+                <?php if (!empty($app['icon'])): ?>
+                    <img src="<?= $app['icon'] ?>" alt="<?= $app['name'] ?>" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                    <svg class="default-icon" style="display:none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                <?php else: ?>
+                    <svg class="default-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                <?php endif; ?>
+            </div>
+            <h1><span class="app-name"><?= $app['name'] ?></span> 请求授权</h1>
+            <p>该应用希望访问您的账户信息</p>
+        </div>
+
+        <div class="authorize-body">
+            <div class="app-info">
+                <div class="app-description">
+                    <?= $app['description'] ?>
+                </div>
+                <?php if (!empty($app['homepage'])): ?>
+                <div class="app-links">
+                    <a href="<?= $app['homepage'] ?>" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        访问应用主页
+                    </a>
+                </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="user-section">
+                <div class="user-avatar"><?= strtoupper(substr($userEmail, 0, 1)) ?></div>
+                <div class="user-details">
+                    <div class="label">登录账户</div>
+                    <div class="email"><?= $userEmail ?></div>
+                </div>
+            </div>
+
+            <div class="permissions">
+                <h3>应用将获取以下信息</h3>
+                <div class="permission-item">
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <div class="permission-title">用户ID</div>
+                        <div class="permission-desc">您的唯一用户标识</div>
+                    </div>
+                </div>
+                <div class="permission-item">
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <div class="permission-title">邮箱地址</div>
+                        <div class="permission-desc">您的注册邮箱</div>
+                    </div>
+                </div>
+                <div class="permission-item">
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    </div>
+                    <div class="permission-text">
+                        <div class="permission-title">注册时间</div>
+                        <div class="permission-desc">您的账户创建时间</div>
+                    </div>
+                </div>
+            </div>
+
+            <form method="POST" class="authorize-actions">
+                <input type="hidden" name="action" value="deny">
+                <button type="submit" class="btn btn-deny" onclick="document.querySelector('input[name=action]').value='deny'">拒绝</button>
+                <button type="submit" class="btn btn-allow" onclick="document.querySelector('input[name=action]').value='allow'">同意授权</button>
+            </form>
+        </div>
+
+        <div class="authorize-footer">
+            <p>授权后，该应用将可以访问您的基本信息。</p>
+        </div>
+    </div>
+</body>
+</html>

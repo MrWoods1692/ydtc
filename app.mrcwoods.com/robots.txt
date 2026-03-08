@@ -1,0 +1,90 @@
+# ============================================
+# 允许所有主流搜索引擎（白名单机制）
+# ============================================
+
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: Baiduspider-image
+User-agent: Sogou web spider
+User-agent: 360Spider
+User-agent: Yisouspider
+User-agent: Bytespider
+User-agent: YandexBot
+User-agent: facebookexternalhit
+User-agent: Twitterbot
+
+# 抓取频率限制（对白名单爬虫生效）
+Crawl-delay: 6
+
+# 先允许所有（基础权限）
+Allow: /
+
+# ============================================
+# 彻底屏蔽恶意爬虫（黑名单）
+# ============================================
+
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+User-agent: MauiBot
+User-agent: OpenAI-GPT
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: YouBot
+User-agent: Bytespider-illegal
+User-agent: Scrapy
+User-agent: curl
+User-agent: wget
+User-agent: python-requests
+User-agent: Java
+User-agent: Go-http-client
+User-agent: Node
+Disallow: /
+
+# ============================================
+# 通用规则（未明确列出的爬虫）
+# ============================================
+
+User-agent: *
+
+# ========== 明确允许图片及资源 ==========
+# 目录级别
+Allow: /images/
+Allow: /svg/
+
+# 文件后缀级别（匹配全站）
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+
+# ========== 屏蔽敏感路径 ==========
+Disallow: /admin/
+Disallow: /mall/
+Disallow: /.well-known/
+Disallow: /in/
+Disallow: /users/
+Disallow: /env
+Disallow: /.env
+Disallow: /vendor/
+
+# ============================================
+# 站点地图
+# ============================================
+
+Sitemap: https://app.mrcwoods.com/sitemap.xml

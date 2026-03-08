@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全入口</title>
+    <style>
+        /* 全局样式 - 禁止滚动 + 隐藏滚动条 */
+        html, body {
+            overflow: hidden; /* 禁止滚动 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 隐藏各浏览器的滚动条 */
+        /* Chrome, Safari and Opera */
+        html::-webkit-scrollbar {
+            display: none;
+        }
+        /* IE, Edge and Firefox */
+        html {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* 页面基础样式 */
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f8fb 0%, #e8f4f8 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 使用固定高度而非min-height，确保无滚动 */
+            width: 100vw; /* 宽度占满视口 */
+        }
+
+        /* 容器样式 - 增强视觉效果 */
+        .safe-entrance {
+            background-color: white;
+            padding: 60px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(66, 153, 225, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 文字样式 - 优化排版和颜色 */
+        .entrance-text {
+            font-size: 26px;
+            color: #2d3748;
+            margin-bottom: 35px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        /* 副标题 */
+        .sub-text {
+            font-size: 14px;
+            color: #718096;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        /* 图片样式 - 增加动效和圆角 */
+        .safe-img {
+            width: 180px;
+            height: auto;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .safe-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="safe-entrance">
+        <!-- 安全入口文字 -->
+        <div class="entrance-text">这里是安全入口</div>
+        <div class="sub-text">可以访问后台系统</div>
+        
+        <!-- 安全图片 -->
+        <img src="../images/安全.png" alt="安全入口标识" class="safe-img" 
+             onerror="this.src='https://via.placeholder.com/180?text=安全入口';">
+    </div>
+</body>
+</html>

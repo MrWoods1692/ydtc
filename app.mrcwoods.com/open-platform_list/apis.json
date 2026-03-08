@@ -1,0 +1,8 @@
+[
+    {
+        "id": "quotation",
+        "name": "语录",
+        "method": "GET",
+        "description": "随机一条语录，支持POST"
+    }
+]

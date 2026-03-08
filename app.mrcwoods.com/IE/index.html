@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <![endif]-->
+    <title>云端图片储存平台</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* 01数字雨背景容器 */
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* 内容层容器 (玻璃拟物化官网风格) */
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 10, 20, 0.4); /* 压暗数字雨背景 */
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            /* IE fallback for backdrop-filter */
+            background: rgba(0, 0, 0, 0.7); /* Solid fallback for IE */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            backdrop-filter: blur(10px); /* 毛玻璃特效 */
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#1AFFFFFF,endColorstr=#1AFFFFFF)"; /* IE fallback */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#1AFFFFFF,endColorstr=#1AFFFFFF); /* Standard filter for modern browsers */
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px; /* 圆角 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; /* 光效 */
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            /* IE fallback for gap */
+            margin: 0 -10px;
+        }
+
+        .nav-links a {
+            /* IE fallback for gap */
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 15px;
+            position: relative;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #0ff;
+            text-shadow: 0 0 8px #0ff;
+        }
+
+        /* 导航下划线流动动画 */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #0ff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px #0ff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: #00f2fe; /* IE fallback */
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: #fff !important;
+            padding: 8px 20px !important;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .nav-btn:hover {
+            background: #4facfe; /* IE fallback */
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* 主体内容区域 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* 打字机标题光效 */
+        h1 {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #0ff;
+            margin-left: 5px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        p.subtitle {
+            color: #aaa;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        /* 进入网站流动边框按钮 */
+        .enter-btn {
+            position: relative;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: #0ff;
+            background: transparent;
+            border: 2px solid #0ff;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2) inset, 0 0 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .enter-btn:hover {
+            color: #000;
+            background: #0ff;
+            box-shadow: 0 0 30px #0ff, 0 0 50px #0ff;
+        }
+
+        /* 流光元素 */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.3); /* IE fallback */
+            background: radial-gradient(circle, rgba(0,255,255,0.3) 0%, rgba(0,0,0,0) 70%);
+            animation: float 10s infinite alternate;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.5; }
+            100% { transform: translateY(-50px) scale(1.2); opacity: 1; }
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none; /* 移动端精简，实际开发可换成汉堡菜单 */
+            }
+            .navbar {
+                justify-content: center;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <!--[if IE]>
+    <style>
+        /* IE-specific styles */
+        .wrapper {
+            background: rgba(0, 10, 20, 0.8) !important; /* Darker background for IE */
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8) !important; /* Solid background for IE */
+            border: 1px solid #0ff !important;
+        }
+        .floating-element {
+            display: none !important; /* Hide animations in IE */
+        }
+        .cursor {
+            display: none !important; /* Hide cursor in IE */
+        }
+    </style>
+    <![endif]-->
+</head>
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <div class="wrapper">
+        <div class="floating-element" style="width: 300px; height: 300px; top: 10%; left: 10%;"></div>
+        <div class="floating-element" style="width: 400px; height: 400px; bottom: 10%; right: 5%; animation-duration: 15s;"></div>
+
+        <nav class="navbar">
+            <div class="logo">YDTC</div>
+            <div class="nav-links">
+                <a href="https://img.scdn.io/explore.php">发现</a>
+                <a href="https://app.mrcwoods.com/tc">快捷图床</a>
+                <a href="https://app.mrcwoods.com/open-platform">开放平台</a>
+                <a href="#">智能客服</a>
+                <a href="https://app.mrcwoods.com/about">关于</a>
+                <a href="https://app.mrcwoods.com/app">APP下载</a>
+                <a href="https://github.com/MrWoods1692/ydtc">Github仓库</a>
+                <a href="https://app.mrcwoods.com/in" class="nav-btn">登录 / 注册</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <h1><span id="typewriter"></span><span class="cursor">&nbsp;</span></h1>
+            <p class="subtitle">安全、极速、不设限的新一代云端图片托管平台</p>
+            
+            <a href="https://app.mrcwoods.com/main" class="enter-btn">探索网站</a>
+        </main>
+    </div>
+
+    <script>
+        // === 1. 01数字雨背景特效 (兼容IE9+) ===
+        var canvas = document.getElementById('matrixCanvas');
+        var ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var letters = '01'; // 01数字雨
+        var fontSize = 16;
+        var columns = canvas.width / fontSize;
+        var drops = [];
+
+        for (var x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            // 半透明黑色背景，形成拖影效果
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 设置字体颜色和样式
+            ctx.fillStyle = '#0F0'; // 经典黑客绿，也可换成 '#0ff' 赛博蓝
+            ctx.font = fontSize + 'px arial';
+
+            for (var i = 0; i < drops.length; i++) {
+                var text = letters.charAt(Math.floor(Math.random() * letters.length));
+                // 绘制字符
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                // 随机将数字重置到顶部
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
+        // 窗口大小调整时重新设置画布
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // === 2. 打字机交互效果 ===
+        var text = "云端图片储存平台";
+        var index = 0;
+        var speed = 150; // 打字速度
+        var typewriterElement = document.getElementById("typewriter");
+
+        function typeWriter() {
+            if (index < text.length) {
+                typewriterElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        // 延迟一点启动打字机，视觉效果更好
+        window.onload = function() {
+            setTimeout(typeWriter, 500);
+        };
+
+        // === 3. IE兼容性检测和降级处理 ===
+        // 检测IE版本
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        
+        // requestAnimationFrame polyfill for IE9+
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function(callback) {
+                return setTimeout(callback, 16);
+            };
+        }
+        
+        if (isIE) {
+            // IE浏览器降级处理
+            console.log('Internet Explorer detected, applying compatibility fixes');
+            
+            // 移除不支持的CSS特性
+            var style = document.createElement('style');
+            style.textContent = [
+                '.navbar { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }',
+                '.floating-element { display: none !important; }',
+                '.cursor { display: none !important; }',
+                '.nav-btn:hover { transform: none !important; }'
+            ].join('');
+            document.head.appendChild(style);
+        }
+    </script>
+</body>
+</html>

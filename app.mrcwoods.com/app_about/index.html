@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="安全稳定的云端图片储存服务，支持原图备份、分类、多端同步。免费起步，TB级空间任选，一键分享外链，摄影师与设计师的首选云相册。">
+    <meta name="description" content="全球CDN加速的云端图片储存，秒开预览不卡顿。自动压缩省流量，支持多种格式托管，外链直传论坛与电商，新用户送2GB空间。">
+    <meta name="description" content="端到端加密的私密云端图库，本地密钥掌控数据主权。防误删回收站、异地容灾备份，家庭照片与企业素材的安全保险箱。">
+    <meta name="description" content="摄影师专属云端图片仓库，EXIF信息完整保留，AI智能体找图快。">
+    <meta name="description" content="免费好用的云端图片储存，储存空间免费送。API接口丰富，5分钟接入网站图床，支持防盗链。">
+    
+    <style>
+        /* 全局样式重置与基础配置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        :root {
+            --primary-color: #4096ff;
+            --secondary-color: #12b7f5;
+            --success-color: #00b42a;
+            --warning-color: #ff7d00;
+            --danger-color: #f53f3f;
+            --bg-color: #f0f2f5;
+            --bg-gradient: linear-gradient(135deg, #f0f2f5 0%, #e8f4ff 100%);
+            --card-bg: #ffffff;
+            --card-bg-gradient: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+            --text-primary: #1f2937;
+            --text-secondary: #667085;
+            --text-tertiary: #98a2b3;
+            --border-color: #e5e7eb;
+            --hover-shadow: 0 12px 28px rgba(149, 157, 165, 0.15);
+            --active-shadow: 0 4px 8px rgba(64, 150, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --platform-hover: #e8f4ff;
+            --platform-glow: rgba(64, 150, 255, 0.1);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: 0.2px;
+        }
+        a {
+            text-decoration: none;
+            cursor: pointer; /* 添加手型光标 */
+        }
+        
+        /* 可复制链接样式 */
+        .copyable-link {
+            position: relative;
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 4px;
+            transition: var(--transition);
+        }
+        
+        .copyable-link:hover {
+            color: var(--secondary-color);
+            text-decoration-style: solid;
+        }
+        
+        .copyable-link::after {
+            content: "";
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+            background: url('../svg/复制.svg') center/contain no-repeat;
+            opacity: 0.7;
+            vertical-align: middle;
+        }
+        
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(64, 150, 255, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(64, 150, 255, 0.3);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* 卡片通用样式 - 移除顶部蓝色条 */
+        .card {
+            background: var(--card-bg-gradient);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 28px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 0 0 1px var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* 移除卡片顶部的蓝色渐变条 */
+        .card::before {
+            display: none;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: radial-gradient(circle at 10% 20%, var(--platform-glow) 0%, transparent 20%);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        /* 标题样式 - 统一自定义SVG图标样式 */
+        .card-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .card-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        /* 所有自定义SVG图标统一样式 */
+        .card-title .custom-svg-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 16px;
+            fill: var(--primary-color);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .card:hover .card-title .custom-svg-icon {
+            fill: var(--secondary-color);
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* 版本信息样式 - 优化开源信息显示 */
+        .version-info {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .version-info .badge {
+            background: var(--platform-hover);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 12px;
+        }
+
+        /* 优化开源信息样式 */
+        .open-source-info {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f4ff 100%);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-top: 8px;
+            border: 1px solid #dbeafe;
+        }
+
+        .open-source-info .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            fill: var(--primary-color);
+        }
+
+        .open-source-info .license {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-right: 12px;
+        }
+
+        .open-source-info .github-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background-color: rgba(64, 150, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .open-source-info .github-link:hover {
+            background-color: rgba(64, 150, 255, 0.2);
+            color: #2563eb;
+        }
+
+        .version-info svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--primary-color);
+        }
+
+        .version-info .label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .version-info .value {
+            font-weight: 400;
+            color: var(--text-secondary);
+            padding: 8px 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .version-info .value:hover {
+            border-color: var(--primary-color);
+            background-color: var(--platform-hover);
+        }
+
+        /* QQ群卡片样式 */
+        .qq-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qq-group {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .qq-group .custom-svg-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            fill: var(--secondary-color);
+        }
+
+        .qq-group .label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-right: 8px;
+        }
+
+        .qq-group .value {
+            font-weight: 400;
+            color: var(--text-secondary);
+            padding: 8px 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .qq-group .value:hover {
+            border-color: var(--primary-color);
+            background-color: var(--platform-hover);
+        }
+
+        .qq-btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .qq-link-btn, .copy-qq-btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .qq-link-btn {
+            background: linear-gradient(90deg, var(--secondary-color), #0ba5e9);
+            color: white;
+        }
+
+        .qq-link-btn:hover {
+            background: linear-gradient(90deg, #0ba5e9, #0284c7);
+            box-shadow: 0 6px 12px rgba(18, 183, 245, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .qq-link-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--active-shadow);
+        }
+
+        .copy-qq-btn {
+            background-color: #f9fafb;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .copy-qq-btn:hover {
+            background-color: #eff6ff;
+            border-color: var(--primary-color);
+            box-shadow: 0 6px 12px rgba(64, 150, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .copy-qq-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--active-shadow);
+        }
+
+        .copy-qq-btn svg, .qq-link-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .copy-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, var(--success-color), #00a327);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 180, 42, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-toast svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 开发者介绍样式 */
+        .developer-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .developer-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(64, 150, 255, 0.2);
+            flex-shrink: 0;
+            border: 6px solid #e8f4ff;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .developer-avatar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(var(--primary-color), var(--secondary-color)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .developer-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(64, 150, 255, 0.25);
+        }
+
+        .developer-avatar:hover::after {
+            opacity: 1;
+        }
+
+        .developer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .developer-desc {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .developer-desc p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 18px;
+            line-height: 1.8;
+            transition: var(--transition);
+        }
+
+        .developer-desc p:hover {
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .developer-desc strong {
+            color: var(--primary-color);
+            min-width: 90px;
+            display: inline-block;
+        }
+
+        /* 合作平台样式 */
+        .platform-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .platform-link {
+            text-decoration: none;
+            display: block;
+        }
+
+        .platform-item {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: var(--transition);
+            background-color: var(--card-bg);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--platform-hover), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .platform-item::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 24 24'%3E%3Cpath fill='%234096ff' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z'/%3E%3C/svg%3E") center/contain no-repeat;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .platform-item:hover {
+            box-shadow: var(--hover-shadow);
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            background-color: var(--platform-hover);
+        }
+
+        .platform-item:hover::before {
+            left: 100%;
+        }
+
+        .platform-item:hover::after {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .platform-icon {
+            width: 56px;
+            height: 56px;
+            margin-right: 16px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9fafb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .platform-item:hover .platform-icon {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 4px 12px rgba(64, 150, 255, 0.15);
+        }
+
+        .platform-icon img, .platform-icon svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 20px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .platform-item:hover .platform-name {
+            color: var(--primary-color);
+        }
+
+        .platform-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .platform-item:hover .platform-desc {
+            color: var(--text-primary);
+        }
+
+        /* 折叠更新日志样式 */
+        .changelog-list {
+            margin-top: 24px;
+        }
+
+        .changelog-item {
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .changelog-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary-color);
+        }
+
+        .changelog-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background-color: #f9fafb;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .changelog-header:hover {
+            background-color: var(--platform-hover);
+        }
+
+        .changelog-version {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .changelog-version::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .changelog-toggle {
+            width: 28px;
+            height: 28px;
+            fill: var(--text-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .changelog-content {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .changelog-content.expanded {
+            padding: 24px;
+            max-height: 600px;
+        }
+
+        .changelog-details {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .changelog-details ul {
+            padding-left: 24px;
+            margin-top: 12px;
+        }
+
+        .changelog-details li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .changelog-details li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -16px;
+        }
+
+        .changelog-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* 页脚样式 */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 24px 0;
+            color: var(--text-tertiary);
+            font-size: 16px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 48px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        footer:hover {
+            color: var(--text-secondary);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 信息图标专用样式 */
+        .info-icon {
+            fill: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        /* 技术栈样式 */
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            background-color: var(--platform-hover);
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(64, 150, 255, 0.1);
+        }
+
+        .tech-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            fill: var(--primary-color);
+        }
+
+        .tech-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .tech-level {
+            font-size: 14px;
+            color: var(--text-secondary);
+            background-color: #eff6ff;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        /* 备案号链接样式，去除下划线（可选），保证点击体验 */
+        .icp-record-link {
+            color: #666;
+            text-decoration: none; /* 去除默认下划线，如需保留可删除此行 */
+        }
+
+        .icp-record-link:hover {
+            color: #333; /* 鼠标悬浮加深颜色，提升交互体验 */
+            text-decoration: underline; /* 悬浮显示下划线，提示可点击 */
+        }
+
+        /* 修复联系交流卡片图标 */
+        .qq-card .card-title .custom-svg-icon {
+            fill: var(--secondary-color);
+        }
+        
+        /* 修复链接样式 */
+        .qq-group .value a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .qq-group .value a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 确保所有卡片标题都有图标 */
+        .card-title:has(img):not(:has(svg)) {
+            /* 如果坚持用img，需要调整样式 */
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+                letter-spacing: 0.1px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .platform-list {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tech-stack {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .developer-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 24px;
+            }
+
+            .developer-desc p {
+                text-align: left;
+                font-size: 16px;
+            }
+
+            .card-title {
+                font-size: 22px;
+            }
+
+            .card-title .custom-svg-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .qq-btn-group {
+                width: 100%;
+                gap: 12px;
+            }
+
+            .qq-link-btn, .copy-qq-btn {
+                flex: 1;
+                justify-content: center;
+                padding: 10px 16px;
+            }
+
+            .developer-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .back-to-top {
+                width: 44px;
+                height: 44px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .platform-item::after {
+                width: 32px;
+                height: 32px;
+            }
+
+            .tech-item {
+                padding: 16px;
+            }
+
+            .tech-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .open-source-info {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+    <img src="../svg/返回顶部.svg" style="width:20px; height:20px; fill:currentColor;" alt="返回顶部">
+    </div>
+
+    <!-- 版本信息卡片 - 使用信息SVG图标 -->
+    <div class="card">
+        <div class="card-title">
+    <img src="../svg/信息.svg" style="width:20px; height:20px; fill:currentColor;" alt="信息">
+            当前版本
+        </div>
+        <div class="version-info">
+            <span class="label">版本号：</span>
+            <span class="value">v0.5.3</span>
+            <span class="badge">Beta</span>
+        </div>
+
+        <!-- 优化的开源信息显示 -->
+        <div class="open-source-info">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            <span class="license">开源协议：Apache-2.0 license</span>
+            <span class="github-link copyable-link" data-link="https://github.com/MrWoods1692/ydtc" onclick="copyLink(this)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                查看源码
+            </span>
+        </div>
+
+        <span class="icp-record-link copyable-link" data-link="https://beian.miit.gov.cn/" onclick="copyLink(this)">
+            <br>苏ICP备2024119784号-1
+        </span>
+
+    </div>
+
+<div class="card qq-card">
+    <div class="card-title">
+        联系 & 交流
+    </div>
+    
+    <!-- QQ群 -->
+    <div class="qq-group">
+        <span class="label">腾讯QQ群聊：</span>
+        <span class="value copyable-link" data-link="1077208238" onclick="copyLink(this)">1077208238</span>
+    </div>
+    
+    <!-- Telegram频道 -->
+    <div class="qq-group">
+        <span class="label">Telegram频道：</span>
+        <span class="value">
+            <span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods" onclick="copyLink(this)">点击复制链接</span>
+        </span>
+    </div>
+    
+    <!-- Telegram群组 -->
+    <div class="qq-group">
+        <span class="label">Telegram群组：</span>
+        <span class="value">
+            <span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl" onclick="copyLink(this)">点击复制链接</span>
+        </span>
+    </div>
+</div>
+
+    <!-- 开发者详细 -->
+    <div class="card">
+        <div class="card-title">
+    <img src="../svg/开发者.svg" style="width:20px; height:20px; fill:currentColor;" alt="开发者">
+            开发者
+        </div>
+        <div class="developer-info">
+            <div class="developer-avatar">
+                <img src="https://q1.qlogo.cn/g?b=qq&nk=1692138502&s=640 " alt="开发者头像">
+            </div>
+            <div class="developer-desc">
+                <p><strong>Name：</strong>Mr.C.Woods</p>
+                <p><strong>擅长领域：</strong>HTML/CSS/JavaScript、Vue/React框架开发、API接口对接、前端工程化，数据库设计与操作（MySQL、SQLite）、接口设计与开发（RESTful API、鉴权机制 JWT/Session）、服务器部署与运维（Linux、Nginx、Docker 基础）</p>
+                <p><strong>从业经验：</strong>3年C++编程经验、2年PHP开发经验</p>
+                <p><strong>个人理念：</strong>以用户体验为核心，用技术解决实际问题，持续学习和优化技术栈</p>
+                <p><strong>企业邮箱：</strong><span class="copyable-link" data-link="mail@mrcwoods.com" onclick="copyLink(this)">mail@mrcwoods.com</span></p>
+                <p><strong>联系方式：</strong>可通过QQ群或企业邮箱进行沟通协作</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增：技术栈板块 - 添加Vue和SCSS -->
+    <div class="card">
+        <div class="card-title">
+    <img src="../svg/技术栈.svg" style="width:20px; height:20px; fill:currentColor;" alt="技术栈">
+            技术栈
+        </div>
+        <div class="tech-stack">
+            <div class="tech-item">
+                    <img src="../svg/html.svg" style="width:20px; height:20px; fill:currentColor;" alt="html">
+                <div class="tech-name">HTML</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/css.svg" style="width:20px; height:20px; fill:currentColor;" alt="css">
+                <div class="tech-name">CSS</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/JavaScript.svg" style="width:20px; height:20px; fill:currentColor;" alt="js">
+                <div class="tech-name">JavaScript</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/sqlite.svg" style="width:20px; height:20px; fill:currentColor;" alt="sqlite">
+                <div class="tech-name">SQLite</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/nginx.svg" style="width:20px; height:20px; fill:currentColor;" alt="nginx">
+                <div class="tech-name">Nginx</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/php.svg" style="width:20px; height:20px; fill:currentColor;" alt="php">
+                <div class="tech-name">PHP</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/mysql.svg" style="width:20px; height:20px; fill:currentColor;" alt="mysql">
+                <div class="tech-name">MySQL</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/linux.svg" style="width:20px; height:20px; fill:currentColor;" alt="linux">
+                <div class="tech-name">Linux</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/Vue.svg" style="width:20px; height:20px; fill:currentColor;" alt="vue">
+                <div class="tech-name">Vue</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/scss.svg" style="width:20px; height:20px; fill:currentColor;" alt="scss">
+                <div class="tech-name">SCSS</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/Rust.svg" style="width:20px; height:20px; fill:currentColor;" alt="Rust">
+                <div class="tech-name">Rust</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/Tauri.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
+                <div class="tech-name">Tauri</div>
+            </div>
+            <div class="tech-item">
+                    <img src="../svg/bt.svg" style="width:20px; height:20px; fill:currentColor;" alt="Tauri">
+                <div class="tech-name">bt</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 合作平台 - 每个平台项hover显示信息SVG图标 -->
+    <div class="card">
+        <div class="card-title">
+    <img src="../svg/合作平台.svg" style="width:20px; height:20px; fill:currentColor;" alt="合作平台">
+            合作平台
+        </div>
+        <div class="platform-list">
+            <!-- 阿里巴巴矢量图标库 -->
+            <div class="platform-item copyable-item" data-link="https://www.iconfont.cn/" onclick="copyLinkFromElement(this)">
+                <div class="platform-header">
+                    <div class="platform-icon">
+                        <img src="https://img.alicdn.com/imgextra/i4/O1CN01XZe8pH1USpiUNT1QN_ !!6000000002517-2-tps-114-114.png" alt="阿里巴巴矢量图标库">
+                    </div>
+                    <div class="platform-name">阿里巴巴矢量图标库</div>
+                </div>
+                <div class="platform-desc">
+                    国内功能很强大且图标内容很丰富的矢量图标库，提供矢量图标下载、在线存储、格式转换等功能。阿里巴巴体验团队倾力打造，设计和前端开发的便捷工具。
+                </div>
+            </div>
+
+            <!-- 云智API -->
+            <div class="platform-item copyable-item" data-link="https://yunzhiapi.cn/" onclick="copyLinkFromElement(this)">
+                <div class="platform-header">
+                    <div class="platform-icon">
+                        <img src="https://yunzhiapi.cn/favicon.ico?v=1770787001 " alt="云智API">
+                    </div>
+                    <div class="platform-name">云智API</div>
+                </div>
+                <div class="platform-desc">
+                    为开发者打造的优质接口服务平台，基于 PHP 8.0+ JIT 引擎构建的高性能 API 聚合服务。支持 JSON 和 TEXT 标准输出,无论小程序、Web 站还是 APP,一行代码极速接入,为高新产业赋能。
+                </div>
+            </div>
+
+            <!-- 失控图床 -->
+            <div class="platform-item copyable-item" data-link="https://img.scdn.io/" onclick="copyLinkFromElement(this)">
+                <div class="platform-header">
+                    <div class="platform-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 100 100">
+                        <img src="https://th.bing.com/th/id/ODF.jEyMgH7pRez4paB6waupXA?w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2 " alt="失控图床">
+                        </svg>
+                    </div>
+                    <div class="platform-name">失控图床</div>
+                </div>
+                <div class="platform-desc">
+                    失控图床 是一个免登录永久免费提供公共API的优质图床，由自营覆盖全球内容分发CDN实现低延迟高速的图床体验，提供第三方应用浏览器扩展与Wordpress插件覆盖更多场景。
+                </div>
+            </div>
+
+            <!-- 阿里云 -->
+            <div class="platform-item copyable-item" data-link="https://www.aliyun.com/" onclick="copyLinkFromElement(this)">
+                <div class="platform-header">
+                    <div class="platform-icon">
+                        <img src="../svg/阿里云官方-中文LOGO.svg" alt="阿里云">
+                    </div>
+                    <div class="platform-name">阿里云</div>
+                </div>
+                <div class="platform-desc">
+                    权益中心提供超过 140+款免费试用产品；高校师生可领取专享权益；初创企业最高可得 100 万上云抵扣金，助力快速上云，让学生、开发者、企业用云无忧。
+                </div>
+            </div>
+
+            <!-- 数驰云 -->
+            <div class="platform-item copyable-item" data-link="https://dns.qxnqc.cn/" onclick="copyLinkFromElement(this)">
+                <div class="platform-header">
+                    <div class="platform-icon">
+                        <img src="https://dns.qxnqc.cn/favicon.ico " alt="数驰云">
+                    </div>
+                    <div class="platform-name">数驰云</div>
+                </div>
+                <div class="platform-desc">
+                    数驰二级分发平台，提供稳定便宜的二级域名分发服务，涵盖企业级二级域名分发、二级域名分发、免费二级域名申请，搭配二级域名批量分发工具，是省心的二级域名管理解决方案。
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 更新日志（可折叠） -->
+    <div class="card">
+        <div class="card-title">
+    <img src="../svg/更新日志.svg" style="width:20px; height:20px; fill:currentColor;" alt="更新日志">
+            更新日志
+        </div>
+        <div class="changelog-list">
+            <!-- v0.5.3 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.5.3</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-20</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加Github、Google、Linux Do快捷登录注册方式</li>
+                            <li>优化项目结构，方便统一管理</li>
+                            <li>修复AI绘画创建相册导致相册无法使用Bug</li>
+                            <li>优化设置页面，修复邮箱显示</li>
+                            <li>添加安全入口</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- v0.5.2 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.5.2</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-19</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>新建Telegram群组和频道</li>
+                            <li>群组<span class="copyable-link" data-link="https://t.me/+gTx_i8DCfdozYzRl" onclick="copyLink(this)">https://t.me/+gTx_i8DCfdozYzRl</span></li>
+                            <li>频道<span class="copyable-link" data-link="https://t.me/boost/ydtcmrcwoods" onclick="copyLink(this)">https://t.me/boost/ydtcmrcwoods</span></li>
+                            <li>迁移并扩展服务器</li>
+                            <li>加强网站安全防护</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.5.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.5.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-17</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>开源v0.5.0版本</li>
+                            <li>推送Android的release，内置简易图床功能</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.5.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.5.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-17</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>优化小屏幕图标显示</li>
+                            <li>发行安卓APK,发布安卓端</li>
+                            <li>美化图片查看界面UI</li>
+                            <li>修复AI绘图保存相册逻辑Bug</li>
+                            <li>编写部分API接口文档以及SDK</li>
+                            <li>对产品稍加宣传</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.4.3 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.3</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-17</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>更换商场界面为升级界面，去除卡密</li>
+                            <li>重构图床页面</li>
+                            <li>允许图床页面无登录使用（极速简洁版）</li>
+                            <li>优化主页</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.4.2 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.2</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-16</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加二维码扫描功能</li>
+                            <li>去除高清修复功能</li>
+                            <li>添加AI绘画功能</li>
+                            <li>去除AI对话功能</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.4.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-15</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>优化SEO</li>
+                            <li>添加爬虫规则和网站地图</li>
+                            <li>添加502页面</li>
+                            <li>加强网站安全</li>
+                            <li>提交网站到搜索引擎</li>
+                            <li>在其他流量站通过友链</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.4.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.4.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-14</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>修复多域Cookie问题</li>
+                            <li>修复登录\注册时验证码相关问题</li>
+                            <li>修复无法退出登录Bug</li>
+                            <li>优化文字提取速度</li>
+                            <li>添加高清修复功能</li>
+                            <li>新增至82个翻译语言选项</li>
+                            <li>优化复制翻译功能</li>
+                            <li>完成开放平台，初始部分API</li>
+                            <li>优化日志显示</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.3.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.3.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-13</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>添加新域名<span class="copyable-link" data-link="app.mduge.com" onclick="copyLink(this)">app.mduge.com</span></li>
+                            <li>添加企业备案（苏ICP备2024119784号-1）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.3.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.3.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-13</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>更新QQ交流群头像</li>
+                            <li>用Vue完成简易主页功能</li>
+                            <li>用PHP完成访客统计功能</li>
+                            <li>优化关于页面界面显示</li>
+                            <li>优化图床上传和提示</li>
+                            <li>美化图片显示页面的弹窗样式</li>
+                            <li>优化文字提取复制按钮文字提示</li>
+                            <li>优化文本翻译和显示</li>
+                            <li>更换AI修图使用模型Nano Banana Pro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.2.1 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.2.1</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-12</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>工具库添加新工具</li>
+                            <li>开源v0.2.0版本</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.2.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.2.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-11</p>
+                        <p><strong>更新：</strong></p>
+                        <ul>
+                            <li>完成AI智能体的对话功能</li>
+                            <li>添加关于页面</li>
+                            <li>建立QQ交流群</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.1.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.1.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-10</p>
+                        <p><strong>主要更新：</strong></p>
+                        <ul>
+                            <li>完成完整基本功能</li>
+                            <li>域名<span class="copyable-link" data-link="app.mrcwoods.com" onclick="copyLink(this)">app.mrcwoods.com</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v0.0.0 版本 -->
+            <div class="changelog-item">
+                <div class="changelog-header" onclick="toggleChangelog(this)">
+                    <span class="changelog-version">v0.0.0</span>
+                    <svg class="changelog-toggle" xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+                <div class="changelog-content">
+                    <div class="changelog-details">
+                        <p><strong>更新时间：</strong>2026-02-03</p>
+                        <p><strong>主要更新：</strong></p>
+                        <ul>
+                            <li>创立项目，开始建设</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        Hello_World © 2026 云端图片储存
+    </footer>
+
+    <!-- 复制成功提示框 -->
+    <div class="copy-toast" id="copyToast">
+        <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        Copy Success！
+    </div>
+
+    <script>
+        // 复制链接的通用函数
+        function copyLink(element) {
+            // 获取要复制的链接
+            const link = element.getAttribute('data-link');
+            
+            // 创建临时文本区域
+            const tempInput = document.createElement('textarea');
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            
+            // 选中并复制
+            tempInput.select();
+            document.execCommand('copy');
+            
+            // 移除临时元素
+            document.body.removeChild(tempInput);
+            
+            // 显示复制成功提示
+            showCopyToast();
+            
+            // 阻止默认行为
+            return false;
+        }
+        
+        // 复制平台链接的函数
+        function copyLinkFromElement(element) {
+            const link = element.getAttribute('data-link');
+            copyTextToClipboard(link);
+        }
+        
+        // 通用复制文本函数
+        function copyTextToClipboard(text) {
+            // 现代浏览器使用 Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyToast();
+                }).catch(err => {
+                    console.error('复制失败:', err);
+                });
+            } else {
+                // 降级方案
+                const tempInput = document.createElement('textarea');
+                tempInput.value = text;
+                tempInput.style.position = 'absolute';
+                tempInput.style.left = '-999999px';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                showCopyToast();
+            }
+        }
+        
+        // 显示复制成功提示
+        function showCopyToast() {
+            const toast = document.getElementById('copyToast');
+            toast.classList.add('show');
+            
+            // 3秒后隐藏提示
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // 折叠/展开更新日志的函数
+        function toggleChangelog(header) {
+            const content = header.nextElementSibling;
+            const toggleIcon = header.querySelector('.changelog-toggle');
+
+            // 切换展开/收起状态
+            content.classList.toggle('expanded');
+            toggleIcon.classList.toggle('rotated');
+        }
+        
+        // 回到顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 监听滚动显示/隐藏回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // 初始化页面动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 给所有卡片添加渐入动画
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
