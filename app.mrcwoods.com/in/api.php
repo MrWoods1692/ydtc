@@ -41,6 +41,50 @@ function loadEnv($path = '.env') {
 }
 loadEnv();
 
+// 引入 PHPMailer
+require_once __DIR__ . '/vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// 验证邮箱域名是否在允许列表
+function isAllowedEmailDomain($email) {
+    $allowedDomains = [
+        'gmail.com',
+        'zoho.com',
+        'zoho.eu',
+        'zoho.in',
+        'zoho.com.cn',
+        'proton.me',
+        'protonmail.com',
+        'protonmail.ch',
+        'icloud.com',
+        'me.com',
+        'mac.com',
+        'yahoo.com',
+        'yahoo.co.jp',
+        'yahoo.co.uk',
+        'yahoo.fr',
+        'yahoo.de',
+        'outlook.com',
+        'hotmail.com',
+        'hotmail.co.uk',
+        'hotmail.fr',
+        'live.com',
+        'live.cn',
+        'outlook.cn',
+        'qq.com',
+        '163.com',
+        '126.com',
+        'sina.com',
+        'sina.cn',
+        'aliyun.com',
+        'mrcwoods.com'
+    ];
+    
+    $emailDomain = strtolower(substr(strrchr($email, '@'), 1));
+    return in_array($emailDomain, $allowedDomains);
+}
+
 // 4. 跨域头配置【适配多域名】
 // 4.1 解析多域名配置
 $allowedOrigins = explode(',', $_ENV['ALLOWED_ORIGIN']); // 解析多个跨域源
@@ -124,45 +168,165 @@ function generateVerifyCode() {
     return $code;
 }
 
-// 10. 发送邮箱验证码
+// 10. 发送邮箱验证码 (使用 PHPMailer SMTP)
 function sendVerifyEmail($email, $code) {
-    $apiUrl = $_ENV['EMAIL_API_URL'];
-    $params = [
-        'token' => $_ENV['EMAIL_API_TOKEN'] ?? '',
-        'send' => $_ENV['EMAIL_SEND'],
-        'pass' => $_ENV['EMAIL_PASS'],
-        'receive' => $email,
-        'mtie' => '[云图]',
-        'title' => '验证码',
-        'content' => "<!DOCTYPE html>
-        <html>
-        <head><meta charset='utf-8'></head>
-        <body style='font-family: -apple-system, BlinkMacSystemFont, sans-serif;'>
-            <div style='max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);'>
-                <h2 style='color: #1d1d1f;'>云图验证码</h2>
-                <p style='color: #86868b; font-size: 14px;'>有效期5分钟，请勿泄露给他人：</p>
-                <div style='font-size: 32px; font-weight: bold; color: #0071e3; margin: 20px 0; letter-spacing: 4px; background: #f5f5f7; padding: 15px; border-radius: 8px; text-align: center;'>{$code}</div>
-                <p style='color: #86868b; font-size: 12px;'>如非本人操作，请忽略此邮件。</p>
+    // 获取当前发送时间
+    $sendDateTime = date('Y-m-d H:i:s');
+    
+    $mail = new PHPMailer(true);
+    try {
+        // SMTP 配置
+        $mail->isSMTP();
+        $mail->Host = $_ENV['EMAIL_SMTP_HOST'] ?? 'smtp.qq.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = $_ENV['EMAIL_SEND'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+        $mail->SMTPSecure = $_ENV['EMAIL_SMTP_SECURE'] ?? PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = (int)($_ENV['EMAIL_SMTP_PORT'] ?? 465);
+        $mail->CharSet = 'UTF-8';
+        
+        // 发件人
+        $mail->setFrom($_ENV['EMAIL_SEND'], '云图');
+        
+        // 收件人
+        $mail->addAddress($email);
+        
+        // 邮件内容 - Mac 风格窗口
+        $mail->isHTML(true);
+        $mail->Subject = '云图验证码';
+        $mail->Body = '<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云图验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .mac-window {
+            background: #ffffff;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .window-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: #f5f5f7;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+        }
+        .close {
+            background: #ff5f57;
+            border: 1px solid #e0443e;
+        }
+        .minimize {
+            background: #febc2e;
+            border: 1px solid #d89e24;
+        }
+        .maximize {
+            background: #28c840;
+            border: 1px solid #1aab29;
+        }
+        .window-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: 0.5px;
+        }
+        .window-content {
+            padding: 24px 20px;
+        }
+        .content-text {
+            font-size: 15px;
+            color: #1d1d1f;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .code-box {
+            font-size: 32px;
+            font-weight: bold;
+            color: #0071e3;
+            margin: 20px 0;
+            letter-spacing: 4px;
+            background: #f5f5f7;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .timestamp {
+            font-size: 13px;
+            color: #86868b;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            letter-spacing: 0.3px;
+        }
+        .footer {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .footer p {
+            font-size: 12px;
+            color: #86868b;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mac-window">
+        <div class="window-header">
+            <div class="window-controls">
+                <span class="control-btn close"></span>
+                <span class="control-btn minimize"></span>
+                <span class="control-btn maximize"></span>
             </div>
-        </body>
-        </html>"
-    ];
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $apiUrl);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $response = curl_exec($ch);
-    $curlError = curl_errno($ch) ? curl_error($ch) : '';
-    curl_close($ch);
-
-    if ($curlError) {
-        writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '邮箱发送失败', 'error' => $curlError]);
+            <span class="window-title">云图验证码</span>
+        </div>
+        <div class="window-content">
+            <p class="content-text">您的验证码是：</p>
+            <div class="code-box">' . $code . '</div>
+            <p class="content-text">验证码有效期5分钟，请勿泄露给他人。</p>
+            <div class="footer">
+                <p><time class="timestamp">' . $sendDateTime . '</time></p>
+                <p>如非本人操作，请忽略此邮件。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>';
+        $mail->AltBody = "您的云图验证码是：{$code}\n验证码有效期5分钟，请勿泄露给他人。\n发送时间：{$sendDateTime}\n如非本人操作，请忽略此邮件。";
+        
+        $mail->send();
+        writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'success', 'message' => '邮件发送成功']);
+        return true;
+    } catch (Exception $e) {
+        writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '邮件发送失败', 'error' => $e->getMessage()]);
+        return false;
     }
-    return $response !== false;
 }
 
 // 11. 处理前端请求
@@ -194,6 +358,12 @@ try {
     // 发送验证码
     if ($action === 'send_code') {
         try {
+            // 验证邮箱域名是否在允许列表
+            if (!isAllowedEmailDomain($email)) {
+                writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '不支持的邮箱域名']);
+                exit(json_encode(['code' => 400, 'msg' => '不支持的邮箱域名，请使用常用邮箱（Gmail、QQ邮箱、163邮箱、Outlook等）']));
+            }
+            
             $lastSendTime = $user['verify_code_time'] ?? 0;
             if (time() - $lastSendTime < ($_ENV['VERIFY_CODE_INTERVAL'] ?? 60)) {
                 writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '验证码发送过于频繁']);
@@ -201,7 +371,12 @@ try {
             }
 
             $verifyCode = generateVerifyCode();
-            sendVerifyEmail($email, $verifyCode);
+            $sendResult = sendVerifyEmail($email, $verifyCode);
+            
+            if (!$sendResult) {
+                writeLoginLog(['email' => $email, 'action' => 'send_code', 'status' => 'error', 'message' => '邮件发送失败']);
+                exit(json_encode(['code' => 500, 'msg' => '验证码发送失败，请稍后重试']));
+            }
 
             $stmt = $pdo->prepare("UPDATE users SET verify_code = ?, verify_code_time = ?, verify_fail_count = 0, updated_at = ? WHERE id = ?");
             $stmt->execute([$verifyCode, time(), time(), $user['id']]);

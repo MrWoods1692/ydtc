@@ -12,8 +12,8 @@ if (!$env) {
 
 // Github OAuth2 配置
 $config = [
-    'client_id'     => '',
-    'client_secret' => '',
+    'client_id'     => 'Ov23liE2vxAe5Nx1wHc2',
+    'client_secret' => 'd5d21bb762af0a4ec64a18992cf934ee60f25b14',
     'redirect_uri'  => 'https://app.mrcwoods.com/in/auth/github/callback',
     'auth_endpoint' => 'https://github.com/login/oauth/authorize',
     'scope'         => 'user:email', // 仅请求邮箱权限（最小权限原则）

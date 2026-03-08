@@ -622,6 +622,7 @@ if (isTauri() || hasAppIndexPath()) {
                 
                 if (res.code === 200) {
                     showMessage(res.msg, 'success');
+                    setBtnLoading(sendCodeBtn, false); // 停止加载动画
                     countdown(90); // 90s倒计时
                 } else {
                     showMessage(res.msg);

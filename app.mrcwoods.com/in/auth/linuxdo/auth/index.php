@@ -12,8 +12,8 @@ if (!$env) {
 
 // Linux DO OAuth2 配置
 $config = [
-    'client_id'     => '',
-    'client_secret' => '',
+    'client_id'     => 'Ah3GqpqJ8EaRAlUAIjE2YWrQ8aaksOtK',
+    'client_secret' => 'naP2e25VEN0uvOCb3iwb7qNw4X1unfJ0',
     'redirect_uri'  => 'https://app.mrcwoods.com/in/auth/linuxdo/callback',
     'auth_endpoint' => 'https://connect.linux.do/oauth2/authorize',
     'scope'         => 'openid email profile', // 请求的权限范围
