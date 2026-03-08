@@ -33,11 +33,11 @@ unset($_SESSION['linuxdo_oauth_state']); // 用完即删
 
 // 2. 配置信息
 $config = [
-    'client_id'     => 'Ah3GqpqJ8EaRAlUAIjE2YWrQ8aaksOtK',
-    'client_secret' => 'naP2e25VEN0uvOCb3iwb7qNw4X1unfJ0',
-    'redirect_uri'  => 'https://app.mrcwoods.com/in/auth/linuxdo/callback',
-    'token_endpoint'=> 'https://connect.linux.do/oauth2/token',
-    'user_endpoint' => 'https://connect.linux.do/api/user',
+    'client_id'     => '',
+    'client_secret' => '',
+    'redirect_uri'  => '',
+    'token_endpoint'=> '',
+    'user_endpoint' => '',
 ];
 
 try {

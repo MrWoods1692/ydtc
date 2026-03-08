@@ -33,12 +33,12 @@ unset($_SESSION['github_oauth_state']); // 用完即删
 
 // 2. Github OAuth2 配置
 $config = [
-    'client_id'     => 'Ov23liE2vxAe5Nx1wHc2',
-    'client_secret' => 'd5d21bb762af0a4ec64a18992cf934ee60f25b14',
-    'redirect_uri'  => 'https://app.mrcwoods.com/in/auth/github/callback',
-    'token_endpoint'=> 'https://github.com/login/oauth/access_token',
-    'user_endpoint' => 'https://api.github.com/user',
-    'email_endpoint'=> 'https://api.github.com/user/emails', // Github邮箱专用接口
+    'client_id'     => '',
+    'client_secret' => '',
+    'redirect_uri'  => '',
+    'token_endpoint'=> '',
+    'user_endpoint' => '',
+    'email_endpoint'=> '', // Github邮箱专用接口
 ];
 
 try {
